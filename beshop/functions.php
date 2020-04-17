@@ -1,4 +1,5 @@
 <?php
+
 /**
  * beshop functions and definitions
  *
@@ -7,12 +8,12 @@
  * @package beshop
  */
 
-if ( ! defined( '_S_VERSION' ) ) {
+if (!defined('_S_VERSION')) {
 	// Replace the version number of the theme on each release.
-	define( '_S_VERSION', '1.0.0' );
+	define('_S_VERSION', '1.0.0');
 }
 
-if ( ! function_exists( 'beshop_setup' ) ) :
+if (!function_exists('beshop_setup')) :
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.
 	 *
@@ -20,17 +21,18 @@ if ( ! function_exists( 'beshop_setup' ) ) :
 	 * runs before the init hook. The init hook is too late for some features, such
 	 * as indicating support for post thumbnails.
 	 */
-	function beshop_setup() {
+	function beshop_setup()
+	{
 		/*
 		 * Make theme available for translation.
 		 * Translations can be filed in the /languages/ directory.
 		 * If you're building a theme based on beshop, use a find and replace
 		 * to change 'beshop' to the name of your theme in all the template files.
 		 */
-		load_theme_textdomain( 'beshop', get_template_directory() . '/languages' );
+		load_theme_textdomain('beshop', get_template_directory() . '/languages');
 
 		// Add default posts and comments RSS feed links to head.
-		add_theme_support( 'automatic-feed-links' );
+		add_theme_support('automatic-feed-links');
 
 		/*
 		 * Let WordPress manage the document title.
@@ -38,19 +40,19 @@ if ( ! function_exists( 'beshop_setup' ) ) :
 		 * hard-coded <title> tag in the document head, and expect WordPress to
 		 * provide it for us.
 		 */
-		add_theme_support( 'title-tag' );
+		add_theme_support('title-tag');
 
 		/*
 		 * Enable support for Post Thumbnails on posts and pages.
 		 *
 		 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
 		 */
-		add_theme_support( 'post-thumbnails' );
+		add_theme_support('post-thumbnails');
 
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus(
 			array(
-				'menu-1' => esc_html__( 'Primary', 'beshop' ),
+				'menu-1' => esc_html__('Primary', 'beshop'),
 			)
 		);
 
@@ -84,7 +86,7 @@ if ( ! function_exists( 'beshop_setup' ) ) :
 		);
 
 		// Add theme support for selective refresh for widgets.
-		add_theme_support( 'customize-selective-refresh-widgets' );
+		add_theme_support('customize-selective-refresh-widgets');
 
 		/**
 		 * Add support for core custom logo.
@@ -102,7 +104,7 @@ if ( ! function_exists( 'beshop_setup' ) ) :
 		);
 	}
 endif;
-add_action( 'after_setup_theme', 'beshop_setup' );
+add_action('after_setup_theme', 'beshop_setup');
 
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
@@ -111,25 +113,27 @@ add_action( 'after_setup_theme', 'beshop_setup' );
  *
  * @global int $content_width
  */
-function beshop_content_width() {
+function beshop_content_width()
+{
 	// This variable is intended to be overruled from themes.
 	// Open WPCS issue: {@link https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards/issues/1043}.
 	// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
-	$GLOBALS['content_width'] = apply_filters( 'beshop_content_width', 640 );
+	$GLOBALS['content_width'] = apply_filters('beshop_content_width', 640);
 }
-add_action( 'after_setup_theme', 'beshop_content_width', 0 );
+add_action('after_setup_theme', 'beshop_content_width', 0);
 
 /**
  * Register widget area.
  *
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
-function beshop_widgets_init() {
+function beshop_widgets_init()
+{
 	register_sidebar(
 		array(
-			'name'          => esc_html__( 'Sidebar', 'beshop' ),
+			'name'          => esc_html__('Sidebar', 'beshop'),
 			'id'            => 'sidebar-1',
-			'description'   => esc_html__( 'Add widgets here.', 'beshop' ),
+			'description'   => esc_html__('Add widgets here.', 'beshop'),
 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</section>',
 			'before_title'  => '<h2 class="widget-title">',
@@ -137,24 +141,34 @@ function beshop_widgets_init() {
 		)
 	);
 }
-add_action( 'widgets_init', 'beshop_widgets_init' );
+add_action('widgets_init', 'beshop_widgets_init');
 
 /**
  * Enqueue scripts and styles.
  */
-function beshop_scripts() {
-	wp_enqueue_style( 'beshop-style', get_stylesheet_uri(), array(), _S_VERSION );
-	wp_style_add_data( 'beshop-style', 'rtl', 'replace' );
+function beshop_scripts()
+{
+	wp_enqueue_style('beshop-style', get_stylesheet_uri(), array(), _S_VERSION);
+	wp_style_add_data('beshop-style', 'rtl', 'replace');
 
-	wp_enqueue_script( 'beshop-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
+	wp_enqueue_script('beshop-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true);
+	wp_enqueue_script('beshop-custom', get_template_directory_uri() . '/js/custom.js', array('jquery'), _S_VERSION, true);
 
-	wp_enqueue_script( 'beshop-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), _S_VERSION, true );
+	wp_enqueue_script('beshop-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), _S_VERSION, true);
 
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
+	if (is_singular() && comments_open() && get_option('thread_comments')) {
+		wp_enqueue_script('comment-reply');
 	}
+
+	wp_localize_script('beshop-custom', 'beshopAjaxProps', array(
+		'action_nonce' => wp_create_nonce('set_cart_qty'),
+		'ajax_url' => admin_url('admin-ajax.php'),
+		'ajax_actions' => array(
+			'setCartQty' => 'beshop_set_cart_qty'
+		)
+	));
 }
-add_action( 'wp_enqueue_scripts', 'beshop_scripts' );
+add_action('wp_enqueue_scripts', 'beshop_scripts');
 
 /**
  * Implement the Custom Header feature.
@@ -179,49 +193,65 @@ require get_template_directory() . '/inc/customizer.php';
 /**
  * Load Jetpack compatibility file.
  */
-if ( defined( 'JETPACK__VERSION' ) ) {
+if (defined('JETPACK__VERSION')) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
+
+function get_product_from_cart($product_id)
+{
+	$cart = WC()->cart;
+	$cart_items = $cart->get_cart_contents();
+
+	foreach ($cart_items as $item) {
+		if ($item['product_id'] !== (int) $product_id) continue;
+		return $item;
+	}
+
+	return null;
+};
 
 /**
  * Add quantity field on the shop page.
  */
-function ace_shop_page_add_quantity_field() {
+function ace_shop_page_add_quantity_field($html)
+{
+	$product = get_product_from_cart(get_the_ID());
+	$qty = !empty($product['quantity']) ? $product['quantity'] : 0;
 
-	/** @var WC_Product $product */
-	$product = wc_get_product( get_the_ID() );
+	$tpl = '<div class="category_order">
+		<div style="display: none">%1$s</div>
+		<span class="category_order_button hide_top">%2$s</span>
+		<span class="category_order_capacity">
+				<input type="button" data-action="minus" class="qty-control category_order_select_minus">
+				<input type="number" step="1" min="1" class="item_number" value="%3$d">
+				<input type="button" data-action="plus" class="qty-control category_order_select_plus">
+		</span>
+	</div>';
 
-	if ( ! $product->is_sold_individually() && 'variable' != $product->get_type() && $product->is_purchasable() ) {
-		woocommerce_quantity_input( array( 'min_value' => 1, 'max_value' => $product->backorders_allowed() ? '' : $product->get_stock_quantity() ) );
+	return sprintf($tpl, $html, __("Add to cart", 'beshop'), $qty);
+};
+
+add_filter('woocommerce_add_to_cart_validation', function ($valid, $product_id) {
+	$qty = !empty($_POST['quantity']) ? $_POST['quantity'] : 0;
+	$cart = WC()->cart;
+	$cart_items = $cart->get_cart_contents();
+
+	if (empty($cart_items)) return $valid;
+
+	$product = get_product_from_cart($product_id);
+
+	if (empty($product)) return $valid;
+
+	if (!$qty) {
+		$cart->remove_cart_item($product['key']);
+		WC_AJAX::get_refreshed_fragments();
 	}
 
-}
-add_action( 'woocommerce_after_shop_loop_item', 'ace_shop_page_add_quantity_field', 12 );
+	$cart->set_quantity($product['key'], 0);
+
+	return $valid;
+}, 10, 5);
 
 
-/**
- * Add required JavaScript.
- */
-function ace_shop_page_quantity_add_to_cart_handler() {
 
-	wc_enqueue_js( '
-		$(".woocommerce .products").on("click", ".quantity input", function() {
-			return false;
-		});
-		$(".woocommerce .products").on("change input", ".quantity .qty", function() {
-			var add_to_cart_button = $(this).parents( ".product" ).find(".add_to_cart_button");
-			// For AJAX add-to-cart actions
-			add_to_cart_button.data("quantity", $(this).val());
-			// For non-AJAX add-to-cart actions
-			add_to_cart_button.attr("href", "?add-to-cart=" + add_to_cart_button.attr("data-product_id") + "&quantity=" + $(this).val());
-		});
-		// Trigger on Enter press
-		$(".woocommerce .products").on("keypress", ".quantity .qty", function(e) {
-			if ((e.which||e.keyCode) === 13) {
-				$( this ).parents(".product").find(".add_to_cart_button").trigger("click");
-			}
-		});
-	' );
-
-}
-add_action( 'init', 'ace_shop_page_quantity_add_to_cart_handler' );
+add_action('woocommerce_loop_add_to_cart_link', 'ace_shop_page_add_quantity_field');
