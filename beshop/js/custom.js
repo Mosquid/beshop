@@ -27,9 +27,41 @@ function updateCartPodcutQty() {
   actionBtn.trigger("click");
 }
 
+function updateQtyNodes(nodes, cart) {
+  if (!nodes.length) return;
+
+  var IDs = [];
+
+  if (cart.length) {
+    var $cartProducts = cart.find(".remove_from_cart_button");
+
+    if ($cartProducts.length) {
+      IDs = $cartProducts.toArray().map(function (item) {
+        return item.dataset.product_id;
+      });
+    }
+  }
+
+  nodes.each(function (_, node) {
+    try {
+      var $node = jQuery(node);
+      var productId = $node.find(".ajax_add_to_cart").get(0).dataset.product_id;
+      var $qty = $node.find(".item_number");
+      if (!IDs.includes(productId)) $qty.val(0);
+    } catch (error) {
+      return false;
+    }
+  });
+}
+
 (function ($) {
   function initQtyFields() {
     var nodes = $(".products .product .category_order");
+
+    $(document.body).on("removed_from_cart", function () {
+      var cart = $("ul.woocommerce-mini-cart");
+      updateQtyNodes(nodes, cart);
+    });
 
     if (!nodes.length) return;
 
