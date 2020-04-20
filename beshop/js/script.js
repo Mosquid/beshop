@@ -1,3 +1,4 @@
+(function($) {
 document.addEventListener('DOMContentLoaded', function () {
     $('.sidenav').sidenav();
     $('.modal').modal();
@@ -96,3 +97,4 @@ document.addEventListener('DOMContentLoaded', function () {
     //    changeValue();
     // calculateValue();
 })
+})(jQuery)
