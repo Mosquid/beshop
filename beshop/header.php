@@ -22,31 +22,38 @@
 
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
+
 <div id="page" class="site">
-	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'beshop' ); ?></a>
-
-	<header id="masthead" class="site-header">
-		<div class="site-branding">
-			<?php
-			the_custom_logo();
-			if ( is_front_page() && is_home() ) :
-				?>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+	<div class="wrapper">
+		<nav>
+            <div class="nav-wrapper">
+                <div class="logo_wrapper">
+                    <a href="#" data-target="mobile-demo" class="sidenav-trigger menu_switcher"></a>
+                    <div class="logo">
+                        <img src="<?php echo get_template_directory_uri() ?>/img/logo.jpg" alt="">
+                    </div>
+				</div>
+				<div class="nav_pc pc">
 				<?php
-			else :
-				?>
-				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-				<?php
-			endif;
-			$beshop_description = get_bloginfo( 'description', 'display' );
-			if ( $beshop_description || is_customize_preview() ) :
-				?>
-				<p class="site-description"><?php echo $beshop_description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
-			<?php endif; ?>
-		</div><!-- .site-branding -->
+				wp_nav_menu(
+					array(
+						'theme_location' => 'menu-1',
+						'menu_id'        => 'primary-menu',
+					)
+				);
+			?>
+				</div>
+               
+                <div class="header_buttons">
+                    <a href="<?php echo site_url() ?>/cart/" class="cart_button"></a>
+                    <div class="cart_search"></div>
+                </div>
+            </div>
+        </nav>
+        <div class="sidenav" id="mobile-demo">
 
-		<nav id="site-navigation" class="main-navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'beshop' ); ?></button>
+            <!--          <div class="menu_close"></div>-->
+            <div class="menu">
 			<?php
 			wp_nav_menu(
 				array(
@@ -55,7 +62,20 @@
 				)
 			);
 			?>
-		</nav><!-- #site-navigation -->
-	</header><!-- #masthead -->
+                <div class="menu_contacts">
+                    <div class="logo_contacts">
+                        <img src="<?php echo get_template_directory_uri() ?>/img/logo.jpg" alt="">
+                    </div>
+                    <a href="mailto:storename@mail.com" class="menu_contacts_mail">storename@mail.com</a>
+                    <a href="tel:" class="menu_contacts_phone">+72 548 96 154</a>
+                    <a href="#" class="menu_contacts_map">Tel Aviv, Vallay Str. One Mall 716 Nm Floor4</a>
+                </div>
+            </div>
+
+		</div>
+		
+	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'beshop' ); ?></a>
+
+
 
 	<div id="content" class="site-content">

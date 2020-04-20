@@ -148,10 +148,14 @@ add_action('widgets_init', 'beshop_widgets_init');
  */
 function beshop_scripts()
 {
-	wp_enqueue_style('beshop-style', get_stylesheet_uri(), array(), _S_VERSION);
+	wp_enqueue_style( 'beshop-style', get_template_directory_uri() . '/css/main.css' );
 	wp_style_add_data('beshop-style', 'rtl', 'replace');
 
 	wp_enqueue_script('beshop-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true);
+	wp_enqueue_script('beshop-jquery', get_template_directory_uri() . '/js/jquery.js', array(), _S_VERSION, true);
+	wp_enqueue_script('beshop-material', get_template_directory_uri() . '/js/material.js', array(), _S_VERSION, true);
+	wp_enqueue_script('beshop-slick', get_template_directory_uri() . '/js/slick.js', array(), _S_VERSION, true);
+	wp_enqueue_script('beshop-script', get_template_directory_uri() . '/js/script.js', array(), _S_VERSION, true);
 	wp_enqueue_script('beshop-custom', get_template_directory_uri() . '/js/custom.js', array('jquery'), _S_VERSION, true);
 
 	wp_enqueue_script('beshop-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), _S_VERSION, true);
@@ -218,14 +222,16 @@ function ace_shop_page_add_quantity_field($html)
 	$product = get_product_from_cart(get_the_ID());
 	$qty = !empty($product['quantity']) ? $product['quantity'] : 0;
 
-	$tpl = '<div class="category_order">
+	$tpl = '<div class="category_order_wrapper">
+	<div class="category_order">
 		<div style="display: none">%1$s</div>
-		<span class="category_order_button hide_top">%2$s</span>
-		<span class="category_order_capacity">
+		<span class="category_order_button">%2$s</span>
+		<span class="category_order_capacity hide_bot">
 				<input type="button" data-action="minus" class="qty-control category_order_select_minus">
 				<input type="number" step="1" min="1" class="item_number" value="%3$d">
 				<input type="button" data-action="plus" class="qty-control category_order_select_plus">
 		</span>
+	</div>
 	</div>';
 
 	return sprintf($tpl, $html, __("Add to cart", 'beshop'), $qty);

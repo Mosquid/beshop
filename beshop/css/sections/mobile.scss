@@ -1,0 +1,66 @@
+@media screen and (max-width: 1180px) {
+    
+    .pc,
+    .breadcrumb {
+        display: none !important;
+    }
+
+    .wrapper {
+        min-width: 320px;
+    }
+
+    .container {
+        width: 320px;
+        padding: 0 20px;
+        overflow: hidden;
+    }
+
+    footer.footer {
+        height: 260px;
+
+        .container {
+            height: 100%;
+            @include flex-direction(column);
+        }
+
+        min-width: 100%;
+
+        .call,
+        .write {
+            display: none;
+        }
+
+        .social_wrap {
+            width: 140px;
+            @include flexbox();
+            @include justify-content(space-between);
+            @include align-items(center);
+            margin-bottom: 40px;
+
+            a {
+                margin: 0;
+            }
+        }
+    }
+
+    .footer_logo {
+        margin-top: 60px;
+    }
+
+    .footer_right {
+        width: 100%;
+        @include flexbox();
+        @include justify-content(center);
+        @include align-items(center);
+
+        .fb,
+        .inst,
+        .you {
+            margin-right: 0 !important;
+            margin-left: 0 !important;
+        }
+    }
+
+    /*header*/
+   
+}
