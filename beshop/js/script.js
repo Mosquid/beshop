@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function showButtonsCart() {
         let item = document.querySelectorAll('.product'),
             buyButton = document.querySelectorAll('.category_order_button'),
-            wrap = document.querySelector('.products'),
+            wrap = document.querySelector('.woocommerce'),
             orderValue = document.querySelectorAll('.category_order_capacity'),
             numberValue = document.querySelectorAll('.value_number'),
             minusButton = document.querySelectorAll('.category_order_select_minus'),
