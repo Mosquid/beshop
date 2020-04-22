@@ -194,6 +194,11 @@ require get_template_directory() . '/inc/template-functions.php';
 require get_template_directory() . '/inc/customizer.php';
 
 /**
+ * Shortcodes
+ */
+require get_template_directory() . '/inc/shortcodes.php';
+
+/**
  * Load Jetpack compatibility file.
  */
 if (defined('JETPACK__VERSION')) {
@@ -265,3 +270,5 @@ function sc_btn($atts = array(), $content = '') {
 	return "<button> text</button>";
 	}
  add_shortcode( 'button', 'sc_btn' );
+ 
+
