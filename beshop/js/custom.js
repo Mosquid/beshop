@@ -75,7 +75,7 @@ function setInitialBtnStatus(node) {
 
 ;(function ($) {
   function initQtyFields() {
-    var nodes = $(".products .product .category_order")
+    var nodes = $(".products .product .category_order, .single-product .category_order");
 
     $(document.body).on("removed_from_cart", function () {
       var cart = $("ul.woocommerce-mini-cart")
