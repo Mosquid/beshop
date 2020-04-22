@@ -56,6 +56,7 @@ function updateQtyNodes(nodes, cart) {
 
 function setInitialBtnStatus(node) {
   const HIDE_BOT = 'hide_bot'
+  const HIDE_TOP = 'hide_top'
   const qtyInput = node.find(".item_number")
   const addToStore = node.find(".ajax_add_to_cart")
   const cartButton = node.find(".category_order_button")
@@ -67,7 +68,7 @@ function setInitialBtnStatus(node) {
   try {
     addToStore[0].dataset.quantity = qty
     capacity.removeClass(HIDE_BOT)
-    cartButton.addClass(HIDE_BOT)
+    cartButton.addClass(HIDE_TOP)
   } catch (error) {
     console.log("[Failed setting initial qty]")
   }

@@ -79,6 +79,8 @@
 .category_order_wrapper {
     width: 100%;
     padding: 0 8px;
+    overflow: hidden;
+    cursor: pointer;
 }
 .category_order {
     text-decoration: none;
@@ -91,14 +93,22 @@
     background-color: #2586FD;
     text-align: center;
     padding: 5px 0;
+    margin: 0 auto;
     border-radius: 50vh;
     position: relative;
 }
 .onsale {
     display: none;
 }
-.price{
+.price {
     padding: 0 8px;
+    margin-bottom: 10px!important;
+    span {
+        color: #333333!important;
+    }
+}
+.woocommerce-loop-product__title{
+    color: #333333!important;
 }
 
 .category_list {
@@ -138,6 +148,7 @@
         height: 90px;
         margin: 0;
     }
+    
 }
 // LABEL
 .berocket_better_labels  {
@@ -248,12 +259,14 @@
     background-repeat: no-repeat;
     transition: 300ms;
     transition-delay: 150ms;
+    z-index: 2;
+    cursor: pointer;
 }
 
 .category_order_select_plus {
     outline: 0;
     border: 0;
-    width: 90px;
+    width: 100%;
     height: 28px;
     background-color: transparent;
     background-image: url('../img/ico/plus.svg');
@@ -262,6 +275,7 @@
     background-size: contain;
     transition: 300ms;
     transition-delay: 150ms;
+    cursor: pointer;
 }
 
 .category_order_button,
@@ -289,6 +303,7 @@
     transform: translateX(-50%);
     text-align: center;
     color: #fff;
+    pointer-events: none;
 }
 
 .item_number:focus {
@@ -306,7 +321,7 @@
 }
 
 .hide_bot {
-    transform: translateY(105%);
+    transform: scale(0);
     opacity: 0;
 }
 

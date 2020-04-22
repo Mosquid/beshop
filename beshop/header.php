@@ -33,16 +33,7 @@
                         <img src="<?php echo get_template_directory_uri() ?>/img/logo.jpg" alt="">
                     </div>
 				</div>
-				<div class="nav_pc pc">
-				<?php
-				wp_nav_menu(
-					array(
-						'theme_location' => 'menu-1',
-						'menu_id'        => 'primary-menu',
-					)
-				);
-			?>
-				</div>
+				
                
                 <div class="header_buttons">
                     <a href="<?php echo site_url() ?>/cart/" class="cart_button"></a>

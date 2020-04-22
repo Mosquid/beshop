@@ -12,11 +12,14 @@ body,
 html, #page {
   width: 100%;
   height: 100%;
+  max-width: 700px;
+  margin: 0 auto;
 }
 
 body {
   background-color: #FCFCFC;
   font-family: "Poppins", sans-serif;
+  max-width: 700px;
   font-size: 16px;
   line-height: 25px;
   line-height: 1.6;
@@ -56,8 +59,10 @@ p {
 
 .wrapper {
   min-height: 100%;
-  min-width: 1180px;
+  min-width: 650px;
   width: 100%;
+  max-width: 650px;
+  margin: 0 auto;
   position: relative;
   overflow: hidden;
   background-color: #FCFCFC;
@@ -103,6 +108,10 @@ p {
   width: 157px;
   height: 40px;
   background: url("../img/footer/logo.svg") center no-repeat;
+}
+
+nav a.sidenav-trigger {
+  display: inline-block !important;
 }
 
 @media screen and (max-width: 1180px) {
@@ -8327,7 +8336,7 @@ input[type=range]::-ms-thumb {
     margin-top: 1.2rem;
   }
 }
-@media screen and (max-width: 1180px) {
+@media screen and (max-width: 4180px) {
   .wrapper {
     min-width: 320px;
     width: 100%;
@@ -8502,7 +8511,8 @@ input[type=range]::-ms-thumb {
 
 .sales_header {
   width: 100%;
-  height: 40vw;
+  height: 38vw;
+  max-height: 320px;
   padding: 0 20px;
 }
 .sales_header .slick-dots {
@@ -8517,13 +8527,16 @@ input[type=range]::-ms-thumb {
   justify-content: space-between;
   width: 100%;
   height: 36vw;
+  max-height: 300px;
+  overflow: hidden;
+  border-radius: 10px;
   position: relative;
 }
 .sales_header_item img {
   position: absolute;
   top: 0;
-  left: 0;
-  width: 100%;
+  right: 0;
+  height: 100%;
 }
 .sales_header_item h3 {
   position: relative;
@@ -8544,7 +8557,7 @@ input[type=range]::-ms-thumb {
 }
 
 .sales_list_hide {
-  height: 170px;
+  height: 150px;
   width: 100%;
   margin-top: 15px;
   overflow: hidden;
@@ -8592,7 +8605,7 @@ input[type=range]::-ms-thumb {
   background: #fff;
   border-radius: 5px;
   padding: 4px 10px 7px !important;
-  height: 130px;
+  height: 135px;
   margin-right: 10px !important;
 }
 .sales_list_scroll .woocommerce ul.products li:last-child {
@@ -8619,13 +8632,31 @@ input[type=range]::-ms-thumb {
 }
 .sales_list_scroll .woocommerce ul.products .category_order_wrapper {
   padding: 0;
-  height: 18px;
+  height: 22px;
 }
 .sales_list_scroll .woocommerce ul.products .category_order {
-  height: 18px;
+  height: 22px;
 }
 .sales_list_scroll .woocommerce ul.products .category_order_button, .sales_list_scroll .woocommerce ul.products .category_order_capacity {
-  line-height: 18px;
+  line-height: 22px;
+}
+.sales_list_scroll .woocommerce ul.products .category_order_capacity input[type=number] {
+  height: 22px !important;
+  width: 100% !important;
+  margin: 0 !important;
+  font-size: 12px;
+  text-align: center;
+  pointer-events: none;
+}
+.sales_list_scroll .woocommerce ul.products .category_order_select_minus, .sales_list_scroll .woocommerce ul.products .category_order_select_plus {
+  width: 22px;
+  height: 22px;
+}
+.sales_list_scroll .woocommerce ul.products .category_order_select_minus {
+  z-index: 1;
+}
+.sales_list_scroll .woocommerce ul.products .category_order_select_plus {
+  width: 100%;
 }
 .sales_list_scroll .woocommerce ul.products .category_order_button {
   font-size: 9px;
@@ -8683,6 +8714,41 @@ input[type=range]::-ms-thumb {
   text-align: center;
   font-weight: 500;
   font-size: 9px;
+}
+
+.category_list {
+  padding: 0 20px;
+}
+.category_list .item {
+  width: 100%;
+  min-height: 100px;
+  position: relative;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+  margin: 5px 0;
+  border-radius: 5px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  overflow: hidden;
+}
+.category_list .parent {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 10px;
+}
+.category_list .child {
+  font-size: 14px;
+  line-height: 14px;
+  color: #333333;
+  margin: 8px 0;
+}
+.category_list img {
+  position: absolute;
+  right: 0;
+  bottom: -2px;
+  width: 100px;
+  height: auto;
 }
 
 .sales_list_item_img {
@@ -8840,6 +8906,8 @@ input[type=range]::-ms-thumb {
 .category_order_wrapper {
   width: 100%;
   padding: 0 8px;
+  overflow: hidden;
+  cursor: pointer;
 }
 
 .category_order {
@@ -8853,6 +8921,7 @@ input[type=range]::-ms-thumb {
   background-color: #2586FD;
   text-align: center;
   padding: 5px 0;
+  margin: 0 auto;
   border-radius: 50vh;
   position: relative;
 }
@@ -8863,6 +8932,14 @@ input[type=range]::-ms-thumb {
 
 .price {
   padding: 0 8px;
+  margin-bottom: 10px !important;
+}
+.price span {
+  color: #333333 !important;
+}
+
+.woocommerce-loop-product__title {
+  color: #333333 !important;
 }
 
 .category_list .woocommerce .products ul, .category_list .woocommerce ul.products {
@@ -9000,12 +9077,14 @@ input[type=range]::-ms-thumb {
   background-repeat: no-repeat;
   transition: 300ms;
   transition-delay: 150ms;
+  z-index: 2;
+  cursor: pointer;
 }
 
 .category_order_select_plus {
   outline: 0;
   border: 0;
-  width: 90px;
+  width: 100%;
   height: 28px;
   background-color: transparent;
   background-image: url("../img/ico/plus.svg");
@@ -9014,6 +9093,7 @@ input[type=range]::-ms-thumb {
   background-size: contain;
   transition: 300ms;
   transition-delay: 150ms;
+  cursor: pointer;
 }
 
 .category_order_button,
@@ -9040,6 +9120,7 @@ input[type=range]::-ms-thumb {
   transform: translateX(-50%);
   text-align: center;
   color: #fff;
+  pointer-events: none;
 }
 
 .item_number:focus {
@@ -9057,7 +9138,7 @@ input[type=range]::-ms-thumb {
 }
 
 .hide_bot {
-  transform: translateY(105%);
+  transform: scale(0);
   opacity: 0;
 }
 
@@ -9254,7 +9335,17 @@ input[type=range]::-ms-thumb {
   color: #333333;
 }
 
+.woocommerce-cart-form thead {
+  display: none;
+}
+.woocommerce-cart-form table {
+  display: flex;
+  flex-direction: column;
+  align-content: stretch;
+}
+
 .woocommerce-cart-form__cart-item {
+  display: block;
   background: #FFFFFF;
   margin-bottom: 10px;
   border-radius: 5px;
@@ -9315,6 +9406,7 @@ input[type=range]::-ms-thumb {
 }
 
 .cart_totals {
+  width: 100% !important;
   background: #F2F2F2;
   padding: 16px 32px;
 }
@@ -9410,6 +9502,10 @@ input[type=range]::-ms-thumb {
   font-size: 14px;
   line-height: 21px;
   color: #333333;
+}
+
+.woocommerce .col2-set .col-1, .woocommerce-page .col2-set .col-1 {
+  width: 100%;
 }
 
 .cart_list {
