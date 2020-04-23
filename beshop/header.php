@@ -25,7 +25,7 @@
 
 <div id="page" class="site">
 	<div class="wrapper">
-		<nav>
+		<nav class="main_navigation">
             <div class="nav-wrapper">
                 <div class="logo_wrapper">
                     <a href="#" data-target="mobile-demo" class="sidenav-trigger menu_switcher"></a>

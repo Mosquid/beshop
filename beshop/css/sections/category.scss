@@ -113,7 +113,25 @@
     color: #333333!important;
     font-size: 12px!important;
 }
-
+.woocommerce ul.products li.product a img {
+    width: auto;
+    height: 200px;
+    margin: 0;
+}
+.woocommerce img, .woocommerce-page img {
+    max-width: 800px!important;
+}
+.woocommerce ul.products li.product a {
+    overflow: hidden;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    h2, .price {
+        width: 100%;
+    }
+}
 .category_list {
     .woocommerce .products ul, .woocommerce ul.products {
         width: 100%;
