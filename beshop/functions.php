@@ -274,10 +274,3 @@ add_filter('woocommerce_add_to_cart_validation', function ($valid, $product_id) 
 
 
 add_action('woocommerce_loop_add_to_cart_link', 'ace_shop_page_add_quantity_field');
-
-function sc_btn($atts = array(), $content = '') {
-    return "<button> text</button>";
-}
-
-add_shortcode('button', 'sc_btn');
-

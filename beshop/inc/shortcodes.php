@@ -9,9 +9,12 @@
 function custom_product_categories($atts) {
 
     $categories = getAllCategories($atts);
+    $tpl = '<div class="category_list">%1$s</div>';
+    $exclude = !empty($atts['exclude']) ? $atts['exclude'] : false;
 
     ob_start();
     foreach ($categories as $cat) {
+        if (!empty($exclude) && (int)$exclude === $cat->term_id) continue;
 
         $thumb_id = get_term_meta($cat->term_id, 'thumbnail_id', true);
         $term_img = wp_get_attachment_url($thumb_id);
@@ -27,7 +30,8 @@ function custom_product_categories($atts) {
         echo '</div>';
     }
 
-    return ob_get_clean();
+
+    return sprintf($tpl, ob_get_clean());
 }
 
 /**
