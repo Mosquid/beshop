@@ -68,7 +68,7 @@ p {
     max-width: 650px;
     margin: 0 auto;
     position: relative;
-    overflow: hidden;
+    padding-top: 70px;
     background-color: #FCFCFC;
 }
 
@@ -96,7 +96,7 @@ p {
 
 .footer {
     height: $footer-height;
-    min-width: $container-width;
+    min-width: 320px;
     width: 100%;
     margin-top: -$footer-height;
     display: flex;
