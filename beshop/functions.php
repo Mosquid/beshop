@@ -165,6 +165,9 @@ function beshop_scripts() {
             'setCartQty' => 'beshop_set_cart_qty'
         )
     ));
+
+    /* Add google fonts */
+    wp_enqueue_style('beshop-googlefonts', 'https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,700;1,300&family=Rubik&display=swap', false);
 }
 
 add_action('wp_enqueue_scripts', 'beshop_scripts');
@@ -193,6 +196,11 @@ require get_template_directory() . '/inc/customizer.php';
  * Shortcodes
  */
 require get_template_directory() . '/inc/shortcodes.php';
+
+/**
+ * Template hooks
+ */
+require get_template_directory() . '/inc/template-hooks.php';
 
 /**
  * Load Jetpack compatibility file.
@@ -272,20 +280,4 @@ function sc_btn($atts = array(), $content = '') {
 }
 
 add_shortcode('button', 'sc_btn');
-
-
-/* Single product modifications */
-/**
- * Remove related products output
- */
-remove_action('woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20);
-remove_action('woocommerce_after_single_product_summary', 'woocommerce_upsell_display', 15);
-
-// Removes comments from product page
-add_action('init', 'remove_comment_support');
-
-function remove_comment_support() {
-    remove_post_type_support('product', 'comments');
-}
-
 
