@@ -30,7 +30,7 @@
                 <div class="logo_wrapper">
                     <a href="#" data-target="mobile-demo" class="sidenav-trigger menu_switcher"></a>
                     <a href="<?php echo site_url() ?>" class="logo">
-                        <img src="<?php echo get_template_directory_uri() ?>/img/logo.jpg" alt="">
+                        <img src="<?php echo get_template_directory_uri() ?>/img/footer/logo.svg" alt="">
 					</a>
 				</div>
 				
