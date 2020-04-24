@@ -6989,6 +6989,18 @@ input[type=range]::-ms-thumb {
   .home .back_button ~ .menu_switcher {
     margin-left: 18px !important; }
 
+.rtl .wpml-ls-legacy-dropdown-click a.wpml-ls-item-toggle:after {
+  right: 10px;
+  left: auto; }
+
+.rtl .wpml-ls-legacy-dropdown-click a.wpml-ls-item-toggle {
+  padding-left: 0;
+  padding-right: calc(10px + .7em + .7em); }
+
+.rtl .nav-wrapper {
+  padding-right: 0;
+  padding-left: 20px; }
+
 .sales_list_head {
   display: flex;
   flex-direction: row;
