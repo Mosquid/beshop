@@ -176,6 +176,9 @@ function beshop_scripts() {
 
     /* Add google fonts */
     wp_enqueue_style('beshop-googlefonts', 'https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,700;1,300&family=Rubik&display=swap', false);
+    
+    /* Ajax search*/
+    wp_enqueue_script('beshop-search', get_template_directory_uri() . '/js/search.js', array('jquery'), _S_VERSION, true);
 }
 
 add_action('wp_enqueue_scripts', 'beshop_scripts');
