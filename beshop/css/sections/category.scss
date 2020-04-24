@@ -119,6 +119,18 @@
     object-fit: contain;
     margin: 0;
 }
+.woocommerce ul.products li.product .aspect-ratio {
+    flex: 1;
+    width: 100%;
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    &:after {
+        display: block;
+        content: '';
+        padding-bottom: 100%;
+    }
+}
 .woocommerce img, .woocommerce-page img {
     max-width: 800px!important;
 }

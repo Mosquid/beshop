@@ -274,3 +274,22 @@ add_filter('woocommerce_add_to_cart_validation', function ($valid, $product_id) 
 
 
 add_action('woocommerce_loop_add_to_cart_link', 'ace_shop_page_add_quantity_field');
+add_action('init', function(){
+    remove_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_template_loop_product_thumbnail', 10);
+    add_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_template_loop_product_thumbnail', 10);
+});
+
+if ( ! function_exists( 'woocommerce_template_loop_product_thumbnail' ) ) {
+    function woocommerce_template_loop_product_thumbnail() {
+        echo woocommerce_get_product_thumbnail();
+    } 
+}
+
+if ( ! function_exists( 'woocommerce_get_product_thumbnail' ) ) {   
+    function woocommerce_get_product_thumbnail( $size = 'woocommerce_single' ) {
+        global $post, $woocommerce;
+        $output = '<div class="aspect-ratio" style="background-image: url('.get_the_post_thumbnail_url( $post->ID, $size ).')">';
+        $output .= '</div>';
+        return $output;
+    }
+}
