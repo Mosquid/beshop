@@ -11,7 +11,6 @@
 
         // init 
         this.init = function () {
-            console.log('public method called!');
             initHandlers();
             appendCloseBtn();
         };
