@@ -36,6 +36,7 @@
 				
                
                 <div class="header_buttons">
+                    <?php dynamic_sidebar( 'sidebar-2' ); ?>
                     <a href="<?php echo site_url() ?>/cart/" class="cart_button"></a>
                     <div class="cart_search"></div>
                 </div>

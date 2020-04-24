@@ -104,9 +104,19 @@
         }
     }
     .header_buttons {
-        width: 56px;
+        min-width: 56px;
         display: flex;
-        justify-content: space-between;
+        align-items: center;
+        > * {flex: 1; margin: 0 5px;}
+        .wpml-ls-legacy-dropdown-click {
+            line-height: 0;
+            width: 60px;
+            ul {
+                ul {
+                    top: 100%;
+                }
+            }
+        }
     }
     .cart_button {
         width: 20px;
