@@ -87,7 +87,14 @@
       }
     }
   }
-
-
+// PRODICT IMG
+.woocommerce div.product div.images img {
+  display: block;
+  height: auto;
+  max-height: 50vh!important; 
+  width: auto!important;
+  margin: 0 auto;
+  box-shadow: none;
+}
 
 }

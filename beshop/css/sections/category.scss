@@ -478,3 +478,35 @@
     font-size: 18px;
     line-height: 27px;
 }
+.woocommerce-pagination {
+    background: transparent;
+    box-shadow: none;
+}
+.page-numbers {
+    
+    li {
+        width: 30px;
+        height: 30px;
+        border-right: 1px solid #0274FF!important;
+    }
+    
+    a {
+        color: #0274FF;
+    }
+    span.current {
+        background-color: rgba(#0274FF, 0.5)!important;
+        color: #fff!important;
+    }
+    .next {
+        color: transparent;
+        background: url('../img/ico/next.svg') center no-repeat;
+    }
+    .prev {
+        color: transparent;
+        background: url('../img/ico/prev.svg') center no-repeat;
+    }
+}
+ul.page-numbers {
+    border: 1px solid #0274FF!important;
+    border-right: none!important;
+}
