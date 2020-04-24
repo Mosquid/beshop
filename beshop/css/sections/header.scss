@@ -161,4 +161,23 @@
             width: 100%;
         }
     }
+    .back_button{
+      width: 30px;
+      margin: 0 10px;
+      background: url(../img/ico/arrow-back.svg) center no-repeat;
+      height: 56px;
+      background-size: contain;
+      
+      & ~ .menu_switcher{
+        margin-left: 0!important;
+      }
+    }
+}
+
+.home .back_button{
+  display: none;
+  
+  & ~ .menu_switcher{
+    margin-left: 18px!important;
+  }
 }
