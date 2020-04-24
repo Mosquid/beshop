@@ -8438,20 +8438,21 @@ input[type=range]::-ms-thumb {
   .header_buttons {
     min-width: 56px;
     display: flex;
-    align-items: center;
-  }
-  .header_buttons > * {
-    flex: 1;
-    margin: 0 5px;
-  }
-  .header_buttons .wpml-ls-legacy-dropdown-click {
-    line-height: 0;
-    width: 60px;
-  }
-  .header_buttons .wpml-ls-legacy-dropdown-click ul ul {
-    top: 100%;
+<<<<<<< HEAD
+    justify-content: space-between;
   }
 
+=======
+    align-items: center; }
+    .header_buttons > * {
+      flex: 1;
+      margin: 0 5px; }
+    .header_buttons .wpml-ls-legacy-dropdown-click {
+      line-height: 0;
+      width: 60px; }
+      .header_buttons .wpml-ls-legacy-dropdown-click ul ul {
+        top: 100%; }
+>>>>>>> 3f382c644efe3a61b78e7975eb3c258d06168f73
   .cart_button {
     width: 20px;
     height: 20px;

@@ -135,6 +135,14 @@ function beshop_widgets_init() {
                 'after_title' => '</h2>',
             )
     );
+
+    register_sidebar( array(
+        'name'          => __( 'Header Sidebar', 'textdomain' ),
+        'id'            => 'sidebar-2',
+        'description'   => __( 'The cart and search header area.', 'textdomain' ),
+        'before_widget' => '<div id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</div>'
+    ) );
 }
 
 add_action('widgets_init', 'beshop_widgets_init');

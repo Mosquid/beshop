@@ -8436,20 +8436,9 @@ input[type=range]::-ms-thumb {
   }
 
   .header_buttons {
-    min-width: 56px;
+    width: 56px;
     display: flex;
-    align-items: center;
-  }
-  .header_buttons > * {
-    flex: 1;
-    margin: 0 5px;
-  }
-  .header_buttons .wpml-ls-legacy-dropdown-click {
-    line-height: 0;
-    width: 60px;
-  }
-  .header_buttons .wpml-ls-legacy-dropdown-click ul ul {
-    top: 100%;
+    justify-content: space-between;
   }
 
   .cart_button {
