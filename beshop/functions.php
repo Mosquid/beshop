@@ -152,7 +152,7 @@ add_action('widgets_init', 'beshop_widgets_init');
  */
 function beshop_scripts() {
     wp_enqueue_style('beshop-style', get_template_directory_uri() . '/css/main.css');
-    wp_style_add_data('beshop-style', 'rtl', 'replace');
+    // wp_style_add_data('beshop-style', 'rtl', 'replace');
 
     wp_enqueue_script('beshop-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true);
     wp_enqueue_script('beshop-material', get_template_directory_uri() . '/js/material.js', array('jquery'), _S_VERSION, true);
