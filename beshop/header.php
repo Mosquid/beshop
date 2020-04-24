@@ -28,6 +28,7 @@
 		<nav class="main_navigation">
             <div class="nav-wrapper">
                 <div class="logo_wrapper">
+                    <a name="back" onclick="history.back()" class="back_button"></a>
                     <a href="#" data-target="mobile-demo" class="sidenav-trigger menu_switcher"></a>
                     <a href="<?php echo site_url() ?>" class="logo">
                         <img src="<?php echo get_template_directory_uri() ?>/img/header/logo.svg" alt="">
