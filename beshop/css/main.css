@@ -6974,7 +6974,20 @@ input[type=range]::-ms-thumb {
     justify-content: center;
     margin-bottom: 10px; }
     .logo_contacts img {
-      width: 100%; } }
+      width: 100%; }
+  .back_button {
+    width: 30px;
+    margin: 0 10px;
+    background: url(../img/ico/arrow-back.svg) center no-repeat;
+    height: 56px;
+    background-size: contain; }
+    .back_button ~ .menu_switcher {
+      margin-left: 0 !important; } }
+
+.home .back_button {
+  display: none; }
+  .home .back_button ~ .menu_switcher {
+    margin-left: 18px !important; }
 
 .sales_list_head {
   display: flex;
@@ -8166,3 +8179,56 @@ ul.page-numbers {
     width: auto !important;
     margin: 0 auto;
     box-shadow: none; }
+
+.main_navigation .widget_search {
+  display: none;
+  background: white;
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  position: fixed;
+  z-index: 9999;
+  margin: 0;
+  padding: 60px 20px 0; }
+  .main_navigation .widget_search.opened {
+    display: block; }
+  .main_navigation .widget_search .search-close {
+    position: absolute;
+    top: 23px;
+    right: 23px;
+    z-index: 99999;
+    width: 14px;
+    height: 14px;
+    background: url(../img/ico/close.svg) center no-repeat; }
+  .main_navigation .widget_search .search-submit {
+    display: none; }
+  .main_navigation .widget_search .search-field {
+    padding: 0 20px;
+    box-sizing: border-box; }
+  .main_navigation .widget_search .results_list {
+    position: absolute;
+    top: 114px;
+    left: 0;
+    margin: 0 20px; }
+    .main_navigation .widget_search .results_list li {
+      font-family: 'Poppins', sans-serif;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 40px;
+      color: #333333;
+      width: 100%;
+      padding: 0 5px; }
+      .main_navigation .widget_search .results_list li a {
+        color: #333333; }
+      .main_navigation .widget_search .results_list li:hover, .main_navigation .widget_search .results_list li:active {
+        background: #E3F1FB;
+        border-radius: 5px; }
+
+.main_navigation .header_buttons .cart_search {
+  cursor: pointer; }
+
+/* fix gallery magnify icon z-index */
+.woocommerce div.product div.images .woocommerce-product-gallery__trigger {
+  z-index: 2; }
