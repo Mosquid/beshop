@@ -1,0 +1,75 @@
+
+.main_navigation{
+  .widget_search{
+    display: none;
+
+    background: white;
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    position: fixed;
+    z-index: 9999;
+    margin: 0;
+    padding: 60px 20px 0;
+
+    &.opened{
+      display: block;
+    }
+
+    .search-close{
+      position: absolute;
+      top: 23px;
+      right: 23px;
+      z-index: 99999;
+      width: 14px;
+      height: 14px;
+      background: url(../img/ico/close.svg) center no-repeat;
+    }
+
+    .search-submit{
+      display: none;
+    }
+
+    .search-field{
+      padding: 0 20px;
+      box-sizing: border-box;
+    }
+
+    .results_list{
+      position: absolute;
+      top: 114px;
+      left: 0;
+      margin: 0 20px;
+
+      li{    
+        font-family: 'Poppins', sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 40px;
+        color: #333333;
+        width: 100%;
+        padding: 0 20px;
+        a{
+          color: #333333;
+        }
+        &:hover,&:active{
+          background: #E3F1FB;
+          border-radius: 5px;
+        }
+      }
+    }
+
+  }
+  .header_buttons{
+    .cart_search{
+      cursor: pointer;
+    }
+  }
+}
+
+/* fix gallery magnify icon z-index */
+.woocommerce div.product div.images .woocommerce-product-gallery__trigger{
+  z-index: 2;
+}
