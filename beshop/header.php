@@ -30,13 +30,16 @@
                 <div class="logo_wrapper">
                     <a name="back" onclick="history.back()" class="back_button"></a>
                     <a href="#" data-target="mobile-demo" class="sidenav-trigger menu_switcher"></a>
-                    <?php the_custom_logo() ?>
-		</div>
+                    <a href="<?php echo home_url() ?>" class="logo">
+                        <img src="<?php echo get_template_directory_uri() ?>/img/header/logo.svg" alt="">
+					        </a>
+				      </div>
+		      </div>
 				
                
                 <div class="header_buttons">
                     <?php dynamic_sidebar( 'sidebar-2' ); ?>
-                    <a href="<?php echo site_url() ?>/cart/" class="cart_button"></a>
+                    <a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="cart_button"></a>
                     <div class="cart_search"></div>
                 </div>
             </div>
