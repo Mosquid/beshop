@@ -137,7 +137,6 @@ function beshop_ajax_search($term = '') {
 
     foreach ($product_objects as $product_object) {
         $formatted_name = $product_object->get_formatted_name();
-        $managing_stock = $product_object->managing_stock();
 
         if (in_array($product_object->get_type(), $exclude_types, true)) {
             continue;
@@ -149,7 +148,9 @@ function beshop_ajax_search($term = '') {
         ];
     }
 
-    wp_send_json(apply_filters('woocommerce_json_search_found_products', $products));
+    // don't know why the woocommerce_json_search_found_products doesnt work on different env
+    // wp_send_json(apply_filters('woocommerce_json_search_found_products', $products));
+    wp_send_json($products);
 
     wp_die();
 }
