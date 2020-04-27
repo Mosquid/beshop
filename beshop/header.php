@@ -55,7 +55,7 @@
 			?>
                 <div class="menu_contacts">
                     <div class="logo_contacts">
-                        <img src="<?php echo get_template_directory_uri() ?>/img/logo.jpg" alt="">
+                        <?php the_custom_logo() ?>
                     </div>
                     <a href="mailto:storename@mail.com" class="menu_contacts_mail">storename@mail.com</a>
                     <a href="tel:" class="menu_contacts_phone">+72 548 96 154</a>
