@@ -198,3 +198,12 @@
         padding-left: 20px;
     }
 }
+// WPML Overrides
+.wpml-ls-legacy-dropdown-click a:hover,
+.wpml-ls-legacy-dropdown-click a:focus,
+.wpml-ls-legacy-dropdown-click .wpml-ls-current-language:hover>a {
+    background-color: #fff !important;
+}
+.wpml-ls-legacy-dropdown-click .wpml-ls-item {
+    position: relative;
+}
