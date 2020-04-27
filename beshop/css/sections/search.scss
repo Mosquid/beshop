@@ -1,4 +1,3 @@
-
 .main_navigation{
   .widget_search{
     display: none;
@@ -15,6 +14,10 @@
 
     &.opened{
       display: block;
+    }
+    
+    .widgettitle{
+      display: none;
     }
 
     .search-close{
