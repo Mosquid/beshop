@@ -15,6 +15,9 @@
   will-change: transform;
   backface-visibility: hidden;
   transform: translateX(-105%);
+  .menu {
+    justify-content: start;
+  }
 
   @extend .z-depth-1;
 
@@ -47,7 +50,7 @@
     line-height: $sidenav-line-height;
     padding: 0 ($sidenav-padding * 2);
 
-    &:hover { background-color: rgba(0,0,0,.05);}
+    &:hover {color: #039be5;}
 
     &.btn, &.btn-large, &.btn-flat, &.btn-floating {
       margin: 10px 15px;

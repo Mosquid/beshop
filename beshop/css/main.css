@@ -5835,6 +5835,8 @@ input[type=range]::-ms-thumb {
   will-change: transform;
   backface-visibility: hidden;
   transform: translateX(-105%); }
+  .sidenav .menu {
+    justify-content: start; }
   .sidenav.right-aligned {
     right: 0;
     transform: translateX(105%);
@@ -5856,7 +5858,7 @@ input[type=range]::-ms-thumb {
     line-height: 48px;
     padding: 0 32px; }
     .sidenav li > a:hover {
-      background-color: rgba(0, 0, 0, 0.05); }
+      color: #039be5; }
     .sidenav li > a.btn, .sidenav li > a.btn-large, .sidenav li > a.btn-small, .sidenav li > a.btn-large, .sidenav li > a.btn-flat, .sidenav li > a.btn-floating {
       margin: 10px 15px; }
     .sidenav li > a.btn, .sidenav li > a.btn-large, .sidenav li > a.btn-small, .sidenav li > a.btn-large, .sidenav li > a.btn-floating {
@@ -7000,6 +7002,14 @@ input[type=range]::-ms-thumb {
 .rtl .nav-wrapper {
   padding-right: 0;
   padding-left: 20px; }
+
+.wpml-ls-legacy-dropdown-click a:hover,
+.wpml-ls-legacy-dropdown-click a:focus,
+.wpml-ls-legacy-dropdown-click .wpml-ls-current-language:hover > a {
+  background-color: #fff !important; }
+
+.wpml-ls-legacy-dropdown-click .wpml-ls-item {
+  position: relative; }
 
 .sales_list_head {
   display: flex;
