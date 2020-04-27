@@ -5836,7 +5836,13 @@ input[type=range]::-ms-thumb {
   backface-visibility: hidden;
   transform: translateX(-105%); }
   .sidenav .menu {
-    justify-content: start; }
+    justify-content: start;
+    display: flex;
+    flex-direction: column; }
+    .sidenav .menu div:first-child {
+      flex: 1; }
+      .sidenav .menu div:first-child ul {
+        height: auto; }
   .sidenav.right-aligned {
     right: 0;
     transform: translateX(105%);

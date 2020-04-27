@@ -17,6 +17,14 @@
   transform: translateX(-105%);
   .menu {
     justify-content: start;
+    display: flex;
+    flex-direction: column;
+    div:first-child {
+      flex: 1;
+      ul {
+        height: auto;
+      }
+    }
   }
 
   @extend .z-depth-1;
