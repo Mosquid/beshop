@@ -1,0 +1,1 @@
+node-sass -w css/main.scss css/main.css
