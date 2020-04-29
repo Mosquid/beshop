@@ -180,7 +180,7 @@ function beshop_scripts() {
     wp_enqueue_script('beshop-search', get_template_directory_uri() . '/js/search.js', array('jquery'), _S_VERSION, true);
 }
 
-add_action('wp_enqueue_scripts', 'beshop_scripts');
+add_action('wp_enqueue_scripts', 'beshop_scripts', 99);
 
 /**
  * Implement the Custom Header feature.
