@@ -151,7 +151,7 @@ add_action('widgets_init', 'beshop_widgets_init');
  * Enqueue scripts and styles.
  */
 function beshop_scripts() {
-    wp_enqueue_style('beshop-style', get_template_directory_uri() . '/css/main.css');
+    wp_enqueue_style('beshop-style', get_template_directory_uri() . '/css/main.css', array(), _S_VERSION);
 
     wp_enqueue_script('beshop-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true);
     wp_enqueue_script('beshop-material', get_template_directory_uri() . '/js/material.js', array('jquery'), _S_VERSION, true);
