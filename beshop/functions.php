@@ -306,3 +306,8 @@ if ( ! function_exists( 'woocommerce_get_product_thumbnail' ) ) {
 remove_filter( 'the_content', 'wpautop' );
 add_filter( 'the_content', 'wpautop' , 99 );
 add_filter( 'the_content', 'shortcode_unautop', 100 );
+function my_product_carousel_options($options) {
+    $options['controlNav'] = false;
+    return $options;
+  }
+  add_filter("woocommerce_single_product_carousel_options", "my_product_carousel_options", 10);
