@@ -1,3 +1,5 @@
+var ADDING_TO_CART = "adding-to-cart"
+
 function debounce(func, wait, immediate) {
   var timeout
   return function () {
@@ -24,6 +26,7 @@ function updateCartPodcutQty() {
 
   if (!qty || !productId) return
 
+  this.addClass(ADDING_TO_CART)
   actionBtn.trigger("click")
 }
 
@@ -55,8 +58,8 @@ function updateQtyNodes(nodes, cart) {
 }
 
 function setInitialBtnStatus(node) {
-  const HIDE_BOT = 'hide_bot'
-  const HIDE_TOP = 'hide_top'
+  const HIDE_BOT = "hide_bot"
+  const HIDE_TOP = "hide_top"
   const qtyInput = node.find(".item_number")
   const addToStore = node.find(".ajax_add_to_cart")
   const cartButton = node.find(".category_order_button")
@@ -74,14 +77,22 @@ function setInitialBtnStatus(node) {
   }
 }
 
+function handleItemAdded() {
+  jQuery(`.${ADDING_TO_CART}`).removeClass(ADDING_TO_CART)
+}
+
 ;(function ($) {
   function initQtyFields() {
-    var nodes = $(".products .product .category_order, .single-product .category_order");
+    var nodes = $(
+      ".products .product .category_order, .single-product .category_order"
+    )
 
     $(document.body).on("removed_from_cart", function () {
       var cart = $("ul.woocommerce-mini-cart")
       updateQtyNodes(nodes, cart)
     })
+
+    $(document.body).on("added_to_cart", handleItemAdded)
 
     if (!nodes.length) return
 

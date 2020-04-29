@@ -1,3 +1,8 @@
+@keyframes blink {
+    from {opacity: .7;}
+    to {opacity: 1;}
+  }
+
 .woocommerce .products ul::after, .woocommerce .products ul::before, .woocommerce ul.products::after, .woocommerce ul.products::before {
     content: ' ';
     display: none;
@@ -96,6 +101,13 @@
     margin: 0 auto;
     border-radius: 50vh;
     position: relative;
+    &.adding-to-cart {
+        background-color: #72d464;
+        // animation-name: blink;
+        // animation-duration: 1s;
+        // animation-delay: .5s;
+        // animation-fill-mode: both;
+    }
 }
 .onsale {
     display: none;
@@ -131,8 +143,10 @@
         padding-bottom: 100%;
     }
 }
-.woocommerce img, .woocommerce-page img {
-    max-width: 800px!important;
+#content {
+    .woocommerce img, .woocommerce-page img {
+        max-width: 800px!important;
+    }
 }
 .woocommerce ul.products li.product a {
     overflow: hidden;
@@ -298,14 +312,21 @@
 
     position: absolute;
     left: 0;
+    .adding-to-cart & {
+        transition-duration: 0s;
+        transition-delay: 0s;
+        opacity: 0;
+    }
 }
 
 .category_order_select_plus {
     outline: 0;
     border: 0;
-    width: 100%;
+    width: 28px;
+    margin-left: auto;
     height: 28px;
-    background-color: transparent;
+    border-radius: 50%;
+    background-color: #0274FF;
     background-image: url('../img/ico/plus.svg');
     background-position: center right;
     background-repeat: no-repeat;
@@ -316,6 +337,11 @@
 
     position: absolute;
     right: 0;
+    .adding-to-cart & {
+        transition-duration: 0s;
+        transition-delay: 0s;
+        opacity: 0;
+    }
 }
 
 .category_order_button,

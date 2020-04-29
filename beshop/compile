@@ -1,1 +1,1 @@
-node-sass -w css/main.scss css/main.css
+node-sass css/main.scss css/main.css
