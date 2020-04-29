@@ -6929,7 +6929,7 @@ input[type=range]::-ms-thumb {
   .logo_wrapper {
     display: flex;
     align-items: center;
-    width: 200px; }
+    width: 180px; }
   .logo {
     width: 150px;
     height: 25px;
@@ -7244,6 +7244,8 @@ input[type=range]::-ms-thumb {
     padding-left: 5px; }
   .category_list img {
     width: 100px;
+    align-self: start;
+    justify-self: start;
     height: auto; }
 
 .sales_list_item_img {
@@ -8218,6 +8220,8 @@ ul.page-numbers {
   padding: 60px 20px 0; }
   .main_navigation .widget_search.opened {
     display: block; }
+  .main_navigation .widget_search .widgettitle {
+    display: none; }
   .main_navigation .widget_search .search-close {
     position: absolute;
     top: 23px;

@@ -1,155 +1,25 @@
-@media screen and (max-width: 4180px) {
-  .wrapper {
-    min-width: 320px;
-    width: 100%;
-    position: relative; }
-  .main_navigation {
-    width: 100%;
-    left: 0;
-    top: 0;
-    position: fixed;
-    z-index: 3;
-    background-color: rgba(252, 252, 252, 0.85);
-    box-shadow: none; }
-  .nav-wrapper {
-    width: 100%;
-    padding: 0 20px 0 0;
-    height: 60px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: relative;
-    z-index: 2; }
-  .menu {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 20px;
-    height: 100vh;
-    background: #fff;
-    z-index: 2;
-    transition: 300ms; }
-  .menu a {
-    display: inline-block;
-    font-family: 'Poppins', sans-serif;
-    font-size: 16px;
-    color: #333333; }
-  .sidenav li {
-    float: none;
-    line-height: 30px; }
-  .sidenav li > a {
-    color: #333333;
-    display: block;
-    font-size: 14px;
-    font-weight: 500;
-    height: 48px;
-    line-height: 48px;
-    padding: 0;
-    margin: 0;
-    font-weight: 500; }
-  .menu_active {
-    transform: translateX(0); }
-  .menu_switcher {
-    width: 20px;
-    height: 20px;
-    background: url("../img/ico/menu_switcher.svg") center no-repeat;
-    z-index: 5; }
-  .menu_close {
-    position: absolute;
-    top: 20px;
-    left: 18px;
-    width: 24px;
-    height: 24px;
-    background: url("../img/ico/menu_close.svg") center no-repeat;
-    z-index: 2; }
-  .logo_wrapper {
-    display: flex;
-    align-items: center;
-    width: 180px; }
-  .logo {
-    width: 150px;
-    height: 25px;
-    display: flex;
-    align-items: center; }
-  .logo img {
-    height: 100%; }
-  .header_buttons {
-    min-width: 56px;
-    display: flex;
-    align-items: center; }
-  .header_buttons > * {
-    flex: 1;
-    margin: 0 5px; }
-  .header_buttons .wpml-ls-legacy-dropdown-click {
-    line-height: 0;
-    width: 60px; }
-  .header_buttons .wpml-ls-legacy-dropdown-click ul ul {
-    top: 100%; }
-  .cart_button {
-    width: 20px;
-    height: 20px;
-    background: url("../img/ico/cart.svg") center no-repeat; }
-  .cart_search {
-    width: 20px;
-    height: 20px;
-    background: url("../img/ico/search.svg") center no-repeat; }
-  .menu_contacts {
-    padding: 0 20px;
-    left: 0;
-    display: flex;
-    flex-direction: column; }
-  .menu_contacts a {
-    color: #333333;
-    text-decoration: none;
-    padding: 3px 0 3px 32px;
-    margin: 6px 0;
-    font-size: 12px;
-    font-weight: 500; }
-  .menu_contacts_mail {
-    background: url("../img/ico/mail.svg") top 3px left no-repeat; }
-  .menu_contacts_phone {
-    background: url("../img/ico/phone.svg") top 3px left no-repeat; }
-  .menu_contacts_map {
-    background: url("../img/ico/map.svg") top 3px left no-repeat; }
-  .logo_contacts {
-    margin: 0 auto;
-    width: 140px;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 10px; }
-  .logo_contacts img {
-    width: 100%; }
-  .back_button {
-    width: 30px;
-    margin: 0 10px;
-    background: url(../img/ico/arrow-back.svg) center no-repeat;
-    height: 56px;
-    background-size: contain; }
-  .back_button ~ .menu_switcher {
-    margin-left: 0 !important; } }
+// vars
 
-.home .back_button {
-  display: none; }
 
-.home .back_button ~ .menu_switcher {
-  margin-left: 18px !important; }
+// layout
+@import "_misc/fonts";
+@import "_misc/adjustment";
+@import "_misc/slick";
+@import "_misc/slick-theme.scss";
+@import "materialize/materialize";
 
-.rtl .wpml-ls-legacy-dropdown-click a.wpml-ls-item-toggle:after {
-  right: 10px;
-  left: auto; }
+ 
 
-.rtl .wpml-ls-legacy-dropdown-click a.wpml-ls-item-toggle {
-  padding-left: 0;
-  padding-right: calc(10px + .7em + .7em); }
+//styles
 
-.rtl .nav-wrapper {
-  padding-right: 0;
-  padding-left: 20px; }
+@import "sections/header"; 
+@import "sections/sales";      
+@import "sections/home";      
+@import "sections/category";      
+@import "sections/cart";      
+@import "sections/single-product";    
+@import "sections/single";      
+@import "sections/search";      
 
-.wpml-ls-legacy-dropdown-click a:hover,
-.wpml-ls-legacy-dropdown-click a:focus,
-.wpml-ls-legacy-dropdown-click .wpml-ls-current-language:hover > a {
-  background-color: #fff !important; }
 
-.wpml-ls-legacy-dropdown-click .wpml-ls-item {
-  position: relative; }
+                        
