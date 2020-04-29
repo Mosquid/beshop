@@ -77,8 +77,20 @@ function setInitialBtnStatus(node) {
   }
 }
 
-function handleItemAdded() {
+function handleItemAdded(_, frags) {
   jQuery(`.${ADDING_TO_CART}`).removeClass(ADDING_TO_CART)
+  const cartCount = jQuery('.cart_button span')
+  let total = 0
+  
+  try {
+    const cart = Object.values(frags)[0]
+    const items = jQuery(cart).find('li')
+    items.each(function(_, item) {
+      const qtyText = item.querySelector('.quantity').textContent.split(' ')
+      total += parseInt(qtyText[0])
+    })
+    cartCount.text(total)
+  } catch (error) {}
 }
 
 ;(function ($) {

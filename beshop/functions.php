@@ -219,6 +219,11 @@ if (defined('JETPACK__VERSION')) {
     require get_template_directory() . '/inc/jetpack.php';
 }
 
+function get_cart_total_count() {
+    $cart = WC()->cart;
+    return $cart->cart_contents_count;
+}
+
 function get_product_from_cart($product_id) {
     $cart = WC()->cart;
     $cart_items = $cart->get_cart_contents();
@@ -230,9 +235,7 @@ function get_product_from_cart($product_id) {
     }
 
     return null;
-}
-
-;
+};
 
 /**
  * Add quantity field on the shop page.
@@ -303,8 +306,6 @@ if ( ! function_exists( 'woocommerce_get_product_thumbnail' ) ) {
         return $output;
     }
 }
-remove_filter( 'the_content', 'wpautop' );
-add_filter( 'the_content', 'wpautop' , 99 );
 add_filter( 'the_content', 'shortcode_unautop', 100 );
 function my_product_carousel_options($options) {
     $options['controlNav'] = false;
@@ -316,3 +317,12 @@ add_filter('wp_headers', function ($headers) {
     $headers['Cache-Control'] = 'no-store';
     return $headers;
 });
+
+add_filter( 'woocommerce_countries_shipping_country_states', 'bbloomer_custom_woocommerce_states' );
+ 
+function bbloomer_custom_woocommerce_states( $states ) {
+    var_dump($states);
+    return $states;
+}
+remove_filter( 'the_content', 'wpautop' );
+remove_filter( 'the_excerpt', 'wpautop' );

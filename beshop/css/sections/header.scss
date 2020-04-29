@@ -124,9 +124,27 @@
         }
     }
     .cart_button {
-        width: 20px;
-        height: 20px;
+        width: 22px;
+        height: 22px;
+        position: relative;
         background: url('../img/ico/cart.svg') center no-repeat;
+        span {
+            width: 15px;
+            height: 15px;
+            background: #2586FD;
+            border-radius: 8px;
+            position: absolute;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            font-size: 12px;
+            font-weight: bold;
+            text-align: center;
+            top: -4px;
+            right: -4px;
+        }
     }
     .cart_search {
         width: 20px;

@@ -35,7 +35,7 @@
 
                         <div class="header_buttons">
                           <?php dynamic_sidebar('sidebar-2'); ?>
-                            <a href="<?php echo esc_url(wc_get_cart_url()); ?>" class="cart_button"></a>
+                            <a href="<?php echo esc_url(wc_get_cart_url()); ?>" class="cart_button"><span><?php echo get_cart_total_count(); ?></span></a>
                             <div class="cart_search"></div>
                         </div>
                     </div>
