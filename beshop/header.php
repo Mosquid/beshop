@@ -30,9 +30,7 @@
                 <div class="logo_wrapper">
                     <a name="back" onclick="history.back()" class="back_button"></a>
                     <a href="#" data-target="mobile-demo" class="sidenav-trigger menu_switcher"></a>
-                    <a href="<?php echo site_url() ?>" class="logo">
                     <?php the_custom_logo() ?>
-					</a>
 				</div>
 				
                
