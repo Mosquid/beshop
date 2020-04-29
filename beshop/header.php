@@ -8,65 +8,64 @@
  *
  * @package beshop
  */
-
 ?>
 <!doctype html>
 <html <?php language_attributes(); ?>>
-<head>
-	<meta charset="<?php bloginfo( 'charset' ); ?>">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="profile" href="https://gmpg.org/xfn/11">
+    <head>
+        <meta charset="<?php bloginfo('charset'); ?>">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="profile" href="https://gmpg.org/xfn/11">
 
-	<?php wp_head(); ?>
-</head>
+        <?php wp_head(); ?>
+    </head>
 
-<body <?php body_class(); ?>>
-<?php wp_body_open(); ?>
+    <body <?php body_class(); ?>>
+      <?php wp_body_open(); ?>
 
-<div id="page" class="site">
-	<div class="wrapper">
-		<nav class="main_navigation">
-            <div class="nav-wrapper">
-                <div class="logo_wrapper">
-                    <a name="back" onclick="history.back()" class="back_button"></a>
-                    <a href="#" data-target="mobile-demo" class="sidenav-trigger menu_switcher"></a>
-                    <?php the_custom_logo() ?>
-				</div>
-				
-               
-                <div class="header_buttons">
-                    <?php dynamic_sidebar( 'sidebar-2' ); ?>
-                    <a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="cart_button"></a>
-                    <div class="cart_search"></div>
-                </div>
-            </div>
-        </nav>
-        <div class="sidenav" id="mobile-demo">
+        <div id="page" class="site">
+            <div class="wrapper">
+                <nav class="main_navigation">
+                    <div class="nav-wrapper">
+                        <div class="logo_wrapper">
+                            <a name="back" onclick="history.back()" class="back_button"></a>
+                            <a href="#" data-target="mobile-demo" class="sidenav-trigger menu_switcher"></a>
+                            <?php the_custom_logo() ?>
+                        </div>
 
-            <!--          <div class="menu_close"></div>-->
-            <div class="menu">
-			<?php
-			wp_nav_menu(
-				array(
-					'theme_location' => 'menu-1',
-					'menu_id'        => 'primary-menu',
-				)
-			);
-			?>
-                <div class="menu_contacts">
-                    <div class="logo_contacts">
-                        <img src="<?php echo get_template_directory_uri() ?>/img/logo.jpg" alt="">
+
+                        <div class="header_buttons">
+                          <?php dynamic_sidebar('sidebar-2'); ?>
+                            <a href="<?php echo esc_url(wc_get_cart_url()); ?>" class="cart_button"></a>
+                            <div class="cart_search"></div>
+                        </div>
                     </div>
-                    <a href="mailto:storename@mail.com" class="menu_contacts_mail">storename@mail.com</a>
-                    <a href="tel:" class="menu_contacts_phone">+72 548 96 154</a>
-                    <a href="#" class="menu_contacts_map">Tel Aviv, Vallay Str. One Mall 716 Nm Floor4</a>
+                </nav>
+                <div class="sidenav" id="mobile-demo">
+
+                    <!--          <div class="menu_close"></div>-->
+                    <div class="menu">
+                      <?php
+                      wp_nav_menu(
+                              array(
+                                  'theme_location' => 'menu-1',
+                                  'menu_id' => 'primary-menu',
+                              )
+                      );
+                      ?>
+                        <div class="menu_contacts">
+                            <div class="logo_contacts">
+                                <?php the_custom_logo() ?>
+                            </div>
+                            <a href="mailto:<?php echo get_theme_mod("beshop_shopinfo_email") ?>" class="menu_contacts_mail"><?php echo get_theme_mod("beshop_shopinfo_email") ?></a>
+                            <a href="tel:" class="menu_contacts_phone"><?php echo get_theme_mod("beshop_shopinfo_phone") ?></a>
+                            <a href="#" class="menu_contacts_map"><?php echo get_theme_mod("beshop_shopinfo_address") ?></a>
+                        </div>
+                    </div>
+
                 </div>
-            </div>
 
-		</div>
-		
-	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'beshop' ); ?></a>
+                <a class="skip-link screen-reader-text" href="#content"><?php esc_html_e('Skip to content', 'beshop'); ?></a>
 
 
 
-	<div id="content" class="site-content">
+                <div id="content" class="site-content">
