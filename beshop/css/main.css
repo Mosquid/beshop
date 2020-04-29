@@ -7235,6 +7235,7 @@ input[type=range]::-ms-thumb {
     padding-left: 15px;
     overflow: hidden; }
   .category_list .parent {
+    min-width: 100%;
     flex: 1;
     font-size: 16px;
     font-weight: 600;
@@ -7249,7 +7250,9 @@ input[type=range]::-ms-thumb {
     width: 100px;
     align-self: start;
     justify-self: start;
-    height: auto; }
+    height: auto;
+    margin-left: -100px;
+    pointer-events: none; }
 
 .sales_list_item_img {
   width: 100%;

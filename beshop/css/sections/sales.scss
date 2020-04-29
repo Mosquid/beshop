@@ -252,6 +252,7 @@ box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.1);
         overflow: hidden;
     }
     .parent {
+        min-width: 100%;
         flex: 1;
         font-size: 16px;
         font-weight: 600;
@@ -269,6 +270,8 @@ box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.1);
         align-self: start;
         justify-self: start;
         height: auto;
+        margin-left: -100px;
+        pointer-events: none;
     }
 }
 .sales_list_item_img {
