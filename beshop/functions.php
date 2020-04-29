@@ -321,7 +321,7 @@ add_filter('wp_headers', function ($headers) {
 add_filter( 'woocommerce_countries_shipping_country_states', 'bbloomer_custom_woocommerce_states' );
  
 function bbloomer_custom_woocommerce_states( $states ) {
-    var_dump($states);
+    // var_dump($states);
     return $states;
 }
 remove_filter( 'the_content', 'wpautop' );
