@@ -311,3 +311,8 @@ function my_product_carousel_options($options) {
     return $options;
   }
   add_filter("woocommerce_single_product_carousel_options", "my_product_carousel_options", 10);
+  
+add_filter('wp_headers', function ($headers) {
+    $headers['Cache-Control'] = 'no-store';
+    return $headers;
+});
