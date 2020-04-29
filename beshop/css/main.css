@@ -7835,7 +7835,7 @@ ul.page-numbers {
   border: 0; }
   .woocommerce table.shop_table .product-name {
     align-items: center;
-    padding: 0 20px;
+    padding: 0 10px;
     margin: 0;
     text-align: left !important; }
     .woocommerce table.shop_table .product-name a {
@@ -7862,30 +7862,40 @@ ul.page-numbers {
     border: none;
     margin-bottom: 10px;
     display: flex;
-    align-items: center; }
+    align-items: center;
+    flex-shrink: 0;
+    overflow: hidden; }
     #primary .woocommerce-cart-form table.cart .woocommerce-cart-form__cart-item td {
+      flex: 1;
       border-top: none !important; }
       #primary .woocommerce-cart-form table.cart .woocommerce-cart-form__cart-item td::before {
-        float: none; }
-    #primary .woocommerce-cart-form table.cart .woocommerce-cart-form__cart-item > * {
+        display: none; }
+    #primary .woocommerce-cart-form table.cart .woocommerce-cart-form__cart-item .product-name {
       flex: 1; }
     #primary .woocommerce-cart-form table.cart .woocommerce-cart-form__cart-item .product-subtotal {
       text-align: center; }
     #primary .woocommerce-cart-form table.cart .woocommerce-cart-form__cart-item .product-thumbnail {
+      display: block !important;
       padding-top: 0 !important;
+      padding-left: 0;
       padding-bottom: 0 !important; }
       #primary .woocommerce-cart-form table.cart .woocommerce-cart-form__cart-item .product-thumbnail img {
         vertical-align: top;
         width: 50px; }
     #primary .woocommerce-cart-form table.cart .woocommerce-cart-form__cart-item .product-remove {
-      order: 10;
-      flex: 0; }
+      flex: 0;
+      order: 10; }
       #primary .woocommerce-cart-form table.cart .woocommerce-cart-form__cart-item .product-remove a {
         width: 16px !important;
         height: 16px !important; }
-    #primary .woocommerce-cart-form table.cart .woocommerce-cart-form__cart-item .product-quantity input {
-      height: 2rem;
-      border-bottom: none; }
+    #primary .woocommerce-cart-form table.cart .woocommerce-cart-form__cart-item .product-quantity {
+      min-width: 0;
+      padding-left: 0;
+      padding-right: 0; }
+      #primary .woocommerce-cart-form table.cart .woocommerce-cart-form__cart-item .product-quantity input {
+        width: 30px;
+        height: 2rem;
+        border-bottom: none; }
 
 .cart_totals {
   width: 100% !important;

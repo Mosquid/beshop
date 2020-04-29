@@ -55,7 +55,7 @@
     border: 0;
    .product-name {
         align-items: center;
-        padding: 0 20px;
+        padding: 0 10px;
         margin: 0;
         text-align: left!important;
          a {
@@ -87,31 +87,40 @@
                 margin-bottom: 10px;
                 display: flex;
                 align-items: center;
+                flex-shrink: 0;
+                overflow: hidden;
                 td {
+                    flex: 1;
                     border-top: none !important;
                     &::before {
-                        float: none;
+                        display: none;
                     }
                 }
-                > * {flex: 1}
+                .product-name {flex: 1}
                 .product-subtotal {
                     text-align: center;
                 }
                 .product-thumbnail {
+                    display: block !important;
                     padding-top: 0 !important;
+                    padding-left: 0;
                     padding-bottom: 0 !important;
                     img {vertical-align: top; width: 50px;}
                 }
                 .product-remove {
-                    order: 10;
                     flex: 0;
+                    order: 10;
                     a {
                         width: 16px !important;
                         height: 16px !important;
                     }
                 }
                 .product-quantity {
+                    min-width: 0;
+                    padding-left: 0;
+                    padding-right: 0;
                     input {
+                        width: 30px;
                         height: 2rem;
                         border-bottom: none;
                     }
