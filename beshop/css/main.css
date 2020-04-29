@@ -8184,6 +8184,8 @@ ul.page-numbers {
         text-decoration: none; }
     .single-product div.single-product .category_order_wrapper {
       padding: 0; }
+      .single-product div.single-product .category_order_wrapper br {
+        display: none; }
       .single-product div.single-product .category_order_wrapper .category_order {
         max-width: 100%;
         height: 46px; }
