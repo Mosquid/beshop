@@ -23,6 +23,10 @@ function beshop_body_classes($classes) {
         $classes[] = 'no-sidebar';
     }
 
+    if (is_product_tag()) {
+        $classes[] = 'taxonomy-page';
+    }
+
     return $classes;
 }
 
@@ -154,3 +158,30 @@ function beshop_ajax_search($term = '') {
 
     wp_die();
 }
+
+if (is_search()) {
+    wc_get_template_part('content', 'product-category');
+}
+
+/**
+ * Will add `current` class to current tag
+ * 
+ * @param array $tags_data
+ * @return array
+ */
+function beshop_tag_cloud_class($tags_data) {
+
+    $current_tag = get_queried_object()->term_id;
+
+    foreach ($tags_data as $key => $tag) {
+        if ($tag['id'] == $current_tag) {
+            $tags_data[$key]['class'] = $tags_data[$key]['class'] . " current";
+        }
+    }
+    return $tags_data;
+}
+
+/**
+ * Filter tag cloud tags
+ */
+add_filter('wp_generate_tag_cloud_data', 'beshop_tag_cloud_class');

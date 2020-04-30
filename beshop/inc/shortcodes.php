@@ -1,6 +1,7 @@
 <?php
 
 require_once( __DIR__ . '/shortcodes/banners.php');
+
 /**
  * List all (or limited) product categories in tree.
  * 
@@ -15,7 +16,8 @@ function custom_product_categories($atts) {
 
     ob_start();
     foreach ($categories as $cat) {
-        if (!empty($exclude) && (int)$exclude === $cat->term_id) continue;
+        if (!empty($exclude) && (int) $exclude === $cat->term_id)
+            continue;
 
         $thumb_id = get_term_meta($cat->term_id, 'thumbnail_id', true);
         $term_img = wp_get_attachment_url($thumb_id);
@@ -105,3 +107,26 @@ function getAllCategories($atts) {
  */
 add_shortcode('custom_product_categories', 'custom_product_categories');
 
+/**
+ * Custom WooCommerce tag cloud shortcode.
+ *
+ * Use the follow shortcode in your pages: [my_wc_tag_cloud]
+ */
+function custom_tag_cloud_shortcode() {
+
+    $args = array(
+        'smallest' => 10,
+        'largest' => 10,
+        'unit' => 'px',
+        'format' => 'flat',
+        'orderby' => 'name',
+        'order' => 'ASC',
+        'link' => 'view',
+        'taxonomy' => 'product_tag',
+        'echo' => false
+    );
+
+    return wp_tag_cloud($args);
+}
+
+add_shortcode('beshop_tag_cloud', 'custom_tag_cloud_shortcode');

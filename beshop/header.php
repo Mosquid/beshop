@@ -54,7 +54,7 @@
                       ?>
                         <div class="menu_contacts">
                             <div class="logo_contacts">
-                                <?php the_custom_logo() ?>
+                              <?php the_custom_logo() ?>
                             </div>
                             <a href="mailto:<?php echo get_theme_mod("beshop_shopinfo_email") ?>" class="menu_contacts_mail"><?php echo get_theme_mod("beshop_shopinfo_email") ?></a>
                             <a href="tel:" class="menu_contacts_phone"><?php echo get_theme_mod("beshop_shopinfo_phone") ?></a>
@@ -66,6 +66,11 @@
 
                 <a class="skip-link screen-reader-text" href="#content"><?php esc_html_e('Skip to content', 'beshop'); ?></a>
 
+                <?php if (is_product_category() || is_product_tag()): ?>
+                    <div class="tag-cloud">
+                      <?php echo do_shortcode("[beshop_tag_cloud]"); ?>
+                    </div>
+                <?php endif; ?>
 
 
                 <div id="content" class="site-content">
