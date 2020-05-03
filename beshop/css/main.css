@@ -8288,3 +8288,36 @@ ul.page-numbers {
 /* fix gallery magnify icon z-index */
 .woocommerce div.product div.images .woocommerce-product-gallery__trigger {
   z-index: 2; }
+
+.search-results .page-title {
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px !important;
+  line-height: 21px;
+  color: #333333;
+  padding: 0 20px; }
+
+.term-description {
+  display: none; }
+
+.tag-cloud {
+  padding: 6px 20px; }
+  .tag-cloud .tag-cloud-link {
+    background: rgba(3, 144, 236, 0.1);
+    border-radius: 50px;
+    display: inline-block;
+    margin-right: 4px;
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 10px;
+    line-height: 140%;
+    text-align: right;
+    color: #2586FD;
+    padding: 0 8px;
+    line-height: 24px;
+    height: 24px; }
+    .tag-cloud .tag-cloud-link.current {
+      background: #0390EC;
+      color: #FFFFFF; }
