@@ -22,7 +22,7 @@ function sc_banner($atts = array(), $content = '')
   $tpl = '<div class="sales_header_item">
     <img src="%1$s" alt="">
     <h3>%2$s</h3>
-    %3$s
+    <p class="banner-text">%3$s</p>
   </div>';
 
   return sprintf($tpl, $atts['image'], $atts['title'], $content);
