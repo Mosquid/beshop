@@ -221,7 +221,9 @@ if (defined('JETPACK__VERSION')) {
 
 function get_cart_total_count() {
     $cart = WC()->cart;
-    return $cart->cart_contents_count;
+    if (empty($cart->cart_contents)) return 0;
+
+    return count($cart->cart_contents);
 }
 
 function get_product_from_cart($product_id) {

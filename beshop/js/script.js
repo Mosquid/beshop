@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (e.target.classList.contains('category_order_button') && e.target == buyButton[i]) {
                     buyButton[i].classList.add('hide_top');
                     orderValue[i].classList.remove('hide_bot');
-                
+                    jQuery(plusButton[i]).trigger('click')
                 }
                 if (e.target.classList.contains('category_order_select_minus') && e.target == minusButton[i]) {
                     if(productNumber[i].value<1) {
