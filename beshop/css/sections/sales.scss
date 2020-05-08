@@ -47,13 +47,16 @@
     overflow: hidden;
     border-radius: 10px;
     position: relative;
-    img {
+    .img {
+        pointer-events: none;
+        background-position: center center;
+        background-size: 100% auto;
+        background-repeat: no-repeat;
         position: absolute;
         top: 0;
         right: 0;
         height: 100%;
-        width: auto;
-        max-width: initial;
+        width: 100%;
     }
     h3 {
         position: relative;

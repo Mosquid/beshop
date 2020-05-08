@@ -20,7 +20,7 @@ function sc_banner($atts = array(), $content = '')
   ), $atts);
 
   $tpl = '<div class="sales_header_item">
-    <img src="%1$s" alt="">
+    <div class="img" style="background-image: url(%1$s)"></div>
     <h3>%2$s</h3>
     <p class="banner-text">%3$s</p>
   </div>';
