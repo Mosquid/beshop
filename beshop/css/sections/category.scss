@@ -124,6 +124,8 @@
 .woocommerce-loop-product__title{
     color: #333333!important;
     font-size: 12px!important;
+    line-height: 1.2;
+    min-height: 40px;
 }
 .woocommerce ul.products li.product a img {
     width: auto;
