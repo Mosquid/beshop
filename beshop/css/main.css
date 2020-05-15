@@ -5826,9 +5826,8 @@ input[type=range]::-ms-thumb {
   margin: 0;
   transform: translateX(-100%);
   height: 100%;
-  height: calc(100% + 60px);
-  height: -moz-calc(100%);
   padding-bottom: 60px;
+  box-sizing: border-box;
   background-color: #fff;
   z-index: 999;
   overflow-y: auto;
@@ -6889,7 +6888,7 @@ input[type=range]::-ms-thumb {
     flex-direction: column;
     justify-content: space-between;
     padding: 20px;
-    height: 100vh;
+    height: 100%;
     background: #fff;
     z-index: 2;
     transition: 300ms; }
