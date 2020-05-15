@@ -84,7 +84,13 @@ function handleItemAdded(_, frags) {
   try {
     const cart = Object.values(frags)[0]
     const items = jQuery(cart).find("li")
-    const total = items.length
+    let total = 0
+
+    items.each(function(_, item) {
+      const $item = jQuery(item)
+      const qty = $item.find('.quantity').text()
+      total += parseInt(qty)
+    })
 
     cartCount.text(total)
   } catch (error) {}
