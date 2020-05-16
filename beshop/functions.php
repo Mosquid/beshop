@@ -327,3 +327,10 @@ function bbloomer_custom_woocommerce_states( $states ) {
 }
 remove_filter( 'the_content', 'wpautop' );
 remove_filter( 'the_excerpt', 'wpautop' );
+
+add_filter( 'woocommerce_checkout_fields' , 'bbloomer_remove_billing_postcode_checkout' );
+ 
+function bbloomer_remove_billing_postcode_checkout( $fields ) {
+  unset($fields['billing']['billing_postcode']);
+  return $fields;
+}
