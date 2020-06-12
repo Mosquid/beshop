@@ -9,7 +9,7 @@
  */
 if (!defined('_S_VERSION')) {
     // Replace the version number of the theme on each release.
-    define('_S_VERSION', '2.0.5');
+    define('_S_VERSION', '2.0.6');
 }
 
 if (!function_exists('beshop_setup')) :
@@ -131,8 +131,8 @@ function beshop_widgets_init() {
                 'description' => esc_html__('Add widgets here.', 'beshop'),
                 'before_widget' => '<section id="%1$s" class="widget %2$s">',
                 'after_widget' => '</section>',
-                'before_title' => '<h2 class="widget-title">',
-                'after_title' => '</h2>',
+                'before_title' => '<span class="widget-title" style="display:none">',
+                'after_title' => '</span>',
             )
     );
 

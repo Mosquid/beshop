@@ -44,12 +44,14 @@
                     <!--          <div class="menu_close"></div>-->
                     <div class="menu">
                       <?php
-                      wp_nav_menu(
-                              array(
-                                  'theme_location' => 'menu-1',
-                                  'menu_id' => 'primary-menu',
-                              )
-                      );
+                      if (!dynamic_sidebar( 'sidebar-1' )) {
+                        wp_nav_menu(
+                            array(
+                                'theme_location' => 'menu-1',
+                                'menu_id' => 'primary-menu',
+                            )
+                        );
+                      }
                       ?>
                         <div class="menu_contacts">
                             <div class="logo_contacts">

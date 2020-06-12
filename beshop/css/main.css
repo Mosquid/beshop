@@ -5842,6 +5842,13 @@ input[type=range]::-ms-thumb {
       flex: 1; }
       .sidenav .menu div:first-child ul {
         height: auto; }
+    .sidenav .menu ul {
+      margin: 0;
+      padding: 0; }
+    .sidenav .menu .widget {
+      padding: 38px 20px 0; }
+      .sidenav .menu .widget ~ .widget {
+        padding-top: 0; }
   .sidenav.right-aligned {
     right: 0;
     transform: translateX(105%);
