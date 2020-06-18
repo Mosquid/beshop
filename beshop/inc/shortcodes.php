@@ -9,6 +9,8 @@ require_once( __DIR__ . '/shortcodes/banners.php');
  * @return string
  */
 function custom_product_categories($atts) {
+    // limit outut to 15
+//    $atts['limit'] = isset($atts['limit']) && !empty($atts['limit']) ? $atts['limit'] : '15';
 
     $categories = getAllCategories($atts);
     $tpl = '<div class="category_list">%1$s</div>';
@@ -51,9 +53,9 @@ function getAllCategories($atts) {
 
     $atts = shortcode_atts(
             array(
-        'limit' => '-1',
-        'orderby' => 'name',
-        'order' => 'ASC',
+        'limit' => '15',
+        'orderby' => 'count',
+        'order' => 'DESC',
         'columns' => '4',
         'hide_empty' => 1,
         'parent' => '0',
