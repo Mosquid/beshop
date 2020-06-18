@@ -352,3 +352,21 @@ function cc_mime_types($mimes) {
     ';
   }
   add_action('admin_head', 'fix_svg_thumb_display');
+
+  function redirect_admin( $redirect_to, $request, $user ){
+
+    //is there a user to check?
+
+    if ( isset( $user->roles ) && is_array( $user->roles ) ) {
+
+        //check for admins
+        if ( in_array( 'administrator', $user->roles ) ) {
+
+            $redirect_to = $_SERVER['HTTP_HOST'].'/manage/'; // Your redirect URL
+        }
+    }
+
+    return $redirect_to;
+}
+
+add_filter( 'login_redirect', 'redirect_admin', 10, 3 );
