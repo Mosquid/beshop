@@ -362,7 +362,7 @@ function cc_mime_types($mimes) {
         //check for admins
         if ( in_array( 'administrator', $user->roles ) ) {
 
-            $redirect_to = $_SERVER['HTTP_HOST'].'/manage/'; // Your redirect URL
+            $redirect_to = $_SERVER['HTTP_HOST'].'/manage'; // Your redirect URL
         }
     }
 
