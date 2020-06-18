@@ -30,21 +30,3 @@ add_action('init', 'remove_comment_support');
 function remove_comment_support() {
     remove_post_type_support('product', 'comments');
 }
-
-/** Remove categories from shop and other pages
- * in Woocommerce
- */
-function wc_hide_selected_terms($terms, $taxonomies, $args) {
-    $new_terms = array();
-    if (in_array('product_cat', $taxonomies) && !(is_shop() || is_home())) {
-        foreach ($terms as $key => $term) {
-            if (!in_array($term->slug, array('uncategorized'))) {
-                $new_terms[] = $term;
-            }
-        }
-        $terms = $new_terms;
-    }
-    return $terms;
-}
-
-add_filter('get_terms', 'wc_hide_selected_terms', 10, 3);

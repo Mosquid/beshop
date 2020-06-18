@@ -18,7 +18,7 @@ function custom_product_categories($atts) {
 
     ob_start();
     foreach ($categories as $cat) {
-        if (!empty($exclude) && (int) $exclude === $cat->term_id)
+        if ((!empty($exclude) && (int) $exclude === $cat->term_id) || $cat->slug === "uncategorized")
             continue;
 
         $thumb_id = get_term_meta($cat->term_id, 'thumbnail_id', true);
