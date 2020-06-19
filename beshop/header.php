@@ -44,25 +44,23 @@
 
                     <!--          <div class="menu_close"></div>-->
                     <div class="menu">
-                        <div class="sidebars">
-                        <?php
-                        if (!dynamic_sidebar( 'sidebar-1' )) {
-                            wp_nav_menu(
-                                array(
-                                    'theme_location' => 'menu-1',
-                                    'menu_id' => 'primary-menu',
-                                )
-                            );
-                        }
-                        ?>
-                            <div class="menu_contacts">
-                                <div class="logo_contacts">
-                                <?php the_custom_logo() ?>
-                                </div>
-                                <a href="mailto:<?php echo get_theme_mod("beshop_shopinfo_email") ?>" class="menu_contacts_mail"><?php echo get_theme_mod("beshop_shopinfo_email") ?></a>
-                                <a href="tel:" class="menu_contacts_phone"><?php echo get_theme_mod("beshop_shopinfo_phone") ?></a>
-                                <a href="#" class="menu_contacts_map"><?php echo get_theme_mod("beshop_shopinfo_address") ?></a>
+                      <?php
+                      if (!dynamic_sidebar('sidebar-1')) {
+                          wp_nav_menu(
+                                  array(
+                                      'theme_location' => 'menu-1',
+                                      'menu_id' => 'primary-menu',
+                                  )
+                          );
+                      }
+                      ?>
+                        <div class="menu_contacts">
+                            <div class="logo_contacts">
+                              <?php the_custom_logo() ?>
                             </div>
+                            <a href="mailto:<?php echo get_theme_mod("beshop_shopinfo_email") ?>" class="menu_contacts_mail"><?php echo get_theme_mod("beshop_shopinfo_email") ?></a>
+                            <a href="tel:" class="menu_contacts_phone"><?php echo get_theme_mod("beshop_shopinfo_phone") ?></a>
+                            <a href="#" class="menu_contacts_map"><?php echo get_theme_mod("beshop_shopinfo_address") ?></a>
                         </div>
                     </div>
 
