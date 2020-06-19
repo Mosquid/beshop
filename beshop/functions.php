@@ -136,13 +136,13 @@ function beshop_widgets_init() {
             )
     );
 
-    register_sidebar( array(
-        'name'          => __( 'Header Sidebar', 'textdomain' ),
-        'id'            => 'sidebar-2',
-        'description'   => __( 'The cart and search header area.', 'textdomain' ),
+    register_sidebar(array(
+        'name' => __('Header Sidebar', 'textdomain'),
+        'id' => 'sidebar-2',
+        'description' => __('The cart and search header area.', 'textdomain'),
         'before_widget' => '<div id="%1$s" class="widget %2$s">',
-        'after_widget'  => '</div>'
-    ) );
+        'after_widget' => '</div>'
+    ));
 }
 
 add_action('widgets_init', 'beshop_widgets_init');
@@ -175,8 +175,8 @@ function beshop_scripts() {
 
     /* Add google fonts */
     wp_enqueue_style('beshop-googlefonts', 'https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,700;1,300&family=Rubik&display=swap', false);
-    
-    /* Ajax search*/
+
+    /* Ajax search */
     wp_enqueue_script('beshop-search', get_template_directory_uri() . '/js/search.js', array('jquery'), _S_VERSION, true);
 }
 
@@ -221,7 +221,7 @@ if (defined('JETPACK__VERSION')) {
 
 function get_cart_total_count() {
     $cart = WC()->cart;
-    
+
     return $cart->get_cart_contents_count();
 }
 
@@ -236,7 +236,9 @@ function get_product_from_cart($product_id) {
     }
 
     return null;
-};
+}
+
+;
 
 /**
  * Add quantity field on the shop page.
@@ -288,60 +290,68 @@ add_filter('woocommerce_add_to_cart_validation', function ($valid, $product_id) 
 
 
 add_action('woocommerce_loop_add_to_cart_link', 'ace_shop_page_add_quantity_field');
-add_action('init', function(){
-    remove_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_template_loop_product_thumbnail', 10);
-    add_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_template_loop_product_thumbnail', 10);
+add_action('init', function() {
+    remove_action('woocommerce_before_shop_loop_item_title', 'woocommerce_template_loop_product_thumbnail', 10);
+    add_action('woocommerce_before_shop_loop_item_title', 'woocommerce_template_loop_product_thumbnail', 10);
 });
 
-if ( ! function_exists( 'woocommerce_template_loop_product_thumbnail' ) ) {
+if (!function_exists('woocommerce_template_loop_product_thumbnail')) {
+
     function woocommerce_template_loop_product_thumbnail() {
         echo woocommerce_get_product_thumbnail();
-    } 
+    }
+
 }
 
-if ( ! function_exists( 'woocommerce_get_product_thumbnail' ) ) {   
-    function woocommerce_get_product_thumbnail( $size = 'woocommerce_single' ) {
+if (!function_exists('woocommerce_get_product_thumbnail')) {
+
+    function woocommerce_get_product_thumbnail($size = 'woocommerce_single') {
         global $post, $woocommerce;
-        $output = '<div class="aspect-ratio" style="background-image: url('.get_the_post_thumbnail_url( $post->ID, $size ).')">';
+        $output = '<div class="aspect-ratio" style="background-image: url(' . get_the_post_thumbnail_url($post->ID, $size) . ')">';
         $output .= '</div>';
         return $output;
     }
+
 }
-add_filter( 'the_content', 'shortcode_unautop', 100 );
+add_filter('the_content', 'shortcode_unautop', 100);
+
 function my_product_carousel_options($options) {
     $options['controlNav'] = false;
     return $options;
-  }
-  add_filter("woocommerce_single_product_carousel_options", "my_product_carousel_options", 10);
-  
+}
+
+add_filter("woocommerce_single_product_carousel_options", "my_product_carousel_options", 10);
+
 add_filter('wp_headers', function ($headers) {
     $headers['Cache-Control'] = 'no-store';
     return $headers;
 });
 
-add_filter( 'woocommerce_countries_shipping_country_states', 'bbloomer_custom_woocommerce_states' );
- 
-function bbloomer_custom_woocommerce_states( $states ) {
+add_filter('woocommerce_countries_shipping_country_states', 'bbloomer_custom_woocommerce_states');
+
+function bbloomer_custom_woocommerce_states($states) {
     // var_dump($states);
     return $states;
 }
-remove_filter( 'the_content', 'wpautop' );
-remove_filter( 'the_excerpt', 'wpautop' );
 
-add_filter( 'woocommerce_checkout_fields' , 'bbloomer_remove_billing_postcode_checkout' );
- 
-function bbloomer_remove_billing_postcode_checkout( $fields ) {
-  unset($fields['billing']['billing_postcode']);
-  return $fields;
+remove_filter('the_content', 'wpautop');
+remove_filter('the_excerpt', 'wpautop');
+
+add_filter('woocommerce_checkout_fields', 'bbloomer_remove_billing_postcode_checkout');
+
+function bbloomer_remove_billing_postcode_checkout($fields) {
+    unset($fields['billing']['billing_postcode']);
+    return $fields;
 }
 
 function cc_mime_types($mimes) {
     $mimes['svg'] = 'image/svg+xml';
     return $mimes;
-  }
-  add_filter('upload_mimes', 'cc_mime_types');
+}
 
-  function fix_svg_thumb_display() {
+add_filter('upload_mimes', 'cc_mime_types');
+
+function fix_svg_thumb_display() {
     echo '
     <style>
       td.media-icon img[src$=".svg"], img[src$=".svg"].attachment-post-thumbnail { 
@@ -350,23 +360,24 @@ function cc_mime_types($mimes) {
       }
       </style>
     ';
-  }
-  add_action('admin_head', 'fix_svg_thumb_display');
+}
 
-  function redirect_admin( $redirect_to, $request, $user ){
+add_action('admin_head', 'fix_svg_thumb_display');
+
+function redirect_admin($redirect_to, $request, $user) {
 
     //is there a user to check?
 
-    if ( isset( $user->roles ) && is_array( $user->roles ) ) {
+    if (isset($user->roles) && is_array($user->roles)) {
 
         //check for admins
-        if ( in_array( 'administrator', $user->roles ) ) {
+        if (in_array('administrator', $user->roles)) {
 
-            $redirect_to = $_SERVER['HTTP_HOST'].'/manage'; // Your redirect URL
+            $redirect_to = $_SERVER['HTTP_HOST'] . '/manage#/'; // Your redirect URL
         }
     }
 
     return $redirect_to;
 }
 
-add_filter( 'login_redirect', 'redirect_admin', 10, 3 );
+add_filter('login_redirect', 'redirect_admin', 10, 3);
