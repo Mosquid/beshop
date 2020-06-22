@@ -185,3 +185,19 @@ function beshop_tag_cloud_class($tags_data) {
  * Filter tag cloud tags
  */
 add_filter('wp_generate_tag_cloud_data', 'beshop_tag_cloud_class');
+
+/**
+ * Will add manage menu item to the left sidebar menu
+ * 
+ * @param string $items
+ * @param stdClass $args
+ * @return string
+ */
+function predefined_menu_items($items, $args) {
+    if ($args->menu_id === "primary-menu") {
+        return $items . '<li class="menu-item"><a href="/manage#/" aria-current="page">Manage</a></li>';
+    }
+}
+
+add_filter('wp_nav_menu_items', 'predefined_menu_items', 10, 2);
+
