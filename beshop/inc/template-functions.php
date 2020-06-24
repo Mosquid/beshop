@@ -199,5 +199,11 @@ function predefined_menu_items($items, $args) {
     }
 }
 
-add_filter('wp_nav_menu_items', 'predefined_menu_items', 10, 2);
+$user = wp_get_current_user();
+$isAdmin = array_intersect(array('administrator'), $user->roles);
+/* Filters for admins only */
+if ($isAdmin) {
+    add_filter('wp_nav_menu_items', 'predefined_menu_items', 10, 2);
+}
+
 
