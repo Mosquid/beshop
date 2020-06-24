@@ -33,7 +33,7 @@ function remove_comment_support() {
 
 // Action to add several products from the request parameter
 // Forked from WC_Form_Handler::add_to_cart_action
-// Example parameter: ?add-to-cart-products=1298,1260
+// Example parameter: ?add-to-cart-products=1298|1,1260|2
 add_action('wp_loaded', 'add_to_cart_from_link', 30);
 
 function add_to_cart_from_link($url = false) {
@@ -45,13 +45,14 @@ function add_to_cart_from_link($url = false) {
 
     $product_ids = explode(',', wp_unslash($_REQUEST['add-to-cart-products']));
 
-    foreach ($product_ids as $pid) {
+    foreach ($product_ids as $product_item) {
+        list($pid, $quantity) = explode("|", $product_item);
         $product_id = apply_filters('woocommerce_add_to_cart_product_id', absint($pid));
         $adding_to_cart = wc_get_product($product_id);
         if (!$adding_to_cart) {
             continue;
         }
-        $was_added = add_to_cart_handler_simple($product_id);
+        $was_added = add_to_cart_handler_simple($product_id, $quantity);
     }
 
     wp_safe_redirect(wc_get_cart_url());
@@ -65,8 +66,7 @@ function add_to_cart_from_link($url = false) {
  * @param int $product_id Product ID to add to the cart.
  * @return bool success or not
  */
-function add_to_cart_handler_simple($product_id) {
-    $quantity = 1;
+function add_to_cart_handler_simple($product_id, $quantity) {
     $passed_validation = apply_filters('woocommerce_add_to_cart_validation', true, $product_id, $quantity);
 
     if ($passed_validation && false !== WC()->cart->add_to_cart($product_id, $quantity)) {
