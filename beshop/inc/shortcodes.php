@@ -15,14 +15,17 @@ function custom_product_categories($atts) {
 
     ob_start();
     foreach ($categories as $cat) {
-        if ((!empty($exclude) && (int) $exclude === $cat->term_id) || $cat->slug === "uncategorized")
-            continue;
+        // UOlega show uncategorized category
+//        if ((!empty($exclude) && (int) $exclude === $cat->term_id) || $cat->slug === "uncategorized")
+//            continue;
 
         $thumb_id = get_term_meta($cat->term_id, 'thumbnail_id', true);
         $term_img = wp_get_attachment_url($thumb_id);
 
+        $custom_cat_style = ' style="color:red;font-weight:bold" ';
+
         echo '<div class="item">';
-        echo '<a class="parent" href="' . get_term_link($cat->term_id) . '">' . $cat->name . '</a>';
+        echo '<a class="parent" href="' . get_term_link($cat->term_id) . '" ' . ($cat->slug === "uncategorized" ? $custom_cat_style : "") . '>' . $cat->name . '</a>';
         foreach (getAllCategories(['parent' => $cat->term_id]) as $child) {
             echo '<a class="child" href="' . get_term_link($child->term_id) . '">' . $child->name . '</a>';
         }
@@ -57,6 +60,7 @@ function getAllCategories($atts) {
         'hide_empty' => 1,
         'parent' => '0',
         'ids' => '',
+        'exclude' => '' // UOlega show uncategorized category
             ), $atts, 'product_categories'
     );
 
