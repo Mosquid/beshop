@@ -381,16 +381,3 @@ function redirect_admin($redirect_to, $request, $user) {
 }
 
 add_filter('login_redirect', 'redirect_admin', 10, 3);
-
-/**
- * This will fix issue with importet products that have long attribute_name
- */
-function valid_attribute_name( $attribute_name ) {
-    if ( strlen( $attribute_name ) >= 128 ) {
-            return new WP_Error( 'error', sprintf( __( 'Slug "%s" is too long (128 characters max). Shorten it, please.', 'woocommerce' ), sanitize_title( $attribute_name ) ) );
-    } elseif ( wc_check_if_attribute_name_is_reserved( $attribute_name ) ) {
-            return new WP_Error( 'error', sprintf( __( 'Slug "%s" is not allowed because it is a reserved term. Change it, please.', 'woocommerce' ), sanitize_title( $attribute_name ) ) );
-    }
-
-    return true;
-}
