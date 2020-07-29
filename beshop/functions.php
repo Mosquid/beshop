@@ -208,6 +208,11 @@ require get_template_directory() . '/inc/customizer.php';
 require get_template_directory() . '/inc/shortcodes.php';
 
 /**
+ * Utility functions
+ */
+require get_template_directory() . '/woocommerce/utils.php';
+
+/**
  * Template hooks
  */
 require get_template_directory() . '/inc/template-hooks.php';

@@ -23,21 +23,31 @@ if ( ! defined( 'ABSPATH' ) ) {
 * @hooked WC_Emails::email_header() Output the email header
 */
 do_action( 'woocommerce_email_header', $email_heading, $email ); ?>
-<?php
-	$qr_post = get_page_by_title('#' . $order->get_order_number(), OBJECT, 'qr');
-	$qr_hash = $qr_post->post_excerpt;
-	$qr_api_url = 'https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=';
-	$validate_url = get_home_url(null, 'validate');
-	$qr_link = $validate_url . '?code=' . $qr_hash;
-	$qr_img_src = $qr_api_url . $qr_link;
-?>
 <?php /* translators: %s: Customer first name */ ?>
 <p><?php printf( esc_html__( 'Hi %s,', 'woocommerce' ), esc_html( $order->get_billing_first_name() ) ); ?></p>
 <?php /* translators: %s: Site title */ ?>
 <p><?php esc_html_e( 'We have finished processing your order.', 'woocommerce' ); ?></p>
-<p><img src="<?php echo $qr_img_src; ?>" /></p>
 <?php
+	$qr_api_url = 'https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=';
+	$order_id = $order->get_order_number();
+	$validate_url = get_home_url(null, 'validate');
+	$qr_posts = get_posts_by_meta('order_id', $order_id, 'qr');
 
+	foreach ($qr_posts as $qr_post) {
+		$qr_post_id = $qr_post->ID;
+		$post_id = get_post_meta( $qr_post_id, 'product_id', true );
+		$post_title = get_the_title( $post_id );
+		$qr_hash = $qr_post->post_excerpt;
+		$qr_link = $validate_url . '?code=' . $qr_hash;
+		$qr_img_src = $qr_api_url . $qr_link;
+		
+?>
+<div style="height: 600px; display: flex; align-items: center; justify-content: center; flex-direction: column">
+<h2><?php echo $post_title; ?></h2>
+<p><img src="<?php echo $qr_img_src; ?>" /></p>
+</div>
+<?php
+}
 /*
  * @hooked WC_Emails::order_details() Shows the order details table.
  * @hooked WC_Structured_Data::generate_order_data() Generates structured data.
