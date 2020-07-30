@@ -23,9 +23,11 @@ function custom_product_categories($atts) {
 
         echo '<div class="item">';
         echo '<a class="parent" href="' . get_term_link($cat->term_id) . '">' . $cat->name . '</a>';
+//        echo '<div class="childs">';
         foreach (getAllCategories(['parent' => $cat->term_id]) as $child) {
             echo '<a class="child" href="' . get_term_link($child->term_id) . '">' . $child->name . '</a>';
         }
+//        echo '</div>';
         if ($term_img) {
             echo '<img src="' . $term_img . '" alt="' . get_post_meta($thumb_id, '_wp_attachment_image_alt', true) . '">';
         }
