@@ -40,6 +40,7 @@ if (!function_exists('beshop_setup')) :
          * provide it for us.
          */
         add_theme_support('title-tag');
+        add_theme_support('woocommerce');
 
         /*
          * Enable support for Post Thumbnails on posts and pages.
@@ -131,8 +132,8 @@ function beshop_widgets_init() {
                 'description' => esc_html__('Add widgets here.', 'beshop'),
                 'before_widget' => '<section id="%1$s" class="widget %2$s">',
                 'after_widget' => '</section>',
-                'before_title' => '<span class="widget-title" style="display:none">',
-                'after_title' => '</span>',
+                'before_title' => '<h5 class="widget-title">',
+                'after_title' => '</h5>',
             )
     );
 
