@@ -80,6 +80,9 @@ p {
     #filters-bar {
         margin-right: 30px;
         min-width: 200px;
+        h5 {
+            margin-top: 0;
+        }
     }
     &.wooc {
         display: flex;
