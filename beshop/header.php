@@ -29,7 +29,12 @@
                         <div class="logo_wrapper">
                             <a name="back" onclick="history.back()" class="back_button"></a>
                             <a href="#" data-target="mobile-demo" class="sidenav-trigger menu_switcher"></a>
-                            <?php the_custom_logo() ?>
+                            <?php
+                            //the_custom_logo() 
+                            ?>
+                            <a href="<?php echo home_url() ?>" class="custom-logo-link" rel="home">
+                                <img width="330" height="150" src="https://asas.co.il/wp-content/uploads/2020/08/cropped-horizontal_on_white_by_logaster.png" class="custom-logo" alt="asas.co.il">
+                            </a>
                         </div>
 
 
@@ -56,7 +61,10 @@
                       ?>
                         <div class="menu_contacts">
                             <div class="logo_contacts">
-                              <?php the_custom_logo() ?>
+                              <?php //the_custom_logo() ?>
+                                <a href="<?php echo home_url() ?>" class="custom-logo-link" rel="home">
+                                    <img width="330" height="150" src="https://asas.co.il/wp-content/uploads/2020/08/cropped-horizontal_on_white_by_logaster.png" class="custom-logo" alt="asas.co.il">
+                                </a>
                             </div>
                             <a href="mailto:<?php echo get_theme_mod("beshop_shopinfo_email") ?>" class="menu_contacts_mail"><?php echo get_theme_mod("beshop_shopinfo_email") ?></a>
                             <a href="tel:" class="menu_contacts_phone"><?php echo get_theme_mod("beshop_shopinfo_phone") ?></a>

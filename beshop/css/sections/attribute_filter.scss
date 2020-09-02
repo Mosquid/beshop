@@ -1,0 +1,123 @@
+.widget_layered_nav{
+  font-family: 'Poppins', sans-serif;
+  margin-bottom: 22px;
+
+  .widget-title{
+
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+
+    color: #333333;
+  }
+  .woocommerce-widget-layered-nav-list{
+    .woocommerce-widget-layered-nav-list__item{
+      &.chosen{
+        a{
+          &:before{
+            background-color: #E31E24;
+            background-image: url('../img/ico/check_box_24px.svg');
+            background-repeat: no-repeat;
+            background-position: center;
+          }
+        }
+      }
+      a{
+        font-family: 'Poppins', sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 140%;
+        /* identical to box height, or 20px */
+
+
+        color: #333333;
+        &:before{
+          content: "";
+          display: inline-block;
+          width: 16px;
+          height: 16px;
+          background: #F0F0F0;
+          border-radius: 2px;
+          margin-right: 10px;
+          margin-top: -3px;
+          vertical-align: middle;
+        }
+      }
+      .count{
+        display: none;
+      }
+    }
+  }  
+}
+
+
+#toggle-filter{
+  display: none;
+  width: 24px;
+  height: 24px;
+  background: #FFFFFF;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  background-image: url('../img/ico/filter_list_24px_outlined.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+
+  float: left;
+  margin-right: 14px;
+  vertical-align: top;
+  margin-top: 5px;
+  margin-left: 20px;
+}
+@media screen and (max-width: 425px){
+  #toggle-filter{
+    display: block
+  }
+  .content-area {
+    #filters-bar{
+      display: none;
+
+      position: fixed;
+      z-index: 9999;
+      min-width: 92%;
+      left: 4%;
+      height: 92%;
+      top: 4%;
+      background: #FFFFFF;
+      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+      padding: 20px 30px;
+      overflow: scroll;
+
+      &.open{
+        display: block;
+      }
+    }
+  }
+  #close-filter{
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    top: 25px;
+    right: 25px;
+    background-image: url('../img/ico/close_24px.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}
+
+.rtl{
+  .widget_layered_nav{
+    .woocommerce-widget-layered-nav-list .woocommerce-widget-layered-nav-list__item a:before{
+      margin-left: 10px;
+    }
+    .widget-title{
+      padding-right: 10px;
+    }
+  }
+  #toggle-filter{
+    float: right;
+    margin-right: 20px;
+  }
+}

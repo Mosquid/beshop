@@ -26,21 +26,26 @@
         .heading {
           font-style: normal;
           font-weight: 600;
-          font-size: 11px !important;
+          font-size: 14px !important;
           line-height: 19px;
           /* identical to box height */
           color: #333333;
           border-bottom: 1px solid #e0e0e0;
         }
-        .contents p {
-          font-family: "Rubik", sans-serif;
-          font-style: normal;
-          font-weight: normal;
-          font-size: 10px !important;
-          line-height: 140% !important;
-          /* or 14px */
-          color: #7f7f7f;
-          margin-top: 4px;
+        .contents{
+          p {
+            font-family: "Rubik", sans-serif;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 14px !important;
+            line-height: 140% !important;
+            /* or 14px */
+            color: #7f7f7f;
+            margin-top: 4px;
+          }
+          ul{
+            padding: 0;
+          }
         }
       }
       .price {

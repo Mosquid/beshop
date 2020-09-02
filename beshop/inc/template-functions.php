@@ -46,7 +46,7 @@ add_action('wp_head', 'beshop_pingback_header');
 function beshop_single_product_description() {
     $product = wc_get_product();
     $product_details = $product->get_data();
-    set_query_var('description_heading', 'Description');
+    set_query_var('description_heading', __('Description'));
     set_query_var('description_content', $product_details['description']);
     get_template_part('template-parts/single-product-description');
 }
@@ -193,17 +193,17 @@ add_filter('wp_generate_tag_cloud_data', 'beshop_tag_cloud_class');
  * @param stdClass $args
  * @return string
  */
-function predefined_menu_items($items, $args) {
-    if ($args->menu_id === "primary-menu") {
-        return $items . '<li class="menu-item"><a href="/manage#/" aria-current="page">Manage</a></li>';
-    }
-}
-
-$user = wp_get_current_user();
-$isAdmin = array_intersect(array('administrator'), $user->roles);
-/* Filters for admins only */
-if ($isAdmin) {
-    add_filter('wp_nav_menu_items', 'predefined_menu_items', 10, 2);
-}
+//function predefined_menu_items($items, $args) {
+//    if ($args->menu_id === "primary-menu") {
+//        return $items . '<li class="menu-item"><a href="/manage#/" aria-current="page">Manage</a></li>';
+//    }
+//}
+//
+//$user = wp_get_current_user();
+//$isAdmin = array_intersect(array('administrator'), $user->roles);
+///* Filters for admins only */
+//if ($isAdmin) {
+//    add_filter('wp_nav_menu_items', 'predefined_menu_items', 10, 2);
+//}
 
 

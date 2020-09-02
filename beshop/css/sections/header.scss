@@ -237,10 +237,42 @@
     background: #fff;
     z-index: 2;
     transition: 300ms;
-    
+
     ul{
       margin: 16px 0!important;
       padding: 20px 0!important;
     }
   }
+}
+
+.widget_icl_lang_sel_widget{
+  .wpml-ls{
+    margin-right: 20px;
+
+    ul{
+      padding-left: 0;
+    }
+  }
+}
+
+.rtl{
+  .menu_contacts a.menu_contacts_phone{
+    direction: ltr
+  }
+  .menu_contacts_mail,
+  .menu_contacts_phone ,
+  .menu_contacts_map {
+    background-position: top 3px right;
+  }
+}
+
+.menu_contacts a.menu_contacts_map{
+  display: none;
+}
+
+#nav_menu-2{
+  min-height: 70vh;
+}
+.sidenav{
+  overflow: hidden;
 }

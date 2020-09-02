@@ -11,7 +11,8 @@ document.addEventListener('DOMContentLoaded', function () {
             slidesToScroll: 1,
             arrows: false,
             fade: true,
-            dots: true
+            dots: true,
+            rtl: $('body').hasClass('rtl') ? true : false,
         });
     }
 
@@ -59,9 +60,17 @@ document.addEventListener('DOMContentLoaded', function () {
         }    
 
     }
+    
+    function toggleFilters(){
+        $('body').on('click','#toggle-filter,#close-filter',function(e){
+            e.preventDefault();
+            $('#filters-bar').toggleClass('open')
+        });
+    }
 
     sales();
     showButtonsCart();
+    toggleFilters();
     
 })
 })(jQuery)

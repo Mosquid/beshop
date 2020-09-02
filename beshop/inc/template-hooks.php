@@ -42,3 +42,24 @@ function force_change_currency() {
 }
 
 add_action("template_redirect", "force_change_currency");
+
+
+/* Override page title */
+add_filter('woocommerce_show_page_title', 'beshop_woocommerce_page_title');
+
+function beshop_woocommerce_page_title($true) {
+    return false;
+}
+
+add_filter('woocommerce_after_cart_item_name', 'beshop_after_cart_item_name');
+
+function beshop_after_cart_item_name($cart_item) {
+    error_log(print_r($cart_item, true));
+}
+
+//function default_no_quantities($individually, $product) {
+//    $individually = true;
+//    return $individually;
+//}
+//
+//add_filter('woocommerce_is_sold_individually', 'default_no_quantities', 10, 2);

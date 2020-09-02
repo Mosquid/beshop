@@ -72,6 +72,10 @@ if (!function_exists('beshop_setup')) :
                 )
         );
 
+        add_theme_support('wc-product-gallery-zoom');
+        add_theme_support('wc-product-gallery-lightbox');
+        add_theme_support('wc-product-gallery-slider');
+
         // Set up the WordPress core custom background feature.
         add_theme_support(
                 'custom-background', apply_filters(
@@ -119,6 +123,9 @@ function beshop_content_width() {
 
 add_action('after_setup_theme', 'beshop_content_width', 0);
 
+
+require_once get_template_directory() . '/inc/widgets/class-wc-widget-layered-nav-custom.php';
+
 /**
  * Register widget area.
  *
@@ -137,6 +144,18 @@ function beshop_widgets_init() {
             )
     );
 
+    register_sidebar(
+            array(
+                'name' => esc_html__('Sidebar', 'beshop'),
+                'id' => 'sidebar-3',
+                'description' => esc_html__('Add widgets here.', 'beshop'),
+                'before_widget' => '<section id="%1$s" class="widget %2$s">',
+                'after_widget' => '</section>',
+                'before_title' => '<h5 class="widget-title">',
+                'after_title' => '</h5>',
+            )
+    );
+
     register_sidebar(array(
         'name' => __('Header Sidebar', 'textdomain'),
         'id' => 'sidebar-2',
@@ -144,6 +163,8 @@ function beshop_widgets_init() {
         'before_widget' => '<div id="%1$s" class="widget %2$s">',
         'after_widget' => '</div>'
     ));
+
+    register_widget('WC_Widget_Layered_Nav_Custom');
 }
 
 add_action('widgets_init', 'beshop_widgets_init');
@@ -251,6 +272,10 @@ function get_product_from_cart($product_id) {
  */
 function ace_shop_page_add_quantity_field($html) {
     $product = get_product_from_cart(get_the_ID());
+    $wc_product = wc_get_product(get_the_ID());
+    if (!$wc_product->is_type('simple')) {
+        return $html;
+    }
     $qty = !empty($product['quantity']) ? $product['quantity'] : 0;
 
     $tpl = '<div class="category_order_wrapper">
@@ -296,6 +321,7 @@ add_filter('woocommerce_add_to_cart_validation', function ($valid, $product_id) 
 
 
 add_action('woocommerce_loop_add_to_cart_link', 'ace_shop_page_add_quantity_field');
+
 add_action('init', function() {
     remove_action('woocommerce_before_shop_loop_item_title', 'woocommerce_template_loop_product_thumbnail', 10);
     add_action('woocommerce_before_shop_loop_item_title', 'woocommerce_template_loop_product_thumbnail', 10);
@@ -319,10 +345,11 @@ if (!function_exists('woocommerce_get_product_thumbnail')) {
     }
 
 }
+
 add_filter('the_content', 'shortcode_unautop', 100);
 
 function my_product_carousel_options($options) {
-    $options['controlNav'] = false;
+    $options['controlNav'] = 'thumbnails'; //false;
     return $options;
 }
 
@@ -369,21 +396,95 @@ function fix_svg_thumb_display() {
 }
 
 add_action('admin_head', 'fix_svg_thumb_display');
+/*
+  function redirect_admin($redirect_to, $request, $user) {
 
-function redirect_admin($redirect_to, $request, $user) {
+  //is there a user to check?
 
-    //is there a user to check?
+  if (isset($user->roles) && is_array($user->roles)) {
 
-    if (isset($user->roles) && is_array($user->roles)) {
+  //check for admins
+  if (in_array('administrator', $user->roles)) {
 
-        //check for admins
-        if (in_array('administrator', $user->roles)) {
+  $redirect_to = $_SERVER['HTTP_HOST'] . '/manage#/'; // Your redirect URL
+  }
+  }
 
-            $redirect_to = $_SERVER['HTTP_HOST'] . '/manage#/'; // Your redirect URL
+  return $redirect_to;
+  }
+
+  add_filter('login_redirect', 'redirect_admin', 10, 3);
+ */
+
+function woocommerce_pre_get_posts($query) {
+    if (!is_admin()) {
+        $query->set('orderby', 'relevance');
+    }
+}
+
+add_action('pre_get_posts', 'woocommerce_pre_get_posts', 20);
+
+function setDefaultImage($product_id) {
+    update_post_meta($product_id, "_thumbnail_id", 59731);
+}
+
+add_action('woocommerce_update_product', 'setDefaultImage', 10, 1);
+add_action('woocommerce_new_product', 'setDefaultImage', 10, 1);
+
+function override_product_image($args) {
+    $id = get_the_ID();
+
+    if (ICL_LANGUAGE_CODE == 'he') {
+        $ru_product_id = apply_filters('wpml_object_id', $id, 'product', false, 'ru');
+        $product = wc_get_product($ru_product_id);
+    } else {
+        $product = wc_get_product($id);
+    }
+
+    if ($product) {
+        $meta_image = $product->get_meta('meta_main_image');
+
+        if ($meta_image != '') {
+
+            $args[0] = $meta_image;
+            $args[1] = 1000;
+            $args[2] = 750;
         }
     }
 
-    return $redirect_to;
+
+    return $args;
 }
 
-add_filter('login_redirect', 'redirect_admin', 10, 3);
+add_filter('wp_get_attachment_image_src', 'override_product_image', 10, 4);
+
+function get_post_custom_thumb($attachment_id) {
+    $id = get_the_ID();
+
+    $product = wc_get_product($id);
+
+    if (get_post_type($id) != 'product' || !$product) {
+        return $attachment_id;
+    }
+
+    $meta_image = $product->get_meta('meta_main_image');
+
+    if ($meta_image == '') {
+        return $attachment_id;
+    }
+
+
+    return $meta_image;
+}
+
+add_filter('wp_get_attachment_url', function($attachment_id) {
+    return get_post_custom_thumb($attachment_id);
+}, 1, 1);
+
+add_filter('image_size_names_choose', function($b = '', $img = '', $c = '') {
+    return ['full' => __('Full Size')];
+}, 1);
+
+add_filter('admin_post_thumbnail_size', function($a) {
+    return [];
+});
