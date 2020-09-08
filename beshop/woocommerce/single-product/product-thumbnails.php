@@ -44,7 +44,15 @@ $meta_images = $product->get_meta('meta_other_images');
 if (!empty($meta_images)) {
     $images = explode(',', $meta_images);
     foreach ($images as $image) {
-        $thumbhtml = sprintf('<div data-thumb="%s" data-thumb-alt="" class="woocommerce-product-gallery__image"><a href="%s"><img width="1000" height="750" src="%s" class="" alt="" title="150" data-caption="" data-src="%s" data-large_image="%s" data-large_image_width="1000" data-large_image_height="750" /></a></div>', $image, $image, $image, $image, $image);
+
+        $image_info = getimagesize($image);
+        $image_path = parse_url($image);
+
+        $resize_path = 'https://d2bsgiz6lkfyqo.cloudfront.net/fit-in/';
+
+        $thumbnail_src = $resize_path . '475x365' . $image_path['path'];
+
+        $thumbhtml = sprintf('<div data-thumb="%4$s" data-thumb-alt="" class="woocommerce-product-gallery__image"><a href="%1$s"><img width="%2$s" height="%3$s" src="%4$s" class="b-lazy" alt="" title="%5$s" data-caption="" data-src="%1$s" data-large_image="%1$s" data-large_image_width="%2$s" data-large_image_height="%3$s" /></a></div>', $image, $image_info[0], $image_info[1], $thumbnail_src, $product->get_title());
         echo apply_filters('woocommerce_single_product_image_thumbnail_html', $thumbhtml, 0);
     }
 }

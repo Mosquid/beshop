@@ -200,6 +200,10 @@ function beshop_scripts() {
 
     /* Ajax search */
     wp_enqueue_script('beshop-search', get_template_directory_uri() . '/js/search.js', array('jquery'), _S_VERSION, true);
+
+    // Lazy load
+    wp_enqueue_script('beshop-blazy', get_template_directory_uri() . '/js/blazy.min.js', array(), _S_VERSION, true);
+    wp_enqueue_script('beshop-blazy-script', get_template_directory_uri() . '/js/lazy-load.js', array('beshop-blazy'), _S_VERSION, true);
 }
 
 add_action('wp_enqueue_scripts', 'beshop_scripts', 99);
@@ -339,7 +343,7 @@ if (!function_exists('woocommerce_get_product_thumbnail')) {
 
     function woocommerce_get_product_thumbnail($size = 'woocommerce_single') {
         global $post, $woocommerce;
-        $output = '<div class="aspect-ratio" style="background-image: url(' . get_the_post_thumbnail_url($post->ID, $size) . ')">';
+        $output = '<div class="aspect-ratio b-lazy" style="background-image: url(' . get_the_post_thumbnail_url($post->ID, $size) . ')" data-src="' . get_the_post_thumbnail_url($post->ID, $size) . '">';
         $output .= '</div>';
         return $output;
     }
@@ -445,10 +449,10 @@ function override_product_image($args) {
         $meta_image = $product->get_meta('meta_main_image');
 
         if ($meta_image != '') {
+            $image_path = parse_url($meta_image);
+            $resize_path = 'https://d2bsgiz6lkfyqo.cloudfront.net/fit-in/';
 
-            $args[0] = $meta_image;
-            $args[1] = 1000;
-            $args[2] = 750;
+            $args[0] = $resize_path . '475x365' . $image_path['path']; //$meta_image;
         }
     }
 
@@ -473,7 +477,6 @@ function get_post_custom_thumb($attachment_id) {
         return $attachment_id;
     }
 
-
     return $meta_image;
 }
 
@@ -488,3 +491,30 @@ add_filter('image_size_names_choose', function($b = '', $img = '', $c = '') {
 add_filter('admin_post_thumbnail_size', function($a) {
     return [];
 });
+
+
+add_filter('woocommerce_gallery_image_html_attachment_image_params', 'change_attachement_image_attributes', 20, 2);
+
+function change_attachement_image_attributes($attr, $attachment) {
+
+    $id = get_the_ID();
+
+    $product = wc_get_product($id);
+    $image = $attr['data-src'];
+    
+    $image_path = parse_url($image);
+    $pices = explode('/', $image_path['path']);
+    
+    $orig_image = implode('/', ['https://antoshco-product-images.s3.eu-central-1.amazonaws.com',$pices[3],$pices[4]]);
+    
+    $image_info = getimagesize($orig_image);
+    
+    $attr['title'] = $product->get_title();
+    $attr['class'] = $attr['class'] . ' b-lazy';
+    $attr['data-src'] = $orig_image;
+    $attr['data-large_image'] = $orig_image;
+    $attr['data-large_image_width'] = $image_info[0];
+    $attr['data-large_image_height'] = $image_info[1];
+
+    return $attr;
+}
