@@ -1,17 +1,15 @@
-
-.term-description{
+.term-description {
   display: none;
 }
 
-.tag-cloud{
+.tag-cloud {
   padding: 6px 20px;
-  
-  .tag-cloud-link{
+
+  .tag-cloud-link {
     background: rgba(3, 144, 236, .1);
     border-radius: 50px;
     display: inline-block;
     margin-right: 4px;
-
     font-family: 'Poppins', sans-serif;
     font-style: normal;
     font-weight: 600;
@@ -23,7 +21,7 @@
     line-height: 24px;
     height: 24px;
 
-    &.current{
+    &.current {
       background: #0390EC;
       color: #FFFFFF;
     }
