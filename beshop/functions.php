@@ -40,6 +40,7 @@ if (!function_exists('beshop_setup')) :
          * provide it for us.
          */
         add_theme_support('title-tag');
+        add_theme_support('woocommerce');
 
         /*
          * Enable support for Post Thumbnails on posts and pages.
@@ -70,6 +71,10 @@ if (!function_exists('beshop_setup')) :
             'script',
                 )
         );
+
+        add_theme_support('wc-product-gallery-zoom');
+        add_theme_support('wc-product-gallery-lightbox');
+        add_theme_support('wc-product-gallery-slider');
 
         // Set up the WordPress core custom background feature.
         add_theme_support(
@@ -118,6 +123,9 @@ function beshop_content_width() {
 
 add_action('after_setup_theme', 'beshop_content_width', 0);
 
+
+//require_once get_template_directory() . '/inc/widgets/class-wc-widget-layered-nav-custom.php';
+
 /**
  * Register widget area.
  *
@@ -131,8 +139,20 @@ function beshop_widgets_init() {
                 'description' => esc_html__('Add widgets here.', 'beshop'),
                 'before_widget' => '<section id="%1$s" class="widget %2$s">',
                 'after_widget' => '</section>',
-                'before_title' => '<span class="widget-title" style="display:none">',
-                'after_title' => '</span>',
+                'before_title' => '<h5 class="widget-title">',
+                'after_title' => '</h5>',
+            )
+    );
+
+    register_sidebar(
+            array(
+                'name' => esc_html__('Sidebar', 'beshop'),
+                'id' => 'sidebar-3',
+                'description' => esc_html__('Add widgets here.', 'beshop'),
+                'before_widget' => '<section id="%1$s" class="widget %2$s">',
+                'after_widget' => '</section>',
+                'before_title' => '<h5 class="widget-title">',
+                'after_title' => '</h5>',
             )
     );
 
@@ -143,6 +163,8 @@ function beshop_widgets_init() {
         'before_widget' => '<div id="%1$s" class="widget %2$s">',
         'after_widget' => '</div>'
     ));
+
+//    register_widget('WC_Widget_Layered_Nav_Custom');
 }
 
 add_action('widgets_init', 'beshop_widgets_init');
@@ -151,7 +173,7 @@ add_action('widgets_init', 'beshop_widgets_init');
  * Enqueue scripts and styles.
  */
 function beshop_scripts() {
-    wp_enqueue_style('beshop-style', get_template_directory_uri() . '/css/main.css', array(), _S_VERSION);
+    wp_enqueue_style('beshop-style', get_template_directory_uri() . '/css/main.min.css', array(), _S_VERSION);
 
     wp_enqueue_script('beshop-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true);
     wp_enqueue_script('beshop-material', get_template_directory_uri() . '/js/material.js', array('jquery'), _S_VERSION, true);
@@ -178,6 +200,10 @@ function beshop_scripts() {
 
     /* Ajax search */
     wp_enqueue_script('beshop-search', get_template_directory_uri() . '/js/search.js', array('jquery'), _S_VERSION, true);
+
+    // Lazy load
+    wp_enqueue_script('beshop-blazy', get_template_directory_uri() . '/js/blazy.min.js', array(), _S_VERSION, true);
+    wp_enqueue_script('beshop-blazy-script', get_template_directory_uri() . '/js/lazy-load.js', array('beshop-blazy'), _S_VERSION, true);
 }
 
 add_action('wp_enqueue_scripts', 'beshop_scripts', 99);
@@ -206,6 +232,11 @@ require get_template_directory() . '/inc/customizer.php';
  * Shortcodes
  */
 require get_template_directory() . '/inc/shortcodes.php';
+
+/**
+ * Utility functions
+ */
+//require get_template_directory() . '/woocommerce/utils.php';
 
 /**
  * Template hooks
@@ -245,6 +276,10 @@ function get_product_from_cart($product_id) {
  */
 function ace_shop_page_add_quantity_field($html) {
     $product = get_product_from_cart(get_the_ID());
+    $wc_product = wc_get_product(get_the_ID());
+    if (!$wc_product->is_type('simple')) {
+        return $html;
+    }
     $qty = !empty($product['quantity']) ? $product['quantity'] : 0;
 
     $tpl = '<div class="category_order_wrapper">
@@ -290,6 +325,7 @@ add_filter('woocommerce_add_to_cart_validation', function ($valid, $product_id) 
 
 
 add_action('woocommerce_loop_add_to_cart_link', 'ace_shop_page_add_quantity_field');
+
 add_action('init', function() {
     remove_action('woocommerce_before_shop_loop_item_title', 'woocommerce_template_loop_product_thumbnail', 10);
     add_action('woocommerce_before_shop_loop_item_title', 'woocommerce_template_loop_product_thumbnail', 10);
@@ -307,16 +343,17 @@ if (!function_exists('woocommerce_get_product_thumbnail')) {
 
     function woocommerce_get_product_thumbnail($size = 'woocommerce_single') {
         global $post, $woocommerce;
-        $output = '<div class="aspect-ratio" style="background-image: url(' . get_the_post_thumbnail_url($post->ID, $size) . ')">';
+        $output = '<div class="aspect-ratio b-lazy" style="background-image: url(' . get_the_post_thumbnail_url($post->ID, $size) . ')" data-src="' . get_the_post_thumbnail_url($post->ID, $size) . '">';
         $output .= '</div>';
         return $output;
     }
 
 }
+
 add_filter('the_content', 'shortcode_unautop', 100);
 
 function my_product_carousel_options($options) {
-    $options['controlNav'] = false;
+    $options['controlNav'] = 'thumbnails'; //false;
     return $options;
 }
 
@@ -364,30 +401,16 @@ function fix_svg_thumb_display() {
 
 add_action('admin_head', 'fix_svg_thumb_display');
 
-function redirect_admin($redirect_to, $request, $user) {
-
-    //is there a user to check?
-
-    if (isset($user->roles) && is_array($user->roles)) {
-
-        //check for admins
-        if (in_array('administrator', $user->roles)) {
-
-            $redirect_to = $_SERVER['HTTP_HOST'] . '/manage#/'; // Your redirect URL
-        }
+function woocommerce_pre_get_posts($query) {
+    if (!is_admin()) {
+        $query->set('orderby', 'relevance');
     }
-
-    return $redirect_to;
 }
 
-add_filter('login_redirect', 'redirect_admin', 10, 3);
+add_action('template_redirect', 'remove_shop_breadcrumbs');
 
-add_action( 'woocommerce_thankyou', 'custom_woocommerce_auto_complete_order' );
-function custom_woocommerce_auto_complete_order( $order_id ) { 
-    if ( ! $order_id ) {
-        return;
-    }
+function remove_shop_breadcrumbs() {
 
-    $order = wc_get_order( $order_id );
-    $order->update_status( 'completed' );
+//    if (is_shop())
+    remove_action('woocommerce_before_main_content', 'woocommerce_breadcrumb', 20, 0);
 }
