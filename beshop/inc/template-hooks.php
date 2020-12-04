@@ -30,15 +30,3 @@ add_action('init', 'remove_comment_support');
 function remove_comment_support() {
     remove_post_type_support('product', 'comments');
 }
-
-/* Force currency change for user */
-
-function force_change_currency() {
-    if (defined('BESHOP_FORCE_CURRENCY_SET') && function_exists('alg_wc_cs_session_set') && function_exists('alg_wc_cs_session_get')) {
-        if (alg_wc_cs_session_get('alg_currency') != BESHOP_FORCE_CURRENCY_SET) {
-            alg_wc_cs_session_set('alg_currency', BESHOP_FORCE_CURRENCY_SET);
-        }
-    }
-}
-
-add_action("template_redirect", "force_change_currency");

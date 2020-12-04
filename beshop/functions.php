@@ -40,7 +40,6 @@ if (!function_exists('beshop_setup')) :
          * provide it for us.
          */
         add_theme_support('title-tag');
-        add_theme_support('woocommerce');
 
         /*
          * Enable support for Post Thumbnails on posts and pages.
@@ -132,8 +131,8 @@ function beshop_widgets_init() {
                 'description' => esc_html__('Add widgets here.', 'beshop'),
                 'before_widget' => '<section id="%1$s" class="widget %2$s">',
                 'after_widget' => '</section>',
-                'before_title' => '<h5 class="widget-title">',
-                'after_title' => '</h5>',
+                'before_title' => '<span class="widget-title" style="display:none">',
+                'after_title' => '</span>',
             )
     );
 
@@ -207,11 +206,6 @@ require get_template_directory() . '/inc/customizer.php';
  * Shortcodes
  */
 require get_template_directory() . '/inc/shortcodes.php';
-
-/**
- * Utility functions
- */
-require get_template_directory() . '/woocommerce/utils.php';
 
 /**
  * Template hooks
@@ -387,3 +381,13 @@ function redirect_admin($redirect_to, $request, $user) {
 }
 
 add_filter('login_redirect', 'redirect_admin', 10, 3);
+
+add_action( 'woocommerce_thankyou', 'custom_woocommerce_auto_complete_order' );
+function custom_woocommerce_auto_complete_order( $order_id ) { 
+    if ( ! $order_id ) {
+        return;
+    }
+
+    $order = wc_get_order( $order_id );
+    $order->update_status( 'completed' );
+}
