@@ -14,7 +14,7 @@
 	</div><!-- #content -->
 	</div><!-- .wrapper -->
 	<footer class="footer">
-        <a href="#" class="beonline"></a>
+        <a class="beonline"></a>
     </footer>
 </div><!-- #page -->
 

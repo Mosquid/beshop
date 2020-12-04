@@ -173,7 +173,7 @@ add_action('widgets_init', 'beshop_widgets_init');
  * Enqueue scripts and styles.
  */
 function beshop_scripts() {
-    wp_enqueue_style('beshop-style', get_template_directory_uri() . '/css/main.css', array(), _S_VERSION);
+    wp_enqueue_style('beshop-style', get_template_directory_uri() . '/css/main.min.css', array(), _S_VERSION);
 
     wp_enqueue_script('beshop-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true);
     wp_enqueue_script('beshop-material', get_template_directory_uri() . '/js/material.js', array('jquery'), _S_VERSION, true);
@@ -501,14 +501,14 @@ function change_attachement_image_attributes($attr, $attachment) {
 
     $product = wc_get_product($id);
     $image = $attr['data-src'];
-    
+
     $image_path = parse_url($image);
     $pices = explode('/', $image_path['path']);
-    
-    $orig_image = implode('/', ['https://antoshco-product-images.s3.eu-central-1.amazonaws.com',$pices[3],$pices[4]]);
-    
+
+    $orig_image = implode('/', ['https://antoshco-product-images.s3.eu-central-1.amazonaws.com', $pices[3], $pices[4]]);
+
     $image_info = getimagesize($orig_image);
-    
+
     $attr['title'] = $product->get_title();
     $attr['class'] = $attr['class'] . ' b-lazy';
     $attr['data-src'] = $orig_image;
@@ -518,3 +518,19 @@ function change_attachement_image_attributes($attr, $attachment) {
 
     return $attr;
 }
+
+function beshop_add_async_defer_attribute($tag, $handle) {
+    $add_to = array('beshop-custom',
+        'beshop-skip-link-focus-fix',
+        'beshop-navigation',
+        'beshop-material',
+        'beshop-slick',
+        'beshop-script',
+        'beshop-search'
+        );
+    if (!in_array($handle, $add_to))
+        return $tag;
+    return str_replace(' src', ' async defer src', $tag);
+}
+
+//add_filter('script_loader_tag', 'beshop_add_async_defer_attribute', 10, 2);
