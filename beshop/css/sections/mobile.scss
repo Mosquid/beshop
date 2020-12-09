@@ -1,66 +1,61 @@
 @media screen and (max-width: 1180px) {
-    
-    .pc,
-    .breadcrumb {
-        display: none !important;
-    }
+  .pc,
+  .breadcrumb {
+    display: none !important;
+  }
 
-    .wrapper {
-        min-width: 320px;
-    }
+  .wrapper {
+    min-width: 320px;
+  }
+
+  .container {
+    width: 320px;
+    padding: 0 20px;
+    overflow: hidden;
+  }
+
+  footer.footer {
+    min-width: 100%;
+    height: 260px;
 
     .container {
-        width: 320px;
-        padding: 0 20px;
-        overflow: hidden;
+      @include flex-direction(column);
+      height: 100%;
     }
 
-    footer.footer {
-        height: 260px;
-
-        .container {
-            height: 100%;
-            @include flex-direction(column);
-        }
-
-        min-width: 100%;
-
-        .call,
-        .write {
-            display: none;
-        }
-
-        .social_wrap {
-            width: 140px;
-            @include flexbox();
-            @include justify-content(space-between);
-            @include align-items(center);
-            margin-bottom: 40px;
-
-            a {
-                margin: 0;
-            }
-        }
+    .call,
+    .write {
+      display: none;
     }
 
-    .footer_logo {
-        margin-top: 60px;
+    .social_wrap {
+      @include flexbox();
+      @include justify-content(space-between);
+      @include align-items(center);
+      width: 140px;
+      margin-bottom: 40px;
+
+      a {
+        margin: 0;
+      }
     }
+  }
 
-    .footer_right {
-        width: 100%;
-        @include flexbox();
-        @include justify-content(center);
-        @include align-items(center);
+  .footer_logo {
+    margin-top: 60px;
+  }
 
-        .fb,
-        .inst,
-        .you {
-            margin-right: 0 !important;
-            margin-left: 0 !important;
-        }
+  .footer_right {
+    @include flexbox();
+    @include justify-content(center);
+    @include align-items(center);
+    width: 100%;
+
+    .fb,
+    .inst,
+    .you {
+      margin-right: 0 !important;
+      margin-left: 0 !important;
     }
-
-    /*header*/
-   
+  }
 }

@@ -1,10 +1,10 @@
-var ADDING_TO_CART = "adding-to-cart"
+var ADDING_TO_CART = 'adding-to-cart'
 
 function debounce(func, wait, immediate) {
   var timeout
   return function () {
-    var context = this,
-      args = arguments
+    var context = this
+    var args = arguments
     var later = function () {
       timeout = null
       if (!immediate) func.apply(context, args)
@@ -17,7 +17,7 @@ function debounce(func, wait, immediate) {
 }
 
 function updateCartPodcutQty() {
-  var actionBtn = this.find(".add_to_cart_button")
+  var actionBtn = this.find('.add_to_cart_button')
 
   if (!actionBtn || !actionBtn.length) return
 
@@ -27,7 +27,7 @@ function updateCartPodcutQty() {
   if (!qty || !productId) return
 
   this.addClass(ADDING_TO_CART)
-  actionBtn.trigger("click")
+  actionBtn.trigger('click')
 }
 
 function updateQtyNodes(nodes, cart) {
@@ -36,7 +36,7 @@ function updateQtyNodes(nodes, cart) {
   var IDs = []
 
   if (cart.length) {
-    var $cartProducts = cart.find(".remove_from_cart_button")
+    var $cartProducts = cart.find('.remove_from_cart_button')
 
     if ($cartProducts.length) {
       IDs = $cartProducts.toArray().map(function (item) {
@@ -48,22 +48,23 @@ function updateQtyNodes(nodes, cart) {
   nodes.each(function (_, node) {
     try {
       var $node = jQuery(node)
-      var productId = $node.find(".ajax_add_to_cart").get(0).dataset.product_id
-      var $qty = $node.find(".item_number")
+      var productId = $node.find('.ajax_add_to_cart').get(0).dataset.product_id
+      var $qty = $node.find('.item_number')
       if (!IDs.includes(productId)) $qty.val(0)
-    } catch (error) {
+    }
+    catch (error) {
       return false
     }
   })
 }
 
 function setInitialBtnStatus(node) {
-  const HIDE_BOT = "hide_bot"
-  const HIDE_TOP = "hide_top"
-  const qtyInput = node.find(".item_number")
-  const addToStore = node.find(".ajax_add_to_cart")
-  const cartButton = node.find(".category_order_button")
-  const capacity = node.find(".category_order_capacity")
+  const HIDE_BOT = 'hide_bot'
+  const HIDE_TOP = 'hide_top'
+  const qtyInput = node.find('.item_number')
+  const addToStore = node.find('.ajax_add_to_cart')
+  const cartButton = node.find('.category_order_button')
+  const capacity = node.find('.category_order_capacity')
   const qty = parseInt(qtyInput.val())
 
   if (!qty) return
@@ -72,18 +73,19 @@ function setInitialBtnStatus(node) {
     addToStore[0].dataset.quantity = qty
     capacity.removeClass(HIDE_BOT)
     cartButton.addClass(HIDE_TOP)
-  } catch (error) {
-    console.log("[Failed setting initial qty]")
+  }
+  catch (error) {
+    console.error('[Failed setting initial qty]')
   }
 }
 
 function handleItemAdded(_, frags) {
   jQuery(`.${ADDING_TO_CART}`).removeClass(ADDING_TO_CART)
-  const cartCount = jQuery(".cart_button span")
+  const cartCount = jQuery('.cart_button span')
 
   try {
     const cart = Object.values(frags)[0]
-    const items = jQuery(cart).find("li")
+    const items = jQuery(cart).find('li')
     let total = 0
 
     items.each(function(_, item) {
@@ -93,36 +95,37 @@ function handleItemAdded(_, frags) {
     })
 
     cartCount.text(total)
-  } catch (error) {}
+  }
+  catch (error) {}
 }
 
-;(function ($) {
+(function ($) {
   function initQtyFields() {
     var nodes = $(
-      ".products .product .category_order, .single-product .category_order"
+      '.products .product .category_order, .single-product .category_order'
     )
 
-    $(document.body).on("removed_from_cart", function () {
-      var cart = $("ul.woocommerce-mini-cart")
+    $(document.body).on('removed_from_cart', function () {
+      var cart = $('ul.woocommerce-mini-cart')
       updateQtyNodes(nodes, cart)
     })
 
-    $(document.body).on("added_to_cart", handleItemAdded)
+    $(document.body).on('added_to_cart', handleItemAdded)
 
     if (!nodes.length) return
 
     nodes.each(function (_, node) {
       var $node = $(node)
-      var actionBtn = $node.find(".add_to_cart_button")
-      var controls = $node.find(".qty-control")
-      var qty = $node.find(".item_number")
+      var actionBtn = $node.find('.add_to_cart_button')
+      var controls = $node.find('.qty-control')
+      var qty = $node.find('.item_number')
 
       setInitialBtnStatus($node)
 
-      controls.on("click", function (event) {
+      controls.on('click', function (event) {
         var $control = $(event.target)
-        var action = $control.data("action")
-        var addition = action === "plus" ? 1 : -1
+        var action = $control.data('action')
+        var addition = action === 'plus' ? 1 : -1
         var qtyVal = parseInt(qty.val())
         var newVal = Math.max(0, qtyVal + addition)
 
@@ -130,9 +133,9 @@ function handleItemAdded(_, frags) {
         actionBtn[0].dataset.quantity = newVal
       })
 
-      controls.on("click", debounce(updateCartPodcutQty.bind($node), 1000))
+      controls.on('click', debounce(updateCartPodcutQty.bind($node), 1000))
     })
   }
 
   $(document).ready(initQtyFields)
-})(jQuery)
+}(jQuery))

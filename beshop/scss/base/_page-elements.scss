@@ -1,0 +1,30 @@
+/*
+ * 3.7 Layouts styles
+ */
+
+.site-wrapper {
+  overflow: hidden;
+  position: relative;
+}
+
+.container {
+  @include padding(92px 10px 30px);
+  margin: 0 auto;
+  max-width: $site-width-default;
+
+  @include respond-to(xs-max) {
+    @include padding(70px 10px 40px);
+  }
+}
+
+.short-info {
+  @include font-size(18px);
+  @include spacing(max-width, 766px);
+  @include margin(0 auto 86px);
+  line-height: 1.5;
+  text-align: center;
+
+  @include respond-to(xs-max) {
+    @include margin-bottom(60px);
+  }
+}

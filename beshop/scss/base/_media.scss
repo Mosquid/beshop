@@ -1,0 +1,15 @@
+/*
+ * 3.5 Media elements styles
+ */
+
+img,
+media {
+  max-width: 100%;
+  vertical-align: top;
+  height: auto !important;
+}
+
+// sass-lint:disable id-name-format
+#map_canvas img { //Google map fix
+  max-width: none;
+}
