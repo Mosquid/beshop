@@ -1,0 +1,67 @@
+/*
+ * 3.3 Form base styles
+ */
+
+input[type='text'],
+input[type='password'],
+input[type='email'],
+input[type='search'],
+input[type='tel'],
+textarea {
+  @include font-size(12px);
+  @include padding(12px 10px 13px);
+  background-color: $color-white;
+  border: 1px solid $color-border;
+  box-sizing: border-box;
+  box-shadow: none;
+  color: $color-base-text;
+  display: inline-block;
+  line-height: 1;
+  margin: 0;
+  max-width: 100%;
+  width: 100%;
+  // transition: all .2s ease-in-out;
+  -webkit-appearance: none;
+}
+
+input[type='submit'],
+input[type='button'] {
+  border: 0;
+}
+
+label {
+  @include font-size(16px);
+  @include padding-bottom(10px);
+  letter-spacing: .6px;
+  display: block;
+  position: relative;
+
+  .form-required {
+    color: $color-require;
+  }
+}
+
+input[type='checkbox'] {
+  display: none;
+}
+
+input[type='checkbox'] + label::before {
+  @include spacing(width, 18px);
+  @include spacing(height, 18px);
+  @include margin(-1px 10px 0 0);
+  content: '';
+  cursor: pointer;
+  background-image: image-url('checkbox.png');
+  background-position: 0 bottom;
+  background-repeat: no-repeat;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+input[type='checkbox']:checked + label::before {
+  background-position: 0 0;
+}
+
+.form-item {
+  @include margin-bottom(25px);
+}

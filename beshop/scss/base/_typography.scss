@@ -1,0 +1,47 @@
+/*
+ * 3.2 Typography
+ */
+
+p {
+  @include margin(0 0 15px);
+}
+
+a {
+  color: $color-link;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+@for $index from 1 through 6 {
+  h#{$index} {
+    @include margin(0 0 22px);
+    color: $color-base-text;
+    font-family: $poppins-medium;
+  }
+}
+
+h1 {
+  @include font-size(42px);
+}
+
+h2 {
+  @include font-size(34px);
+}
+
+h3 {
+  @include font-size(24px);
+}
+
+h4 {
+  @include font-size(20px);
+}
+
+h5 {
+  @include font-size(18px);
+}
+
+h6 {
+  @include font-size(16px);
+}

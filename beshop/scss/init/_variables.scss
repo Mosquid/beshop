@@ -1,0 +1,70 @@
+//
+// 2.1 CSS Variables
+//
+
+// Typey allows you to alter font weights site-wide with this map.
+$font-weight: (
+  'black':          900,
+  extra-bold:       800,
+  bold:             700,
+  semibold:         600,
+  medium:           500,
+  normal:           400,
+  light:            300,
+  extra-light:      200,
+  thin:             100
+);
+
+// The font size set on the root html element.
+$base-font-size:    15px;
+
+// Output a horizontal grid to help with debugging typography.
+$typey-debug: false;
+
+// The length unit in which to output font size and margin values.
+// Supported values: px, em, rem.
+$base-unit:         'rem';
+
+// px fallbacks for rem units are needed for IE 8 and earlier.
+$rem-fallback:      false;
+
+// Site width variables:
+$site-width-default: 1170px;
+$site-width-narrow: 782px;
+$site-width-sidebar: 688px;
+$site-width-wide-sidebar: 592px;
+
+// Breakpoints
+//
+// Use the `respond-to()` mixin to use named breakpoints. Documentation is
+// available in the [Breakpoint wiki
+// pages](https://github.com/at-import/breakpoint/wiki/Respond-To).
+//
+// Style guide: sass.variables.breakpoints
+@include add-breakpoint(xs, (320px, 'no-query' true));
+@include add-breakpoint(xs-max,    (max-width 767px, 'no-query' true));
+@include add-breakpoint(m, (768px, 'no-query' true));
+@include add-breakpoint(m-max,   (max-width 1024px, 'no-query' true));
+@include add-breakpoint(l, (1025px, 'no-query' true));
+@include add-breakpoint(l-max,  (max-width 1200px, 'no-query' true));
+@include add-breakpoint(xl, (1201px, 'no-query' true));
+
+// Fonts
+$poppins: 'Poppins-Regular', sans-serif;
+$poppins-semi-bold-italic: 'Poppins-SemiBoldItalic', sans-serif;
+$poppins-thin: 'Poppins-Thin', sans-serif;
+$poppins-light: 'Poppins-Light', sans-serif;
+$poppins-bold: 'Poppins-Bold', sans-serif;
+$poppins-medium-italic: 'Poppins-MediumItalic', sans-serif;
+$poppins-extra-light: 'Poppins-ExtraLight', sans-serif;
+$poppins-medium: 'Poppins-Medium', sans-serif;
+$poppins-extra-light-italic: 'Poppins-ExtraLightItalic', sans-serif;
+$poppins-bold-italic: 'Poppins-BoldItalic', sans-serif;
+$poppins-thin-italic: 'Poppins-ThinItalic', sans-serif;
+$poppins-extra-bold-italic: 'Poppins-ExtraBoldItalic', sans-serif;
+$poppins-semi-bold: 'Poppins-SemiBold', sans-serif;
+$poppins-black-italic: 'Poppins-BlackItalic', sans-serif;
+$poppins-light-italic: 'Poppins-LightItalic', sans-serif;
+$poppins-extra-bold: 'Poppins-ExtraBold', sans-serif;
+$poppins-italic: 'Poppins-Italic', sans-serif;
+$poppins-black: 'Poppins-Black', sans-serif;

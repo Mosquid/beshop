@@ -152,11 +152,11 @@ add_action('widgets_init', 'beshop_widgets_init');
  * Enqueue scripts and styles.
  */
 function beshop_scripts() {
-    wp_enqueue_style('beshop-style', get_template_directory_uri() . '/css/main.css', array(), _S_VERSION);
+    wp_enqueue_style('beshop-style', get_template_directory_uri() . '/build/css/styles.css', array(), _S_VERSION);
 
     wp_enqueue_script('beshop-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true);
-    wp_enqueue_script('beshop-material', get_template_directory_uri() . '/js/material.js', array('jquery'), _S_VERSION, true);
-    wp_enqueue_script('beshop-slick', get_template_directory_uri() . '/js/slick.js', array('jquery'), _S_VERSION, true);
+    wp_enqueue_script('beshop-material', get_template_directory_uri() . '/libs/materialize/js/materialize.min.js', array('jquery'), _S_VERSION, true);
+    wp_enqueue_script('beshop-slick', get_template_directory_uri() . '/node_modules/slick-carousel/slick/slick.min.js', array('jquery'), _S_VERSION, true);
     wp_enqueue_script('beshop-script', get_template_directory_uri() . '/js/script.js', array('jquery'), _S_VERSION, true);
     wp_enqueue_script('beshop-custom', get_template_directory_uri() . '/js/custom.js', array('jquery'), _S_VERSION, true);
 
@@ -173,9 +173,6 @@ function beshop_scripts() {
             'setCartQty' => 'beshop_set_cart_qty'
         )
     ));
-
-    /* Add google fonts */
-    wp_enqueue_style('beshop-googlefonts', 'https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,700;1,300&family=Rubik&display=swap', false);
 
     /* Ajax search */
     wp_enqueue_script('beshop-search', get_template_directory_uri() . '/js/search.js', array('jquery'), _S_VERSION, true);
@@ -360,9 +357,9 @@ add_filter('upload_mimes', 'cc_mime_types');
 function fix_svg_thumb_display() {
     echo '
     <style>
-      td.media-icon img[src$=".svg"], img[src$=".svg"].attachment-post-thumbnail { 
-        width: 100% !important; 
-        height: auto !important; 
+      td.media-icon img[src$=".svg"], img[src$=".svg"].attachment-post-thumbnail {
+        width: 100% !important;
+        height: auto !important;
       }
       </style>
     ';

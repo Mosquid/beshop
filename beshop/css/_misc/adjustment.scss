@@ -4,153 +4,165 @@ $footer-height: 90px;
 $container-width: 1180px;
 
 * {
-    box-sizing: border-box;
-    -webkit-tap-highlight-color: transparent;}
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
 
 .mobile {
-    display: none;}
+  display: none;
+}
 
 body,
 html {
-    width: 100%;
-    height: 100%;
-    margin: 0 auto;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
 }
 
 #page {
-    height: 100%;
-    width: 100%;
+  height: 100%;
+  width: 100%;
 }
+
 #main {
-    margin: 0 auto;
-    max-width: 700px;
+  margin: 0 auto;
+  max-width: 700px;
 }
 
 body {
-    background-color: #FCFCFC;
-    font-family: 'Poppins', sans-serif;
-    font-size: 16px;
-    line-height: 25px;
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
+  background-color: #fcfcfc;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  line-height: 25px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
 }
 
 h1 {
-    font-size: 52px !important;
-    line-height: 79px;
+  font-size: 52px !important;
+  line-height: 79px;
 }
 
 h2 {
-    font-size: 32px;
-    line-height: 58px;
+  font-size: 32px;
+  line-height: 58px;
 }
 
 h3 {
-    font-size: 24px;
-    line-height: 35px;
+  font-size: 24px;
+  line-height: 35px;
 }
 
 h4 {
-    font-size: 18px;
-    line-height: 26px;
+  font-size: 18px;
+  line-height: 26px;
 }
 
 h5 {
-    font-size: 14px;
-    line-height: 20px;
+  font-size: 14px;
+  line-height: 20px;
 }
 
 p {
-    font-size: 14px;
-    letter-spacing: 0.4px;
-    line-height: 28px;
+  font-size: 14px;
+  letter-spacing: .4px;
+  line-height: 28px;
 }
 
 .wrapper {
-    min-height: 100%;
-    min-width: 650px;
-    width: 100%;
-    max-width: 1000px;
-    margin: 0 auto;
-    position: relative;
-    padding-top: 70px;
-    background-color: #FCFCFC;
+  min-height: 100%;
+  min-width: 650px;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+  padding-top: 70px;
+  background-color: #fcfcfc;
 }
+
 .content-area {
-    #filters-bar {
-        margin-right: 30px;
-        min-width: 200px;
-        h5 {
-            margin-top: 0;
-        }
+  #filters-bar {
+    margin-right: 30px;
+    min-width: 200px;
+
+    h5 {
+      margin-top: 0;
     }
-    &.wooc {
-        display: flex;
-        #main {
-            flex: 1;
-        }
+  }
+
+  &.wooc {
+    display: flex;
+
+    #main {
+      flex: 1;
     }
+  }
 }
 
 .wrapper::after {
-    content: '';
-    display: block;
-    height: $footer-height;
-    overflow: hidden;
+  content: '';
+  display: block;
+  height: $footer-height;
+  overflow: hidden;
 }
 
 .container {
-    width: $container-width;
-    margin: 0 auto;
+  width: $container-width;
+  margin: 0 auto;
 }
-.slick-dots li button:before { 
-    font-size: 6px!important;
-    color: #DADADA!important;
-    opacity: 1!important;
-}
-.slick-dots li.slick-active button:before {
-    color: #2586FD!important;
-    opacity: 1!important;
-}
-/*FOOTER*/
 
+.slick-dots li button::before {
+  font-size: 6px !important;
+  color: #dadada !important;
+  opacity: 1 !important;
+}
+
+.slick-dots li.slick-active button::before {
+  color: #2586fd !important;
+  opacity: 1 !important;
+}
+
+/*FOOTER*/
 .footer {
-    height: $footer-height;
+  height: $footer-height;
+  min-width: 320px;
+  width: 100%;
+  margin-top: -$footer-height;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  position: relative;
+
+  a {
+    display: inline-block;
+    width: 157px;
+    height: 40px;
+    background: url('../img/footer/logo.svg') center no-repeat;
+  }
+}
+
+nav a.sidenav-trigger {
+  display: inline-block !important;
+}
+
+@media screen and (max-width: 1180px) {
+  .pc {
+    display: none !important;
+  }
+
+  .wrapper {
+    min-width: 320px;
+  }
+
+  .container {
+    width: 100%;
+    padding: 0 20px;
+    overflow: hidden;
+  }
+
+  .footer {
     min-width: 320px;
     width: 100%;
-    margin-top: -$footer-height;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 100;
-    position: relative;
-    a {
-        display: inline-block;
-        width: 157px;
-        height: 40px;
-        background: url('../img/footer/logo.svg') center no-repeat;
-    }
-}
-nav a.sidenav-trigger {
-    display: inline-block!important;
-}
-@media screen and (max-width: 1180px) {
-    .pc {
-        display: none !important;
-    }
-
-    .wrapper {
-        min-width: 320px;
-    }
-
-    .container {
-        width: 100%;
-        padding: 0 20px;
-        overflow: hidden;
-    }
-
-    .footer {
-        min-width: 320px;
-        width: 100%;
-    }
+  }
 }
