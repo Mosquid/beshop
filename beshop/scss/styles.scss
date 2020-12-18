@@ -40,8 +40,11 @@ Primary use:    Personal page
 @import 'base/menu-button';
 @import 'base/page-elements';
 @import 'base/tables';
+@import 'base/layout';
 
 // Components
+@import 'components/header';
+@import 'components/footer';
 
 // sass-lint:disable clean-import-paths
 // @import '~hamburgers/_sass/hamburgers/hamburgers';

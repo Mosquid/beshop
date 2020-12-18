@@ -1,0 +1,52 @@
+.footer {
+  @include padding(26px 0 3px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, .2);
+  position: fixed;
+  bottom: 0;
+  background: $color-footer;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+
+  .menu {
+    display: flex;
+    justify-content: space-around;
+
+    .menu-item {
+      a {
+        @include padding(42px 0 0);
+        @include font-size(8px);
+        color: $color-footer-menu;
+        text-decoration: none;
+
+        &:hover {
+          color: $color-chateau-green;
+        }
+      }
+
+      &.home {
+        a {
+          background: url('../../img/ico/basket.svg') center no-repeat;
+        }
+      }
+
+      &.cart {
+        a {
+          background: url('../../img/ico/cart-grey.svg') center no-repeat;
+        }
+      }
+
+      &.profile {
+        a {
+          background: url('../../img/ico/profile.svg') center no-repeat;
+        }
+      }
+
+      &.about-us {
+        a {
+          background: url('../../img/ico/info.svg') center no-repeat;
+        }
+      }
+    }
+  }
+}

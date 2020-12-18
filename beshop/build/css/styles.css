@@ -485,12 +485,6 @@ html {
   }
 }
 
-@media (max-width: 767px) {
-  html {
-    font-size: calc(1.56vw + 8px);
-  }
-}
-
 body {
   min-width: 21.33333rem;
   font-size: 1.06667rem;
@@ -722,6 +716,118 @@ media {
  */
 table {
   width: 100%;
+}
+
+.page-wrapper {
+  padding: 0 1.33333rem;
+}
+
+/*
+ * 4.8 Header section styles
+ */
+.nav-wrapper {
+  padding: 1.26667rem 0 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav-wrapper .logo-wrapper {
+  width: 7.4rem;
+}
+
+.nav-wrapper .header_buttons {
+  display: flex;
+}
+
+.nav-wrapper .header_buttons .widget_icl_lang_sel_widget {
+  width: 4rem;
+}
+
+.nav-wrapper .header_buttons .widget_icl_lang_sel_widget a.wpml-ls-item-toggle {
+  border: 0;
+}
+
+.nav-wrapper .cart-button {
+  width: 1.46667rem;
+  height: 1.46667rem;
+  position: relative;
+  background: url("../../img/ico/cart.svg") center no-repeat;
+  display: block;
+}
+
+.nav-wrapper .cart-button span {
+  width: 0.73333rem;
+  height: 0.73333rem;
+  font-size: 0.53333rem;
+  background: #2cac4a;
+  border-radius: 8px;
+  position: absolute;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-weight: bold;
+  text-align: center;
+  top: -4px;
+  right: -4px;
+}
+
+.widget_search .widgettitle,
+.widget_search .search-submit {
+  display: none;
+}
+
+.widget_search .search-field {
+  height: 2.4rem;
+  padding: 0 0 0 2.8rem;
+  font-size: 0.93333rem;
+  background: url("../../img/ico/search-light-grey.svg") no-repeat 13px 7px;
+  border-radius: 6px;
+  border: 1px solid #e0e0e0;
+}
+
+.footer {
+  padding: 1.73333rem 0 0.2rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  position: fixed;
+  bottom: 0;
+  background: #fff;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+}
+
+.footer .menu {
+  display: flex;
+  justify-content: space-around;
+}
+
+.footer .menu .menu-item a {
+  padding: 2.8rem 0 0;
+  font-size: 0.53333rem;
+  color: #333;
+  text-decoration: none;
+}
+
+.footer .menu .menu-item a:hover {
+  color: #2cac4a;
+}
+
+.footer .menu .menu-item.home a {
+  background: url("../../img/ico/basket.svg") center no-repeat;
+}
+
+.footer .menu .menu-item.cart a {
+  background: url("../../img/ico/cart-grey.svg") center no-repeat;
+}
+
+.footer .menu .menu-item.profile a {
+  background: url("../../img/ico/profile.svg") center no-repeat;
+}
+
+.footer .menu .menu-item.about-us a {
+  background: url("../../img/ico/info.svg") center no-repeat;
 }
 
 /*# sourceMappingURL=styles.css.map */
