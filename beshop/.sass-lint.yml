@@ -55,8 +55,7 @@ rules:
 
   # Name Formats
   class-name-format:
-    - 2
-    - convention: hyphenatedbem
+    - 0
   function-name-format: 2
   id-name-format: 2
   mixin-name-format:

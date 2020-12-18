@@ -11,11 +11,11 @@
 
 ?>
 
-	</div><!-- #content -->
-	</div><!-- .wrapper -->
-	<footer class="footer">
-        <a href="#" class="beonline"></a>
-    </footer>
+    </div><!-- #content -->
+  </div><!-- .wrapper -->
+  <footer class="footer">
+    <?php dynamic_sidebar('sidebar-3'); ?>
+  </footer>
 </div><!-- #page -->
 
 <?php wp_footer(); ?>

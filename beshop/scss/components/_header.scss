@@ -2,3 +2,66 @@
  * 4.8 Header section styles
  */
 
+.nav-wrapper {
+  @include padding(19px 0 15px);
+  display: flex;
+  justify-content: space-between;
+
+  .logo-wrapper {
+    @include spacing(width, 111px);
+  }
+
+  .header_buttons {
+    display: flex;
+
+    .widget_icl_lang_sel_widget {
+      @include spacing(width, 60px);
+
+      a.wpml-ls-item-toggle {
+        border: 0;
+      }
+    }
+  }
+
+  .cart-button {
+    @include spacing(width, 22px);
+    @include spacing(height, 22px);
+    position: relative;
+    background: url('../../img/ico/cart.svg') center no-repeat;
+    display: block;
+
+    span {
+      @include spacing(width, 11px);
+      @include spacing(height, 11px);
+      @include font-size(8px);
+      background: $color-cart-count;
+      border-radius: 8px;
+      position: absolute;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      font-weight: bold;
+      text-align: center;
+      top: -4px;
+      right: -4px;
+    }
+  }
+}
+
+.widget_search {
+  .widgettitle,
+  .search-submit {
+    display: none;
+  }
+
+  .search-field {
+    @include spacing(height, 36px);
+    @include padding(0 0 0 42px);
+    @include font-size(14px);
+    background: url('../../img/ico/search-light-grey.svg') no-repeat 13px 7px;
+    border-radius: 6px;
+    border: 1px solid $color-search;
+  }
+}

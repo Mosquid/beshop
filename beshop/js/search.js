@@ -49,10 +49,10 @@
       obj.resultsList.html('');
     }
 
-    var appendCloseBtn = function () {
-      var closeBtn = $('<a name="close" class="search-close">Close</a>');
-      $('.widget_search').append(closeBtn);
-    }
+    // var appendCloseBtn = function () {
+    //   var closeBtn = $('<a name="close" class="search-close">Close</a>');
+    //   $('.widget_search').append(closeBtn);
+    // }
 
     var ajaxSearch = function (searchPhrase) {
       var data = {
