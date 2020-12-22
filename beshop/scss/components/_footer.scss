@@ -1,5 +1,5 @@
 .footer {
-  @include padding(26px 0 3px);
+  @include padding(7px 0 3px);
   box-shadow: 0 20px 40px rgba(0, 0, 0, .2);
   position: fixed;
   bottom: 0;
@@ -8,43 +8,58 @@
   width: 100%;
   z-index: 100;
 
-  .menu {
+  .footer-buttons {
     display: flex;
     justify-content: space-around;
 
-    .menu-item {
-      a {
-        @include padding(42px 0 0);
-        @include font-size(8px);
-        color: $color-footer-menu;
-        text-decoration: none;
+    a {
+      @include font-size(8px);
+      color: $color-footer-menu;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
 
-        &:hover {
-          color: $color-chateau-green;
+      svg {
+        @include spacing(width, 26px);
+        @include spacing(height, 26px);
+        @include margin(0 0 2px);
+
+        path {
+          fill: $color-tapa;
         }
       }
 
-      &.home {
-        a {
-          background: url('../../img/ico/basket.svg') center no-repeat;
+      &.active,
+      &:hover {
+        color: $color-chateau-green;
+
+        svg {
+          path {
+            fill: $color-link;
+          }
         }
       }
 
-      &.cart {
-        a {
-          background: url('../../img/ico/cart-grey.svg') center no-repeat;
-        }
-      }
+      &.cart-button {
+        position: relative;
 
-      &.profile {
-        a {
-          background: url('../../img/ico/profile.svg') center no-repeat;
-        }
-      }
-
-      &.about-us {
-        a {
-          background: url('../../img/ico/info.svg') center no-repeat;
+        span {
+          @include spacing(width, 11px);
+          @include spacing(height, 11px);
+          @include font-size(8px);
+          background: $color-cart-count;
+          border-radius: 8px;
+          position: absolute;
+          text-align: center;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: #fff;
+          font-weight: bold;
+          text-align: center;
+          top: -4px;
+          right: -4px;
         }
       }
     }
