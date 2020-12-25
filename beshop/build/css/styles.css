@@ -491,6 +491,7 @@ body {
   line-height: 1.5;
   font-family: "Poppins-Regular", sans-serif;
   color: #333;
+  background: #fcfcfc;
   position: relative;
 }
 
@@ -767,7 +768,7 @@ table {
   justify-content: center;
   align-items: center;
   color: #fff;
-  font-weight: bold;
+  font-weight: 700;
   text-align: center;
   top: -4px;
   right: -4px;
@@ -846,10 +847,147 @@ table {
   justify-content: center;
   align-items: center;
   color: #fff;
-  font-weight: bold;
+  font-weight: 700;
   text-align: center;
   top: -4px;
   right: -4px;
+}
+
+.woocommerce ul.products[class*='columns-'],
+.woocommerce-page ul.products[class*='columns-'] {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.woocommerce ul.products[class*='columns-']::before,
+.woocommerce-page ul.products[class*='columns-']::before {
+  display: none;
+}
+
+.woocommerce ul.products[class*='columns-'] li.product,
+.woocommerce-page ul.products[class*='columns-'] li.product {
+  margin: 0 0 0.66667rem;
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  flex-basis: 48%;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.woocommerce ul.products[class*='columns-'] li.product:not(:nth-child(2n)),
+.woocommerce-page ul.products[class*='columns-'] li.product:not(:nth-child(2n)) {
+  margin-right: 0.73333rem;
+}
+
+.woocommerce ul.products[class*='columns-'] li.product .aspect-ratio,
+.woocommerce-page ul.products[class*='columns-'] li.product .aspect-ratio {
+  background-repeat: no-repeat;
+  padding-top: 75.15528%;
+  background-size: cover;
+}
+
+.woocommerce ul.products[class*='columns-'] li.product .woocommerce-loop-product__title,
+.woocommerce-page ul.products[class*='columns-'] li.product .woocommerce-loop-product__title {
+  padding: 0.53333rem 0.66667rem;
+  font-size: 0.86667rem;
+  line-height: 16px;
+  font-weight: 400;
+}
+
+.woocommerce ul.products[class*='columns-'] li.product .price,
+.woocommerce-page ul.products[class*='columns-'] li.product .price {
+  padding: 0 0.66667rem;
+  font-size: 0.93333rem;
+  line-height: 21px;
+  font-weight: 700;
+  color: #333;
+}
+
+.category_order_wrapper {
+  padding: 0 0.53333rem 0.66667rem;
+}
+
+.category_order_wrapper .category_order {
+  background: #2cac4a;
+  border-radius: 14px;
+  position: relative;
+  overflow: hidden;
+}
+
+.category_order_wrapper .category_order_button {
+  padding: 0.13333rem 0;
+  font-size: 0.8rem;
+  display: block;
+  width: 100%;
+  color: #fff;
+  font-weight: 700;
+  line-height: 24px;
+  text-align: center;
+  background: #2cac4a;
+  border-radius: 14px;
+  position: relative;
+  transition: 300ms;
+}
+
+.category_order_wrapper .category_order_button.hide_top {
+  -webkit-transform: translateY(-105%);
+          transform: translateY(-105%);
+  opacity: 0;
+}
+
+.category_order_wrapper .category_order_capacity {
+  margin-top: -1.86667rem;
+  background: #139231;
+  border-radius: 14px;
+  display: flex;
+  transition: 300ms;
+}
+
+.category_order_wrapper .category_order_capacity.hide_bot {
+  -webkit-transform: scale(0);
+          transform: scale(0);
+  opacity: 0;
+}
+
+.category_order_wrapper .category_order_capacity .item_number {
+  width: 100%;
+  border: 0;
+  color: #fff;
+  background: none;
+  text-align: center;
+  outline: none;
+  pointer-events: none;
+}
+
+.category_order_wrapper .category_order_capacity .qty-control {
+  width: 1.86667rem;
+  height: 1.86667rem;
+  flex: 1 0 auto;
+  padding: 0;
+  background: #2cac4a;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 50%;
+  text-align: center;
+  transition: 300ms;
+  transition-delay: 150ms;
+  outline: none;
+  cursor: pointer;
+}
+
+.adding-to-cart .category_order_wrapper .category_order_capacity .qty-control {
+  transition-duration: 0s;
+  transition-delay: 0s;
+  opacity: 0;
+}
+
+.category_order_wrapper .category_order_capacity .qty-control.category_order_select_minus {
+  background-image: url("../../img/ico/minus.svg");
+}
+
+.category_order_wrapper .category_order_capacity .qty-control.category_order_select_plus {
+  background-image: url("../../img/ico/plus.svg");
 }
 
 /*# sourceMappingURL=styles.css.map */
