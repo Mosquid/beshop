@@ -261,7 +261,6 @@
     display: flex;
     padding-left: 15px;
     overflow: hidden;
-    flex-direction: column;
   }
   .parent {
     font-family: 'Poppins', sans-serif;
@@ -270,6 +269,8 @@
     font-size: 16px;
     line-height: 24px;
     margin-bottom: 12px;
+    margin-top: 5px;
+    min-width: 100%;
   }
   .child{
     font-family: 'Poppins', sans-serif;

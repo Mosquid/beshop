@@ -7299,15 +7299,16 @@ input[type=range]::-ms-thumb {
     background-color: #fff;
     display: flex;
     padding-left: 15px;
-    overflow: hidden;
-    flex-direction: column; }
+    overflow: hidden; }
   .category_list .parent {
     font-family: 'Poppins', sans-serif;
     font-style: normal;
     font-weight: 600;
     font-size: 16px;
     line-height: 24px;
-    margin-bottom: 12px; }
+    margin-bottom: 12px;
+    margin-top: 5px;
+    min-width: 100%; }
   .category_list .child {
     font-family: 'Poppins', sans-serif;
     font-style: normal;
