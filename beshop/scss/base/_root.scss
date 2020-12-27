@@ -43,6 +43,11 @@ body {
     z-index: 0;
   }
 
+  .site {
+    @include spacing(max-width, $site-width-default);
+    margin: 0 auto;
+  }
+
   &.overlayed {
     overflow: hidden;
 
