@@ -16,6 +16,12 @@
       flex-basis: 48%;
       border-radius: 5px;
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
+
+      a {
+        flex-grow: 1;
+      }
 
       &:not(:nth-child(2n)) {
         @include margin-right(11px);

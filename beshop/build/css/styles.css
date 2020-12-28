@@ -506,6 +506,11 @@ body .menu-overlay {
   z-index: 0;
 }
 
+body .site {
+  max-width: 78rem;
+  margin: 0 auto;
+}
+
 body.overlayed {
   overflow: hidden;
 }
@@ -587,6 +592,11 @@ h5 {
 
 h6 {
   font-size: 1.06667rem;
+}
+
+.page-title {
+  font-size: 1.06667rem;
+  margin-bottom: 0;
 }
 
 /*
@@ -720,7 +730,11 @@ table {
 }
 
 .page-wrapper {
-  padding: 0 1.33333rem;
+  padding: 0 1.33333rem 4.66667rem;
+}
+
+.content-area {
+  padding: 1rem 0 0;
 }
 
 /*
@@ -800,6 +814,8 @@ table {
 }
 
 .footer .footer-buttons {
+  max-width: 78rem;
+  margin: 0 auto;
   display: flex;
   justify-content: space-around;
 }
@@ -873,6 +889,13 @@ table {
   flex-basis: 48%;
   border-radius: 5px;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.woocommerce ul.products[class*='columns-'] li.product a,
+.woocommerce-page ul.products[class*='columns-'] li.product a {
+  flex-grow: 1;
 }
 
 .woocommerce ul.products[class*='columns-'] li.product:not(:nth-child(2n)),
@@ -988,6 +1011,80 @@ table {
 
 .category_order_wrapper .category_order_capacity .qty-control.category_order_select_plus {
   background-image: url("../../img/ico/plus.svg");
+}
+
+.sidenav {
+  display: none;
+}
+
+.woocommerce-result-count {
+  font-size: 0.66667rem;
+}
+
+.woocommerce-ordering {
+  width: 12.66667rem;
+  position: relative;
+}
+
+.site-main .woocommerce-ordering {
+  margin: -1.6rem 0 0;
+}
+
+.woocommerce-ordering .select-wrapper {
+  position: relative;
+}
+
+.woocommerce-ordering .select-wrapper::after {
+  top: 0.86667rem;
+  display: inline-block;
+  position: absolute;
+  right: 0;
+  content: '';
+  width: 0;
+  height: 0;
+  border-left: 3px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 4px solid #7f7f7f;
+}
+
+.woocommerce-ordering .orderby {
+  position: absolute !important;
+  clip: rect(1px, 1px, 1px, 1px);
+  overflow: hidden;
+  height: 1px;
+  width: 1px;
+  word-wrap: normal;
+}
+
+.woocommerce-ordering .dropdown-trigger {
+  color: #7f7f7f;
+  padding: 0;
+  border: 0;
+  background: none;
+  outline: none;
+}
+
+.woocommerce-ordering .caret {
+  display: none;
+}
+
+.woocommerce-ordering .dropdown-content {
+  display: none;
+  position: absolute;
+  top: 26px !important;
+  background: #fff;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.woocommerce-ordering .dropdown-content li {
+  padding: 0.13333rem 0.66667rem;
+  font-size: 0.8rem;
+  outline: none;
+}
+
+.woocommerce-ordering .dropdown-content li.selected {
+  background: #e0e0e0;
 }
 
 /*# sourceMappingURL=styles.css.map */
