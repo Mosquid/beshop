@@ -6,12 +6,20 @@
 
     function sales() {
       $('.sales_header').slick({
-        infinite: true,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        arrows: false,
-        fade: true,
-        dots: true
+        centerMode: true,
+        centerPadding: 0,
+        slidesToShow: 3,
+        dots: true,
+        responsive: [
+          {
+            breakpoint: 768,
+            settings: {
+              arrows: false,
+              centerMode: true,
+              slidesToShow: 1
+            }
+          }
+        ]
       });
     }
 
