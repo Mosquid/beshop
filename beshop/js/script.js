@@ -49,6 +49,18 @@
       });
     }
 
+    var categoriesView = localStorage.getItem('categoriesView');
+    var classes = ['list', 'list-pic', 'grid', 'big-grid'];
+
+    $('.category_list > div').addClass(categoriesView);
+
+    $('.categories-switcher').on('click', function () {
+      $('.category_list > div').each(function () {
+        this.className = classes[($.inArray(this.className, classes) + 1) % classes.length];
+        localStorage.setItem('categoriesView', this.className);
+      });
+    });
+
     // eslint-disable-next-line no-unused-vars
     function showCurrentValue() {
       let orderCapacity = document.querySelectorAll('.category_order_capacity');

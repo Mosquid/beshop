@@ -10,10 +10,16 @@ require_once( __DIR__ . '/shortcodes/banners.php');
  */
 function custom_product_categories($atts) {
     $categories = getAllCategories($atts);
-    $tpl = '<div class="category_list">%1$s</div>';
+    $tpl = '<div class="category_list"><div>%1$s</div></div>';
     $exclude = !empty($atts['exclude']) ? $atts['exclude'] : false;
 
     ob_start();
+    echo '<div class="categories-header"><h4>';
+    echo _e('Menu', 'beshop');
+    echo '</h4><button class="categories-switcher" arial-label="Switch Categories View"></button>';
+    echo '</div>';
+    echo '<div class="categories-wrapper">';
+
     foreach ($categories as $cat) {
         if ((!empty($exclude) && (int) $exclude === $cat->term_id) || $cat->slug === "uncategorized")
             continue;
@@ -34,7 +40,7 @@ function custom_product_categories($atts) {
 
         echo '</div>';
     }
-
+    echo '</div>';
 
     return sprintf($tpl, ob_get_clean());
 }
