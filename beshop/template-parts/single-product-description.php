@@ -6,6 +6,10 @@ $contents = get_query_var('description_content');
 ?>
 
 <div class="description-block">
-    <div class="heading"><?php echo $heading ?></div>
-    <div class="contents"><p><?php echo $contents ?></p></div>
+    <?php if ($heading) : ?>
+        <div class="heading"><?php echo $heading ?></div>
+    <?php endif; ?>
+    <?php if ($contents) : ?>
+        <div class="contents"><p><?php echo $contents ?></p></div>
+    <?php endif; ?>
 </div>
