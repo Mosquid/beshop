@@ -6,12 +6,20 @@
 
     function sales() {
       $('.sales_header').slick({
-        infinite: true,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        arrows: false,
-        fade: true,
-        dots: true
+        centerMode: true,
+        centerPadding: 0,
+        slidesToShow: 3,
+        dots: true,
+        responsive: [
+          {
+            breakpoint: 768,
+            settings: {
+              arrows: false,
+              centerMode: true,
+              slidesToShow: 1
+            }
+          }
+        ]
       });
     }
 
@@ -40,6 +48,18 @@
         }
       });
     }
+
+    var categoriesView = localStorage.getItem('categoriesView');
+    var classes = ['list', 'list-pic', 'grid', 'big-grid'];
+
+    $('.category_list > div').addClass(categoriesView);
+
+    $('.categories-switcher').on('click', function () {
+      $('.category_list > div').each(function () {
+        this.className = classes[($.inArray(this.className, classes) + 1) % classes.length];
+        localStorage.setItem('categoriesView', this.className);
+      });
+    });
 
     // eslint-disable-next-line no-unused-vars
     function showCurrentValue() {

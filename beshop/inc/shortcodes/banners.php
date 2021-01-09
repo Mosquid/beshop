@@ -16,14 +16,15 @@ function sc_banner($atts = array(), $content = '')
 {
   $atts = shortcode_atts(array(
     'title' => '',
-    'image' => ''
+    'image' => '',
+    'description'=> ''
   ), $atts);
 
   $tpl = '<div class="sales_header_item">
-    <div class="img" style="background-image: url(%1$s)"></div>
-    <h3>%2$s</h3>
-    <p class="banner-text">%3$s</p>
-  </div>';
+            <img class="slide-img" src="%1$s" />
+            %2$s
+            %3$s
+          </div>';
 
-  return sprintf($tpl, $atts['image'], $atts['title'], $content);
+  return sprintf($tpl, $atts['image'], $atts['title'] ? '<h3>'.$atts['title'].'</h3>' : '', $atts['description'] ? '<p class="slide-description">' . $atts['description'] . '</p>' : '', $content);
 }

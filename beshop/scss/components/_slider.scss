@@ -1,0 +1,31 @@
+.slick-slider {
+  .slick-slide {
+    border-radius: 5px;
+    overflow: hidden;
+  }
+
+  .slick-dots {
+    display: flex;
+    justify-content: center;
+
+    li {
+      @include margin(0 2px);
+
+      button {
+        @include spacing(width, 6px);
+        @include spacing(height, 6px);
+        padding: 0;
+        border: 0;
+        background: $color-slider-dot;
+        font-size: 0;
+        border-radius: 50%;
+      }
+
+      &.slick-active {
+        button {
+          background: $color-slider-dot-active;
+        }
+      }
+    }
+  }
+}

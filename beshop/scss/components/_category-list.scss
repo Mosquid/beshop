@@ -1,0 +1,202 @@
+// simple list
+.category_list {
+  .categories-header {
+    @include margin(0 0 8px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    h4 {
+      @include font-size(16px);
+      line-height: 1.5;
+      margin-bottom: 0;
+    }
+  }
+
+  .categories-switcher {
+    @include spacing(width, 20px);
+    @include spacing(height, 20px);
+    border: 0;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 90%;
+  }
+
+  .categories-wrapper {
+    .child {
+      display: none;
+    }
+  }
+
+  .list {
+    .categories-switcher {
+      background-image: url('../../img/ico/categories-list.svg');
+    }
+
+    .categories-wrapper {
+      box-shadow: 0 2px 4px rgba(0, 0, 0, .1);
+      border-radius: 5px;
+      overflow: hidden;
+
+      .item {
+        background: $color-white;
+
+        &:not(:last-child) {
+          border-bottom: 1px solid $color-category-border;
+        }
+
+        .parent {
+          @include padding(16px 20px 15px);
+          @include font-size(15px);
+          display: block;
+          color: $color-category;
+          text-decoration: none;
+          position: relative;
+
+          &::after {
+            @include spacing(width, 15px);
+            @include spacing(height, 15px);
+            @include spacing(right, 20px);
+            top: 50%;
+            transform: translateY(-50%);
+            display: inline-block;
+            position: absolute;
+            content: '';
+            background-image: url('../../img/ico/arrow-right.svg');
+            background-repeat: no-repeat;
+          }
+        }
+
+        img {
+          display: none;
+        }
+      }
+    }
+  }
+
+  // mid pics
+  .list-pic {
+    .categories-switcher {
+      background-image: url('../../img/ico/categories-list-pic.svg');
+    }
+
+    .categories-wrapper {
+      .item {
+        @include margin(0 0 10px);
+        display: flex;
+        align-items: center;
+        background: $color-white;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, .1);
+        border-radius: 5px;
+        overflow: hidden;
+
+        .img-wrapper {
+          @include spacing(width, 112px);
+          @include spacing(height, 84px);
+
+          img {
+            object-fit: cover;
+          }
+        }
+
+        .parent {
+          @include padding(0 28px);
+          @include font-size(15px);
+          display: block;
+          flex: 1 1 auto;
+          color: $color-category;
+          text-decoration: none;
+          position: relative;
+        }
+      }
+    }
+  }
+
+  // big pics
+  .grid {
+    .categories-switcher {
+      background-image: url('../../img/ico/categories-grid.svg');
+    }
+
+    .categories-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+
+      .item {
+        @include margin(0 0 10px);
+        background: $color-white;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, .1);
+        border-radius: 5px;
+        overflow: hidden;
+        flex-basis: 48%;
+
+        .parent {
+          @include padding(9px 12px);
+          @include font-size(15px);
+          display: block;
+          color: $color-category;
+          text-decoration: none;
+          position: relative;
+        }
+
+        .img-wrapper {
+          position: relative;
+          padding-bottom: 75%;
+          overflow: hidden;
+
+          img {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+      }
+    }
+  }
+
+  // big grid
+  .big-grid {
+    .categories-switcher {
+      background-image: url('../../img/ico/categories-big-grid.svg');
+    }
+
+    .categories-wrapper {
+      .item {
+        @include margin(0 0 10px);
+        background: $color-white;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, .1);
+        border-radius: 5px;
+        overflow: hidden;
+        flex-basis: 100%;
+
+        .parent {
+          @include padding(11px 12px);
+          @include font-size(18px);
+          display: block;
+          font-weight: weight('semibold');
+          color: $color-category;
+          text-decoration: none;
+          position: relative;
+          text-align: center;
+        }
+
+        .img-wrapper {
+          position: relative;
+          padding-bottom: 75%;
+          overflow: hidden;
+
+          img {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+      }
+    }
+  }
+}

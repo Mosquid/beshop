@@ -4,16 +4,22 @@ require_once( __DIR__ . '/shortcodes/banners.php');
 
 /**
  * List all (or limited) product categories in tree.
- * 
+ *
  * @param array $atts Attributes.
  * @return string
  */
 function custom_product_categories($atts) {
     $categories = getAllCategories($atts);
-    $tpl = '<div class="category_list">%1$s</div>';
+    $tpl = '<div class="category_list"><div>%1$s</div></div>';
     $exclude = !empty($atts['exclude']) ? $atts['exclude'] : false;
 
     ob_start();
+    echo '<div class="categories-header"><h4>';
+    echo _e('Menu', 'beshop');
+    echo '</h4><button class="categories-switcher" arial-label="Switch Categories View"></button>';
+    echo '</div>';
+    echo '<div class="categories-wrapper">';
+
     foreach ($categories as $cat) {
         if ((!empty($exclude) && (int) $exclude === $cat->term_id) || $cat->slug === "uncategorized")
             continue;
@@ -22,25 +28,26 @@ function custom_product_categories($atts) {
         $term_img = wp_get_attachment_url($thumb_id);
 
         echo '<div class="item">';
+        if ($term_img) {
+            echo '<div class="img-wrapper"><img src="' . $term_img . '" alt="' . get_post_meta($thumb_id, '_wp_attachment_image_alt', true) . '"></div>';
+        }
         echo '<a class="parent" href="' . get_term_link($cat->term_id) . '">' . $cat->name . '</a>';
 //        echo '<div class="childs">';
         foreach (getAllCategories(['parent' => $cat->term_id]) as $child) {
             echo '<a class="child" href="' . get_term_link($child->term_id) . '">' . $child->name . '</a>';
         }
 //        echo '</div>';
-        if ($term_img) {
-            echo '<img src="' . $term_img . '" alt="' . get_post_meta($thumb_id, '_wp_attachment_image_alt', true) . '">';
-        }
+
         echo '</div>';
     }
-
+    echo '</div>';
 
     return sprintf($tpl, ob_get_clean());
 }
 
 /**
  * Will return all categories
- * 
+ *
  * @param array $atts Attributes.
  * @return array
  */
