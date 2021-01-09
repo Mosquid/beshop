@@ -1,0 +1,121 @@
+.woocommerce {
+  div.product {
+    div.images {
+      .woocommerce-product-gallery__wrapper {
+        a {
+          border-radius: 5px;
+          overflow: hidden;
+          display: block;
+          position: relative;
+          padding-bottom: 75%;
+
+          img {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+      }
+    }
+
+    .summary {
+      @include respond-to(m) {
+        @include padding(15px 0 0);
+        width: 41% !important;
+      }
+
+      .product_title {
+        @include font-size(24px);
+        @include spacing(line-height, 33px);
+        font-weight: weight('semibold');
+
+        @include respond-to(m) {
+          @include font-size(36px);
+          @include spacing(line-height, 50px);
+        }
+      }
+
+      .description-block {
+        @include font-size(16px);
+        @include spacing(line-height, 22px);
+
+        @include respond-to(m) {
+          @include font-size(18px);
+          @include spacing(line-height, 25px);
+          @include margin(0 0 33px);
+        }
+      }
+
+      .price {
+        @include font-size(24px);
+        line-height: 1.5;
+        font-weight: weight('semibold');
+        color: $color-price;
+
+        @include respond-to(m) {
+          @include font-size(32px);
+          @include spacing(line-height, 48px);
+          @include margin(0 0 10px);
+        }
+      }
+
+      .cart {
+        @include respond-to(m) {
+          @include spacing(width, 251px);
+        }
+
+        .category_order_wrapper {
+          @include padding(0);
+
+          .category_order {
+            border-radius: 20px;
+          }
+
+          .category_order_button {
+            @include padding(1px 0 7px);
+            @include font-size(18px);
+            @include spacing(line-height, 44px);
+            @include spacing(height, 44px);
+
+            @include respond-to(m) {
+            //   @include font-size(24px);
+              @include padding(1px 0 7px);
+              @include spacing(height, 46px);
+            }
+          }
+
+          .category_order_capacity {
+            @include margin(-44px 0 0);
+            border-radius: 20px;
+
+            @include respond-to(m) {
+              @include margin(-46px 0 0);
+            }
+
+            .item_number {
+              @include font-size(18px);
+              @include spacing(height, 44px);
+
+              @include respond-to(m) {
+                @include spacing(height, 46px);
+              }
+            }
+
+            .qty-control {
+              @include spacing(width, 44px);
+              @include spacing(height, 44px);
+              border-radius: 20px;
+
+              @include respond-to(m) {
+                @include spacing(width, 46px);
+                @include spacing(height, 46px);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
