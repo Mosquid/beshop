@@ -10,7 +10,7 @@
     // init
     this.init = function () {
       initHandlers();
-      appendCloseBtn();
+      // appendCloseBtn();
     };
 
     this.results = [];

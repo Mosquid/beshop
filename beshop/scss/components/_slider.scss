@@ -1,31 +1,82 @@
-.slick-slider {
-  .slick-slide {
+.swiper-container {
+  .swiper-slide {
     border-radius: 5px;
     overflow: hidden;
+
+    @include respond-to(m) {
+      width: 766px;
+      height: 360px;
+    }
+
+    &:not(.swiper-slide-active) {
+      @include respond-to(m) {
+        filter: blur(2px);
+      }
+    }
+
+    img {
+      @include respond-to(m) {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
   }
 
-  .slick-dots {
+  .swiper-pagination {
+    @include margin(8px 0 0);
     display: flex;
     justify-content: center;
 
-    li {
+    @include respond-to(m) {
+      @include margin(6px 0 0);
+    }
+
+    .swiper-pagination-bullet {
       @include margin(0 2px);
+      @include spacing(width, 6px);
+      @include spacing(height, 6px);
+      padding: 0;
+      border: 0;
+      background: $color-slider-dot;
+      font-size: 0;
+      border-radius: 50%;
 
-      button {
-        @include spacing(width, 6px);
-        @include spacing(height, 6px);
-        padding: 0;
-        border: 0;
-        background: $color-slider-dot;
-        font-size: 0;
-        border-radius: 50%;
+      @include respond-to(m) {
+        @include margin(0 3px);
+        @include spacing(width, 10px);
+        @include spacing(height, 10px);
       }
 
-      &.slick-active {
-        button {
-          background: $color-slider-dot-active;
-        }
+      &-active {
+        background: $color-slider-dot-active;
       }
+    }
+  }
+
+  .swiper-navigation {
+    @include respond-to(m-max) {
+      display: none;
+    }
+
+    @include padding(0 105px);
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    z-index: 100;
+
+    > div {
+      @include spacing(width, 38px);
+      @include spacing(height, 38px);
+      border-radius: 50%;
+      background: url('../../img/ico/slider-arrow.svg') no-repeat;
+    }
+
+    .swiper-button-next {
+      transform: rotate(180deg);
     }
   }
 }
