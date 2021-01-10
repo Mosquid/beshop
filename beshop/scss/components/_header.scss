@@ -56,6 +56,10 @@
     display: none;
   }
 
+  label {
+    padding: 0;
+  }
+
   .search-field {
     @include spacing(height, 36px);
     @include padding(0 0 0 42px);
