@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
 (function($) {
   document.addEventListener('DOMContentLoaded', function () {
     $('.sidenav').sidenav();
@@ -7,16 +9,8 @@
     let breakpoint = window.matchMedia('(min-width: 768px)');
 
     let homepageSlider = function () {
-      let mobileSlider;
-      let desktopSlider;
-
       if (breakpoint.matches) {
-        if (mobileSlider) {
-          mobileSlider.destroy();
-        }
-
-        // eslint-disable-next-line no-undef
-        desktopSlider = new Swiper('.sales_header', {
+        let desktopSlider = new Swiper('.sales_header', {
           simulateTouch: false,
           slidesPerView: 'auto',
           loop: true,
@@ -40,12 +34,7 @@
         });
       }
       else {
-        if (desktopSlider) {
-          desktopSlider.destroy();
-        }
-
-        // eslint-disable-next-line no-undef
-        mobileSlider = new Swiper('.sales_header', {
+        let mobileSlider = new Swiper('.sales_header', {
           simulateTouch: false,
           effect: 'slide',
           loop: true,
@@ -102,7 +91,6 @@
       });
     });
 
-    // eslint-disable-next-line no-unused-vars
     function showCurrentValue() {
       let orderCapacity = document.querySelectorAll('.category_order_capacity');
       let buyButton = document.querySelectorAll('.category_order_button');

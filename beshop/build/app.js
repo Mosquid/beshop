@@ -93,6 +93,9 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+/* eslint-disable no-unused-vars */
+
+/* eslint-disable no-undef */
 (function ($) {
   document.addEventListener('DOMContentLoaded', function () {
     $('.sidenav').sidenav();
@@ -101,16 +104,8 @@
     var breakpoint = window.matchMedia('(min-width: 768px)');
 
     var homepageSlider = function homepageSlider() {
-      var mobileSlider;
-      var desktopSlider;
-
       if (breakpoint.matches) {
-        if (mobileSlider) {
-          mobileSlider.destroy();
-        } // eslint-disable-next-line no-undef
-
-
-        desktopSlider = new Swiper('.sales_header', {
+        var desktopSlider = new Swiper('.sales_header', {
           simulateTouch: false,
           slidesPerView: 'auto',
           loop: true,
@@ -133,12 +128,7 @@
           }
         });
       } else {
-        if (desktopSlider) {
-          desktopSlider.destroy();
-        } // eslint-disable-next-line no-undef
-
-
-        mobileSlider = new Swiper('.sales_header', {
+        var mobileSlider = new Swiper('.sales_header', {
           simulateTouch: false,
           effect: 'slide',
           loop: true,
@@ -191,7 +181,7 @@
         this.className = classes[($.inArray(this.className, classes) + 1) % classes.length];
         localStorage.setItem('categoriesView', this.className);
       });
-    }); // eslint-disable-next-line no-unused-vars
+    });
 
     function showCurrentValue() {
       var orderCapacity = document.querySelectorAll('.category_order_capacity');

@@ -793,6 +793,10 @@ table {
   display: none;
 }
 
+.widget_search label {
+  padding: 0;
+}
+
 .widget_search .search-field {
   height: 2.4rem;
   padding: 0 0 0 2.8rem;
@@ -1212,6 +1216,16 @@ table {
   .woocommerce div.product .summary .cart .category_order_wrapper .category_order_capacity .qty-control {
     width: 3.06667rem;
     height: 3.06667rem;
+  }
+}
+
+.swiper-container {
+  margin: 0 0 1.93333rem;
+}
+
+@media (min-width: 768px) {
+  .swiper-container {
+    margin: 0 0 2.33333rem;
   }
 }
 

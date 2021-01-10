@@ -1,4 +1,10 @@
 .swiper-container {
+  @include margin(0 0 29px);
+
+  @include respond-to(m) {
+    @include margin(0 0 35px);
+  }
+
   .swiper-slide {
     border-radius: 5px;
     overflow: hidden;
