@@ -2,55 +2,156 @@
  * 4.8 Header section styles
  */
 
+.header {
+  @include respond-to(m) {
+    background: $color-white;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, .02);
+  }
+}
+
+.main_navigation {
+  @include spacing(max-width, $site-width-default);
+  @include padding(0 20px);
+  margin: 0 auto;
+
+  @include respond-to(m) {
+    position: relative;
+  }
+}
+
 .nav-wrapper {
   @include padding(19px 0 15px);
   display: flex;
   justify-content: space-between;
 
+  @include respond-to(m) {
+    @include padding(18px 0 17px);
+    justify-content: flex-start;
+  }
+
   .logo-wrapper {
     @include spacing(width, 111px);
+
+    @include respond-to(m) {
+      @include margin(7px 0 0);
+      @include spacing(width, 190px);
+      margin-right: auto;
+    }
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .nav-buttons {
+    display: none;
+    width: 100%;
+    margin-right: 8.6%;
+
+    @include respond-to(m) {
+      @include spacing(max-width, 280px);
+      display: flex;
+    }
+
+    @include respond-to(l) {
+      @include spacing(max-width, 372px);
+    }
   }
 
   .header_buttons {
     display: flex;
+
+    @include respond-to(m) {
+      @include padding(13px 0 0);
+      margin-left: auto;
+    }
 
     .widget_icl_lang_sel_widget {
       @include spacing(width, 60px);
 
       a.wpml-ls-item-toggle {
         border: 0;
+
+        @include respond-to(m) {
+          @include font-size(24px);
+          padding-top: 0;
+          letter-spacing: .75px;
+          font-weight: weight('semibold');
+
+          &::after {
+            @include spacing(right, 7px);
+            border-width: 5px;
+            border-top-width: 4px;
+          }
+        }
+      }
+
+      .wpml-ls-sub-menu {
+        box-shadow: 1px 1px 5px rgba(0, 0, 0, .1);
       }
     }
-  }
 
-  .cart-button {
-    @include spacing(width, 22px);
-    @include spacing(height, 22px);
-    position: relative;
-    background: url('../../img/ico/cart.svg') center no-repeat;
-    display: block;
+    .cart-button {
+      @include spacing(width, 22px);
+      @include spacing(height, 22px);
+      position: relative;
+      background: url('../../img/ico/cart.svg') center no-repeat;
+      display: block;
 
-    span {
-      @include spacing(width, 11px);
-      @include spacing(height, 11px);
-      @include font-size(8px);
-      background: $color-cart-count;
-      border-radius: 8px;
-      position: absolute;
-      text-align: center;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: #fff;
-      font-weight: weight('bold');
-      text-align: center;
-      top: -4px;
-      right: -4px;
+      @include respond-to(m) {
+        display: none;
+      }
+
+      span {
+        @include spacing(width, 11px);
+        @include spacing(height, 11px);
+        @include font-size(8px);
+        background: $color-cart-count;
+        border-radius: 8px;
+        position: absolute;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+        font-weight: weight('bold');
+        text-align: center;
+        top: -4px;
+        right: -4px;
+      }
+    }
+
+    .open-search {
+      display: none;
+
+      @include respond-to(m) {
+        @include margin(0 5px 0 10px);
+        @include spacing(width, 23px);
+        @include spacing(height, 23px);
+        display: block;
+        background: none;
+        border: 0;
+      }
     }
   }
 }
 
 .widget_search {
+  @include respond-to(m) {
+    @include spacing(top, 20px);
+    @include spacing(right, 20px);
+    position: absolute;
+    background: $color-white;
+    max-width: 0;
+    width: 100%;
+    overflow: hidden;
+    transition: max-width .2s ease;
+
+    &.active {
+      @include spacing(max-width, 294px);
+    }
+  }
+
   .widgettitle,
   .search-submit {
     display: none;
@@ -67,5 +168,15 @@
     background: url('../../img/ico/search-light-grey.svg') no-repeat 13px 7px;
     border-radius: 6px;
     border: 1px solid $color-search;
+
+    @include respond-to(m) {
+      @include spacing(height, 46px);
+      @include padding(0 30px 0 22px);
+      @include font-size(16px);
+      border: 1px solid $color-search-border;
+      background: url('../../img/ico/icon-search.svg') no-repeat right 17px top 13px;
+      background-size: 6%;
+      border-radius: 2px;
+    }
   }
 }

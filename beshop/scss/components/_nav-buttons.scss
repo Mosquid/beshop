@@ -1,0 +1,80 @@
+.nav-buttons {
+  @include spacing(max-width, $site-width-default);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+
+  @include respond-to(m) {
+    justify-content: space-between;
+    margin: 0;
+  }
+
+  a {
+    @include font-size(8px);
+    color: $color-footer-menu;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+
+    @include respond-to(m) {
+      @include font-size(14px);
+      flex-basis: 25%;
+    }
+
+    svg {
+      @include spacing(width, 26px);
+      @include spacing(height, 26px);
+      @include margin(0 0 2px);
+
+      @include respond-to(m) {
+        @include margin(0 0 6px);
+      }
+
+      path {
+        fill: $color-tapa;
+      }
+    }
+
+    &.active,
+    &:hover {
+      color: $color-chateau-green;
+
+      svg {
+        path {
+          fill: $color-link;
+        }
+      }
+    }
+
+    &.cart-button {
+      position: relative;
+
+      span {
+        @include spacing(width, 11px);
+        @include spacing(height, 11px);
+        @include font-size(8px);
+        background: $color-cart-count;
+        border-radius: 8px;
+        position: absolute;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+        font-weight: weight('bold');
+        text-align: center;
+        top: -4px;
+        right: -4px;
+
+        @include respond-to(m) {
+          right: 30%;
+        }
+
+        @include respond-to(l) {
+          right: 33%;
+        }
+      }
+    }
+  }
+}

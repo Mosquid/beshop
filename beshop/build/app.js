@@ -147,6 +147,30 @@
     homepageSlider();
     breakpoint.addListener(homepageSlider);
 
+    function desktopSearch() {
+      var searchButton = document.querySelector('.open-search');
+      var searchWidget = document.querySelector('.widget_search');
+      var searchInput = document.querySelector('.widget_search .search-field');
+
+      searchButton.onclick = function (event) {
+        event.stopPropagation();
+        searchWidget.classList.toggle('active');
+        searchInput.focus();
+      };
+
+      document.addEventListener('click', function (event) {
+        if (searchWidget.classList.contains('active')) {
+          var isClickInside = searchInput.contains(event.target);
+
+          if (!isClickInside) {
+            searchWidget.classList.toggle('active');
+          }
+        }
+      });
+    }
+
+    desktopSearch();
+
     function showButtonsCart() {
       var item = document.querySelectorAll('.product');
       var buyButton = document.querySelectorAll('.category_order_button');

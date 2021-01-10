@@ -3,5 +3,7 @@
 }
 
 .content-area {
-  @include padding(15px 0 0);
+  @include spacing(max-width, $site-width-default);
+  @include padding(15px 20px 0);
+  margin: 0 auto;
 }
