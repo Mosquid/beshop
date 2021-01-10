@@ -53,6 +53,30 @@
     homepageSlider();
     breakpoint.addListener(homepageSlider);
 
+    function desktopSearch() {
+      let searchButton = document.querySelector('.open-search');
+      let searchWidget = document.querySelector('.widget_search');
+      let searchInput = document.querySelector('.widget_search .search-field');
+
+      searchButton.onclick = function(event) {
+        event.stopPropagation();
+        searchWidget.classList.toggle('active');
+        searchInput.focus();
+      }
+
+      document.addEventListener('click', function(event) {
+        if (searchWidget.classList.contains('active')) {
+          let isClickInside = searchInput.contains(event.target);
+
+          if (!isClickInside) {
+            searchWidget.classList.toggle('active');
+          }
+        }
+      });
+    }
+
+    desktopSearch();
+
     function showButtonsCart() {
       let item = document.querySelectorAll('.product');
       let buyButton = document.querySelectorAll('.category_order_button');
