@@ -6,10 +6,19 @@
     align-items: center;
     justify-content: space-between;
 
+    @include respond-to(m) {
+      @include margin(0 0 20px);
+    }
+
     h4 {
       @include font-size(16px);
       line-height: 1.5;
       margin-bottom: 0;
+
+      @include respond-to(m) {
+        @include font-size(24px);
+        font-weight: weight('semibold');
+      }
     }
   }
 
@@ -20,9 +29,21 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: 90%;
+
+    @include respond-to(m) {
+      @include spacing(width, 22px);
+      @include spacing(height, 22px);
+      background-size: 100%;
+    }
   }
 
   .categories-wrapper {
+    @include respond-to(m) {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
     .child {
       display: none;
     }
@@ -34,12 +55,19 @@
     }
 
     .categories-wrapper {
-      box-shadow: 0 2px 4px rgba(0, 0, 0, .1);
-      border-radius: 5px;
-      overflow: hidden;
+      @include respond-to(m-max) {
+        border-radius: 5px;
+        overflow: hidden;
+      }
 
       .item {
+        box-shadow: 0 2px 4px rgba(0, 0, 0, .1);
         background: $color-white;
+        border-radius: 5px;
+
+        @include respond-to(m) {
+          flex-basis: 32.4%;
+        }
 
         &:not(:last-child) {
           border-bottom: 1px solid $color-category-border;
@@ -53,6 +81,12 @@
           text-decoration: none;
           position: relative;
 
+          @include respond-to(m) {
+            @include padding(19px 21px);
+            @include font-size(18px);
+            font-weight: weight('medium');
+          }
+
           &::after {
             @include spacing(width, 15px);
             @include spacing(height, 15px);
@@ -64,6 +98,12 @@
             content: '';
             background-image: url('../../img/ico/arrow-right.svg');
             background-repeat: no-repeat;
+
+            @include respond-to(m) {
+              @include spacing(width, 18px);
+              @include spacing(height, 18px);
+              background-size: 100%;
+            }
           }
         }
 
@@ -90,9 +130,19 @@
         border-radius: 5px;
         overflow: hidden;
 
+        @include respond-to(m) {
+          @include margin(0 0 16px);
+          flex-basis: 31.4%;
+        }
+
         .img-wrapper {
           @include spacing(width, 112px);
           @include spacing(height, 84px);
+
+          @include respond-to(m) {
+            @include spacing(width, 150px);
+            @include spacing(height, 112px);
+          }
 
           img {
             object-fit: cover;
@@ -107,6 +157,12 @@
           color: $color-category;
           text-decoration: none;
           position: relative;
+
+          @include respond-to(m) {
+            @include font-size(22px);
+            @include line-height(33px);
+            font-weight: weight('medium');
+          }
         }
       }
     }
@@ -131,6 +187,11 @@
         overflow: hidden;
         flex-basis: 48%;
 
+        @include respond-to(m) {
+          @include margin(0 0 28px);
+          flex-basis: 23%;
+        }
+
         .parent {
           @include padding(9px 12px);
           @include font-size(15px);
@@ -138,6 +199,14 @@
           color: $color-category;
           text-decoration: none;
           position: relative;
+
+          @include respond-to(m) {
+            @include padding(10px 12px);
+            @include font-size(20px);
+            @include line-height(30px);
+            font-weight: weight('medium');
+            text-align: center;
+          }
         }
 
         .img-wrapper {
@@ -172,6 +241,11 @@
         overflow: hidden;
         flex-basis: 100%;
 
+        @include respond-to(m) {
+          @include margin(0 0 30px);
+          flex-basis: 31.6%;
+        }
+
         .parent {
           @include padding(11px 12px);
           @include font-size(18px);
@@ -181,6 +255,13 @@
           text-decoration: none;
           position: relative;
           text-align: center;
+
+          @include respond-to(m) {
+            @include padding(15px 12px);
+            @include font-size(24px);
+            @include line-height(36px);
+            font-weight: weight('medium');
+          }
         }
 
         .img-wrapper {
