@@ -1,27 +1,57 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
 (function($) {
   document.addEventListener('DOMContentLoaded', function () {
     $('.sidenav').sidenav();
     $('.modal').modal();
     $('select').formSelect();
 
-    function sales() {
-      $('.sales_header').slick({
-        centerMode: true,
-        centerPadding: 0,
-        slidesToShow: 3,
-        dots: true,
-        responsive: [
-          {
-            breakpoint: 768,
-            settings: {
-              arrows: false,
-              centerMode: true,
-              slidesToShow: 1
-            }
+    let breakpoint = window.matchMedia('(min-width: 768px)');
+
+    let homepageSlider = function () {
+      if (breakpoint.matches) {
+        let desktopSlider = new Swiper('.sales_header', {
+          simulateTouch: false,
+          slidesPerView: 'auto',
+          loop: true,
+          effect: 'coverflow',
+          centeredSlides: true,
+          centeredSlidesBounds: true,
+          coverflowEffect: {
+            rotate: 0,
+            stretch: 0,
+            depth: 70,
+            modifier: 1,
+            slideShadows: false
+          },
+          pagination: {
+            el: '.swiper-pagination'
+          },
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev'
           }
-        ]
-      });
-    }
+        });
+      }
+      else {
+        let mobileSlider = new Swiper('.sales_header', {
+          simulateTouch: false,
+          effect: 'slide',
+          loop: true,
+          slidesPerView: '1',
+          pagination: {
+            el: '.swiper-pagination'
+          },
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev'
+          }
+        });
+      }
+    };
+
+    homepageSlider();
+    breakpoint.addListener(homepageSlider);
 
     function showButtonsCart() {
       let item = document.querySelectorAll('.product');
@@ -49,8 +79,8 @@
       });
     }
 
-    var categoriesView = localStorage.getItem('categoriesView');
-    var classes = ['list', 'list-pic', 'grid', 'big-grid'];
+    let categoriesView = localStorage.getItem('categoriesView');
+    let classes = ['list', 'list-pic', 'grid', 'big-grid'];
 
     $('.category_list > div').addClass(categoriesView);
 
@@ -61,7 +91,6 @@
       });
     });
 
-    // eslint-disable-next-line no-unused-vars
     function showCurrentValue() {
       let orderCapacity = document.querySelectorAll('.category_order_capacity');
       let buyButton = document.querySelectorAll('.category_order_button');
@@ -75,7 +104,6 @@
       }
     }
 
-    sales();
     showButtonsCart();
   })
 }(jQuery))
