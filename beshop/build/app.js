@@ -199,7 +199,12 @@
 
     var categoriesView = localStorage.getItem('categoriesView');
     var classes = ['list', 'list-pic', 'grid', 'big-grid'];
-    $('.category_list > div').addClass(categoriesView);
+
+    if (categoriesView) {
+      $('.category_list > div').removeClass();
+      $('.category_list > div').addClass(categoriesView);
+    }
+
     $('.categories-switcher').on('click', function () {
       $('.category_list > div').each(function () {
         this.className = classes[($.inArray(this.className, classes) + 1) % classes.length];
