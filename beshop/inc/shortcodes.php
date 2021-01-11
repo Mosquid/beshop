@@ -10,7 +10,7 @@ require_once( __DIR__ . '/shortcodes/banners.php');
  */
 function custom_product_categories($atts) {
     $categories = getAllCategories($atts);
-    $tpl = '<div class="category_list"><div>%1$s</div></div>';
+    $tpl = '<div class="category_list"><div class="list">%1$s</div></div>';
     $exclude = !empty($atts['exclude']) ? $atts['exclude'] : false;
 
     ob_start();
