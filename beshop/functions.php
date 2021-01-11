@@ -160,6 +160,22 @@ function beshop_widgets_init() {
         'before_widget' => '<div id="%1$s" class="widget %2$s">',
         'after_widget' => '</div>'
     ));
+
+    register_sidebar(array(
+        'name' => __('Info Footer', 'beshop'),
+        'id' => 'sidebar-5',
+        'description' => __('Info Footer Area', 'beshop'),
+        'before_widget' => '<div id="%1$s" class="widget %2$s">',
+        'after_widget' => '</div>'
+    ));
+
+    register_sidebar(array(
+        'name' => __('Footer', 'beshop'),
+        'id' => 'sidebar-6',
+        'description' => __('Footer Area', 'beshop'),
+        'before_widget' => '<div id="%1$s" class="widget %2$s">',
+        'after_widget' => '</div>'
+    ));
 }
 
 add_action('widgets_init', 'beshop_widgets_init');

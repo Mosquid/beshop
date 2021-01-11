@@ -6,6 +6,7 @@
   @include respond-to(m) {
     background: $color-white;
     box-shadow: 0 10px 20px rgba(0, 0, 0, .02);
+    position: relative;
   }
 }
 
