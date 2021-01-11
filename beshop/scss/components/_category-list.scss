@@ -233,6 +233,8 @@
     }
 
     .categories-wrapper {
+      @include padding(0 0 50px);
+
       .item {
         @include margin(0 0 10px);
         background: $color-white;

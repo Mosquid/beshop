@@ -1,9 +1,8 @@
 .footer {
-  background: $color-footer;
-
-  @include respond-to(m-max) {
+  @include respond-to(xs-max) {
     @include padding(7px 0 3px);
     box-shadow: 0 20px 40px rgba(0, 0, 0, .2);
+    background: $color-footer;
     position: fixed;
     bottom: 0;
     left: 0;
@@ -11,9 +10,101 @@
     z-index: 100;
   }
 
+  .footer-container {
+    @include spacing(max-width, $site-width-default);
+    @include padding(0 20px);
+    margin: 0 auto;
+  }
+
   .nav-buttons {
     @include respond-to(m) {
       display: none;
+    }
+  }
+
+  .footer-info,
+  .footer-copyright {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    @include respond-to(xs-max) {
+      display: none;
+    }
+  }
+
+  .footer-info {
+    @include padding(50px 0 26px);
+
+    .widget_media_image {
+      @include margin(0 0 13px);
+      flex-basis: 100%;
+    }
+
+    .widget_text {
+      @include margin(15px 0 0);
+      flex-basis: 27%;
+
+      p {
+        @include font-size(14px);
+        line-height: 150%;
+        letter-spacing: .6px;
+        margin-bottom: 0;
+      }
+    }
+
+    .widget_nav_menu {
+      flex-basis: 11%;
+    }
+
+    .widget_custom_html {
+      flex-basis: 14%;
+      margin-right: 4%;
+
+      .footer-telephone {
+        @include margin(0 0 17px);
+      }
+
+      .footer-email {
+        @include margin(0 0 20px);
+      }
+
+      .footer-socials {
+        display: flex;
+
+        a {
+          @include margin(0 20px 0 0);
+          @include spacing(width, 20px);
+          @include spacing(height, 20px);
+          display: block;
+
+          &.instagram {
+            background: url('../../img/ico/instagram.svg') no-repeat center / contain;
+          }
+
+          &.twitter {
+            background: url('../../img/ico/twitter.svg') no-repeat center / contain;
+          }
+
+          &.facebook {
+            background: url('../../img/ico/facebook.svg') no-repeat center / contain;
+          }
+        }
+      }
+    }
+  }
+
+  .footer-copyright {
+    @include padding(27px 0 40px);
+    border-top: 1px solid $color-footer-border;
+    align-items: center;
+
+    .widget_text {
+      p {
+        @include font-size(15px);
+        opacity: .5;
+        margin: 0;
+      }
     }
   }
 }
