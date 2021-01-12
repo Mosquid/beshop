@@ -1,6 +1,8 @@
 <?php
 
 require_once( __DIR__ . '/shortcodes/banners.php');
+require_once( __DIR__ . '/shortcodes/product-list.php');
+
 
 /**
  * List all (or limited) product categories in tree.
