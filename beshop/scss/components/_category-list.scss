@@ -55,22 +55,23 @@
     }
 
     .categories-wrapper {
-      @include respond-to(m-max) {
+      @include respond-to(xs-max) {
         border-radius: 5px;
+        background: $color-white;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, .1);
         overflow: hidden;
       }
 
       .item {
-        box-shadow: 0 2px 4px rgba(0, 0, 0, .1);
-        background: $color-white;
-        border-radius: 5px;
-
-        @include respond-to(m) {
-          flex-basis: 32.4%;
-        }
-
         &:not(:last-child) {
           border-bottom: 1px solid $color-category-border;
+        }
+
+        @include respond-to(m) {
+          box-shadow: 0 2px 4px rgba(0, 0, 0, .1);
+          background: $color-white;
+          border-radius: 5px;
+          flex-basis: 32.4%;
         }
 
         .parent {

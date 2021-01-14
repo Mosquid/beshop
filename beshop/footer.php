@@ -44,6 +44,9 @@
         </a>
       </div>
       <div class="footer-info">
+        <div class="footer-logo-wrapper">
+          <?php the_custom_logo() ?>
+        </div>
         <?php dynamic_sidebar('sidebar-5'); ?>
       </div>
       <div class="footer-copyright">

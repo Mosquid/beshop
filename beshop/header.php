@@ -71,7 +71,7 @@
           </div>
 
         </div>
-        <?php dynamic_sidebar('sidebar-2'); ?>
+        <?php // dynamic_sidebar('sidebar-2'); ?>
       </nav>
 
       <div class="sidenav" id="mobile-demo">

@@ -32,7 +32,7 @@
 
   .logo-wrapper {
     @include spacing(width, 111px);
-    @include spacing(height, 22px);
+    @include spacing(height, 50px);
 
     @include respond-to(m) {
       @include margin(7px auto 0 0);
@@ -99,6 +99,10 @@
 
       .wpml-ls-sub-menu {
         box-shadow: 1px 1px 5px rgba(0, 0, 0, .1);
+      }
+
+      > ul {
+        padding: 0;
       }
     }
 
