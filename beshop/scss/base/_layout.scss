@@ -4,6 +4,10 @@
 
 .content-area {
   @include spacing(max-width, $site-width-default);
-  @include padding(15px 20px 50px);
+  @include padding(15px 20px 65px);
   margin: 0 auto;
+
+  @include respond-to(m) {
+    @include padding(15px 20px 50px);
+  }
 }
