@@ -39,3 +39,34 @@
   width: 1px;
   word-wrap: normal;
 }
+
+/*  Placeholder Mixin
+*
+*   No Params
+*
+*   Example Usage:
+*
+*     input[placeholder] {
+*       @include placeholder {
+*         color: red;
+*       }
+*     }
+*
+*/
+@mixin placeholder {
+  &::-webkit-input-placeholder {
+    @content;
+  }
+
+  &::-moz-placeholder {
+    @content;
+  }
+
+  &:-ms-input-placeholder {
+    @content;
+  }
+
+  &::placeholder {
+    @content;
+  }
+}

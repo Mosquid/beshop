@@ -2,16 +2,18 @@
  * 3.3 Form base styles
  */
 
+%input,
 input[type='text'],
 input[type='password'],
 input[type='email'],
 input[type='search'],
 input[type='tel'],
 textarea {
-  @include font-size(12px);
-  @include padding(12px 10px 13px);
+  @include font-size(14px);
+  @include padding(12px 16px 13px);
   background-color: $color-white;
   border: 1px solid $color-border;
+  border-radius: 6px;
   box-sizing: border-box;
   box-shadow: none;
   color: $color-base-text;
@@ -22,16 +24,37 @@ textarea {
   width: 100%;
   // transition: all .2s ease-in-out;
   -webkit-appearance: none;
+
+  & + span {
+    @include font-size(12px);
+    color: $color-placeholder;
+  }
+
+  @include placeholder {
+    color: $color-placeholder;
+  }
 }
 
+%input-submit,
 input[type='submit'],
 input[type='button'] {
+  @include font-size(18px);
+  font-weight: wieght('semibold');
   border: 0;
+  border-radius: 6px;
+  background: $color-link;
+  color: $color-white;
+
+  &:hover {
+    background: $color-link-active;
+    color: $color-white;
+  }
 }
 
+%label,
 label {
-  @include font-size(16px);
-  @include padding-bottom(10px);
+  @include font-size(12px);
+  color: $color-base-text;
   letter-spacing: .6px;
   display: block;
   position: relative;
@@ -41,27 +64,44 @@ label {
   }
 }
 
+%input-checkbox,
 input[type='checkbox'] {
   display: none;
+
+  & + label::before {
+    @include spacing(width, 18px);
+    @include spacing(height, 18px);
+    @include margin(-1px 10px 0 0);
+    content: '';
+    cursor: pointer;
+    background-image: image-url('checkbox.png');
+    background-position: 0 bottom;
+    background-repeat: no-repeat;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  &:checked + label::before {
+    background-position: 0 0;
+  }
 }
 
-input[type='checkbox'] + label::before {
-  @include spacing(width, 18px);
-  @include spacing(height, 18px);
-  @include margin(-1px 10px 0 0);
-  content: '';
-  cursor: pointer;
-  background-image: image-url('checkbox.png');
-  background-position: 0 bottom;
-  background-repeat: no-repeat;
-  display: inline-block;
-  vertical-align: middle;
+fieldset {
+  @include margin(0 0 16px);
+  border: 1px solid $color-border;
+  border-radius: 6px;
+  background: $color-snow;
 }
 
-input[type='checkbox']:checked + label::before {
-  background-position: 0 0;
+
+.woocommerce form .form-row input.input-text,
+.woocommerce form .form-row textarea {
+  @extend %input;
 }
 
-.form-item {
-  @include margin-bottom(25px);
+.woocommerce #respond input#submit,
+.woocommerce a.button,
+.woocommerce button.button,
+.woocommerce input.button {
+  @extend %input-submit;
 }
