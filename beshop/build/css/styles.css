@@ -463,6 +463,19 @@ template {
   font-display: swap;
 }
 
+/*  Placeholder Mixin
+*
+*   No Params
+*
+*   Example Usage:
+*
+*     input[placeholder] {
+*       @include placeholder {
+*         color: red;
+*       }
+*     }
+*
+*/
 /*
  * 3.1 Root
  */
@@ -601,16 +614,19 @@ h6 {
 /*
  * 3.3 Form base styles
  */
+.woocommerce form .form-row input.input-text,
+.woocommerce form .form-row textarea,
 input[type='text'],
 input[type='password'],
 input[type='email'],
 input[type='search'],
 input[type='tel'],
 textarea {
-  font-size: 0.8rem;
-  padding: 0.8rem 0.66667rem 0.86667rem;
+  font-size: 0.93333rem;
+  padding: 0.8rem 1.06667rem 0.86667rem;
   background-color: #fff;
   border: 1px solid #e0e0e0;
+  border-radius: 6px;
   box-sizing: border-box;
   box-shadow: none;
   color: #333;
@@ -622,26 +638,120 @@ textarea {
   -webkit-appearance: none;
 }
 
-input[type='submit'],
-input[type='button'] {
-  border: 0;
+.woocommerce form .form-row input.input-text + span, .woocommerce form .form-row textarea + span,
+input[type='text'] + span,
+input[type='password'] + span,
+input[type='email'] + span,
+input[type='search'] + span,
+input[type='tel'] + span,
+textarea + span {
+  font-size: 0.8rem;
+  color: #bdbdbd;
 }
 
+.woocommerce form .form-row input.input-text::-webkit-input-placeholder,
+.woocommerce form .form-row textarea::-webkit-input-placeholder,
+input[type='text']::-webkit-input-placeholder,
+input[type='password']::-webkit-input-placeholder,
+input[type='email']::-webkit-input-placeholder,
+input[type='search']::-webkit-input-placeholder,
+input[type='tel']::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+  color: #bdbdbd;
+}
+
+.woocommerce form .form-row input.input-text::-moz-placeholder,
+.woocommerce form .form-row textarea::-moz-placeholder,
+input[type='text']::-moz-placeholder,
+input[type='password']::-moz-placeholder,
+input[type='email']::-moz-placeholder,
+input[type='search']::-moz-placeholder,
+input[type='tel']::-moz-placeholder,
+textarea::-moz-placeholder {
+  color: #bdbdbd;
+}
+
+.woocommerce form .form-row input.input-text:-ms-input-placeholder,
+.woocommerce form .form-row textarea:-ms-input-placeholder,
+input[type='text']:-ms-input-placeholder,
+input[type='password']:-ms-input-placeholder,
+input[type='email']:-ms-input-placeholder,
+input[type='search']:-ms-input-placeholder,
+input[type='tel']:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+  color: #bdbdbd;
+}
+
+.woocommerce form .form-row input.input-text::-webkit-input-placeholder, .woocommerce form .form-row textarea::-webkit-input-placeholder, input[type='text']::-webkit-input-placeholder, input[type='password']::-webkit-input-placeholder, input[type='email']::-webkit-input-placeholder, input[type='search']::-webkit-input-placeholder, input[type='tel']::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+  color: #bdbdbd;
+}
+
+.woocommerce form .form-row input.input-text::-moz-placeholder, .woocommerce form .form-row textarea::-moz-placeholder, input[type='text']::-moz-placeholder, input[type='password']::-moz-placeholder, input[type='email']::-moz-placeholder, input[type='search']::-moz-placeholder, input[type='tel']::-moz-placeholder, textarea::-moz-placeholder {
+  color: #bdbdbd;
+}
+
+.woocommerce form .form-row input.input-text:-ms-input-placeholder, .woocommerce form .form-row textarea:-ms-input-placeholder, input[type='text']:-ms-input-placeholder, input[type='password']:-ms-input-placeholder, input[type='email']:-ms-input-placeholder, input[type='search']:-ms-input-placeholder, input[type='tel']:-ms-input-placeholder, textarea:-ms-input-placeholder {
+  color: #bdbdbd;
+}
+
+.woocommerce form .form-row input.input-text::-ms-input-placeholder, .woocommerce form .form-row textarea::-ms-input-placeholder, input[type='text']::-ms-input-placeholder, input[type='password']::-ms-input-placeholder, input[type='email']::-ms-input-placeholder, input[type='search']::-ms-input-placeholder, input[type='tel']::-ms-input-placeholder, textarea::-ms-input-placeholder {
+  color: #bdbdbd;
+}
+
+.woocommerce form .form-row input.input-text::placeholder,
+.woocommerce form .form-row textarea::placeholder,
+input[type='text']::placeholder,
+input[type='password']::placeholder,
+input[type='email']::placeholder,
+input[type='search']::placeholder,
+input[type='tel']::placeholder,
+textarea::placeholder {
+  color: #bdbdbd;
+}
+
+.woocommerce #respond input#submit,
+.woocommerce a.button,
+.woocommerce button.button,
+.woocommerce input.button,
+input[type='submit'],
+input[type='button'] {
+  font-size: 1.2rem;
+  font-weight: wieght("semibold");
+  border: 0;
+  border-radius: 6px;
+  background: #2cac4a;
+  color: #fff;
+}
+
+.woocommerce #respond input#submit:hover,
+.woocommerce a.button:hover,
+.woocommerce button.button:hover,
+.woocommerce input.button:hover,
+input[type='submit']:hover,
+input[type='button']:hover {
+  background: #139231;
+  color: #fff;
+}
+
+
 label {
-  font-size: 1.06667rem;
-  padding-bottom: 0.66667rem;
+  font-size: 0.8rem;
+  color: #333;
   letter-spacing: .6px;
   display: block;
   position: relative;
 }
 
+
 label .form-required {
-  color: #f00;
+  color: #d20000;
 }
+
 
 input[type='checkbox'] {
   display: none;
 }
+
 
 input[type='checkbox'] + label::before {
   width: 1.2rem;
@@ -656,12 +766,16 @@ input[type='checkbox'] + label::before {
   vertical-align: middle;
 }
 
+
 input[type='checkbox']:checked + label::before {
   background-position: 0 0;
 }
 
-.form-item {
-  margin-bottom: 1.66667rem;
+fieldset {
+  margin: 0 0 1.06667rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  background: #fcfcfc;
 }
 
 /*
@@ -1924,6 +2038,40 @@ table {
   .nav-buttons a.cart-button span {
     right: 33%;
   }
+}
+
+.woocommerce .woocommerce-MyAccount-navigation .woocommerce-MyAccount-navigation-link {
+  padding: 1rem 0;
+}
+
+.woocommerce .woocommerce-MyAccount-navigation .woocommerce-MyAccount-navigation-link a {
+  font-size: 1.06667rem;
+  line-height: 1.6rem;
+  color: #333;
+  font-weight: 500;
+  letter-spacing: .2px;
+  text-decoration: none;
+}
+
+.woocommerce .woocommerce-MyAccount-navigation .woocommerce-MyAccount-navigation-link a:hover {
+  color: #2cac4a;
+}
+
+.woocommerce .woocommerce-MyAccount-navigation .woocommerce-MyAccount-navigation-link.is-active a {
+  color: #2cac4a;
+}
+
+.woocommerce .woocommerce-MyAccount-navigation .woocommerce-MyAccount-navigation-link.woocommerce-MyAccount-navigation-link--customer-logout a {
+  color: #d20000;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.woocommerce .woocommerce-MyAccount-content {
+  padding: 2.66667rem 4rem 2.66667rem;
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
 }
 
 @font-face {
