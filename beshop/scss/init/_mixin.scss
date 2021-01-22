@@ -32,12 +32,16 @@
 }
 
 @mixin visually-hidden {
-  position: absolute !important;
-  clip: rect(1px, 1px, 1px, 1px);
-  overflow: hidden;
-  height: 1px;
+  position: absolute;
+  white-space: nowrap;
   width: 1px;
-  word-wrap: normal;
+  height: 1px;
+  overflow: hidden;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  margin: -1px;
 }
 
 /*  Placeholder Mixin
@@ -69,4 +73,17 @@
   &::placeholder {
     @content;
   }
+}
+
+/*  PX to REM Conversion
+*
+*   @param {Pixel} $px - Unitless pixel value to be converted into rems.
+*
+*   Example Usage:
+*
+*     margin-bottom: rem(20);
+*
+*/
+@function rem($px) {
+  @return ($px / 16) * 1rem;
 }
