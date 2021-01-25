@@ -2148,6 +2148,18 @@ table {
   text-decoration: underline;
 }
 
+.cart-wrapper .woocommerce-cart-form .product-item .quantity input::-webkit-outer-spin-button,
+.cart-wrapper .woocommerce-cart-form .product-item .quantity input::-webkit-inner-spin-button {
+  display: none;
+  margin: 0;
+}
+
+.cart-wrapper .woocommerce-cart-form .product-item .quantity input.qty {
+  appearance: textfield;
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
+}
+
 .cart-wrapper .woocommerce-cart-form .product-item .quantity .qty_button {
   font-size: 1.6875rem;
   background: #fff;
@@ -2227,6 +2239,17 @@ table {
   background: #fcfcfc;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
+}
+
+.type-page .wp-block-group {
+  padding: 1.25rem 2.5rem;
+  margin: 0 0 0.625rem;
+  display: flex;
+  position: relative;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
 }
 
 @font-face {

@@ -55,10 +55,21 @@
       }
 
       .quantity {
+        // Minimum CSS to remove +/- default buttons on input field type number
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+          display: none;
+          margin: 0;
+        }
+
+        input.qty {
+          appearance: textfield;
+          -webkit-appearance: none;
+          -moz-appearance: textfield;
+        }
+
         .qty_button {
           @include font-size(27px);
-          // @include spacing(width, 35px);
-          // @include spacing(height, 35px);
           background: $color-white;
           font-weight: weight('thin');
           box-shadow: 0 2px 4px rgba(0, 0, 0, .1);
@@ -106,10 +117,6 @@
         @include padding(0 20px 0 0);
         display: flex;
         justify-content: space-between;
-
-        // .product-quantity {
-
-        // }
 
         .product-subtotal {
           @include font-size(24px);
