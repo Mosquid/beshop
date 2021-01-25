@@ -32,7 +32,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 			$product_permalink = apply_filters( 'woocommerce_cart_item_permalink', $_product->is_visible() ? $_product->get_permalink( $cart_item ) : '', $cart_item, $cart_item_key );
 		?>
 
-			<div class="product-item">
+			<div class="product-item <?php echo esc_attr( apply_filters( 'woocommerce_cart_item_class', 'cart_item', $cart_item, $cart_item_key ) ); ?>">
 				<div class="product-thumbnail">
 					<?php
 						$thumbnail = apply_filters( 'woocommerce_cart_item_thumbnail', $_product->get_image(), $cart_item, $cart_item_key );
@@ -127,7 +127,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 		?>
 
 		<?php do_action( 'woocommerce_cart_contents' ); ?>
-			<button type="submit" class="button" name="update_cart" value="<?php esc_attr_e( 'Update cart', 'woocommerce' ); ?>"><?php esc_html_e( 'Update cart', 'woocommerce' ); ?></button>
+			<button type="submit" class="button update-cart" name="update_cart" value="<?php esc_attr_e( 'Update cart', 'woocommerce' ); ?>"><?php esc_html_e( 'Update cart', 'woocommerce' ); ?></button>
 			<?php do_action( 'woocommerce_cart_actions' ); ?>
 			<?php wp_nonce_field( 'woocommerce-cart', 'woocommerce-cart-nonce' ); ?>
 		<?php do_action( 'woocommerce_after_cart_contents' ); ?>

@@ -1,0 +1,12 @@
+.type-page {
+  .wp-block-group {
+    @include padding(20px 40px);
+    @include margin(0 0 10px);
+    display: flex;
+    position: relative;
+    background: $color-white;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .1);
+    overflow: hidden;
+  }
+}

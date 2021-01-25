@@ -54,10 +54,45 @@
         }
       }
 
+      .quantity {
+        // Minimum CSS to remove +/- default buttons on input field type number
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+          display: none;
+          margin: 0;
+        }
+
+        input.qty {
+          appearance: textfield;
+          -webkit-appearance: none;
+          -moz-appearance: textfield;
+        }
+
+        .qty_button {
+          @include font-size(27px);
+          background: $color-white;
+          font-weight: weight('thin');
+          box-shadow: 0 2px 4px rgba(0, 0, 0, .1);
+          border-radius: 50%;
+          width: rem(35);
+          height: rem(35);
+          color: $color-link;
+        }
+
+        .input-text {
+          @include font-size(18px, 27px);
+          border: 0;
+          background: none;
+          font-weight: weight('semibold');
+          color: $color-base-text;
+          width: rem(50);
+        }
+      }
+
       .product-remove {
-        @include spacing(top, 25px);
-        @include spacing(right, 25px);
         position: absolute;
+        top: rem(20);
+        right: rem(20);
 
         .remove {
           &:hover {
@@ -83,16 +118,16 @@
         display: flex;
         justify-content: space-between;
 
-        // .product-quantity {
-
-        // }
-
         .product-subtotal {
           @include font-size(24px);
           @include line-height(36px);
           font-weight: weight('semibold');
         }
       }
+    }
+
+    .update-cart {
+      @include visually-hidden;
     }
   }
 
