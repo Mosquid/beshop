@@ -1507,6 +1507,10 @@ table {
   }
 }
 
+.woocommerce div.product .summary .cart .quantity {
+  display: none;
+}
+
 .woocommerce div.product .summary .cart .category_order_wrapper {
   padding: 0;
 }

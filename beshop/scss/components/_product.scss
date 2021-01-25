@@ -66,6 +66,10 @@
           @include spacing(width, 251px);
         }
 
+        .quantity {
+          display: none;
+        }
+
         .category_order_wrapper {
           @include padding(0);
 
@@ -80,7 +84,6 @@
             @include spacing(height, 44px);
 
             @include respond-to(m) {
-            //   @include font-size(24px);
               @include padding(1px 0 7px);
               @include spacing(height, 46px);
             }
