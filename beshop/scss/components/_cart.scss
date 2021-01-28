@@ -1,9 +1,24 @@
+.cart-total {
+  @include font-size(14px, 21px);
+  @include margin(0 0 10px);
+
+  @include respond-to(m) {
+    @include font-size(24px, 36px);
+  }
+}
+
 .cart-wrapper {
-  display: flex;
-  justify-content: space-between;
+  @include respond-to(m) {
+    display: flex;
+    justify-content: space-between;
+  }
 
   .woocommerce-cart-form {
-    flex-basis: 63.7%;
+    @include margin(0 0 20px);
+
+    @include respond-to(m) {
+      flex-basis: 63.7%;
+    }
 
     .product-item {
       @include margin(0 0 10px);
@@ -15,8 +30,13 @@
       overflow: hidden;
 
       .product-thumbnail {
-        @include margin(0 32px 0 0);
-        flex-basis: 193px;
+        @include margin(0 16px 0 0);
+        flex-basis: 134px;
+
+        @include respond-to(m) {
+          @include margin(0 32px 0 0);
+          flex-basis: 193px;
+        }
 
         a {
           display: block;
@@ -33,20 +53,27 @@
       }
 
       .product-details {
-        @include padding(24px 0 20px);
+        @include padding(5px 0 10px);
         display: flex;
         flex-direction: column;
         flex: 1 1 auto;
+
+        @include respond-to(m) {
+          @include padding(24px 0 20px);
+        }
       }
 
       .product-name {
         flex-grow: 1;
 
         a {
-          @include font-size(18px);
-          @include line-height(25px);
+          @include font-size(13px, 16px);
           color: $color-night-rider;
           text-decoration: none;
+
+          @include respond-to(m) {
+            @include font-size(18px, 25px);
+          }
 
           &:hover {
             text-decoration: underline;
@@ -69,32 +96,57 @@
         }
 
         .qty_button {
-          @include font-size(27px);
+          @include font-size(21px);
           background: $color-white;
           font-weight: weight('thin');
           box-shadow: 0 2px 4px rgba(0, 0, 0, .1);
           border-radius: 50%;
-          width: rem(35);
-          height: rem(35);
+          width: rem(26);
+          height: rem(26);
           color: $color-link;
+
+          @include respond-to(m) {
+            @include font-size(27px);
+            width: rem(35);
+            height: rem(35);
+          }
         }
 
         .input-text {
-          @include font-size(18px, 27px);
+          @include font-size(12px, 18px);
           border: 0;
           background: none;
           font-weight: weight('semibold');
           color: $color-base-text;
-          width: rem(50);
+          width: rem(41);
+
+          @include respond-to(m) {
+            @include font-size(18px, 27px);
+            width: rem(50);
+          }
         }
       }
 
       .product-remove {
         position: absolute;
-        top: rem(20);
-        right: rem(20);
+        top: rem(12);
+        right: rem(12);
+
+        @include respond-to(m) {
+          top: rem(20);
+          right: rem(20);
+        }
+
 
         .remove {
+          @include respond-to(xs-max) {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: rem(14);
+            height: rem(14);
+          }
+
           &:hover {
             background: none;
 
@@ -110,18 +162,33 @@
 
         svg {
           opacity: .2;
+
+          @include respond-to(xs-max) {
+            width: rem(10);
+            height: rem(10);
+          }
         }
       }
 
       .product-amount {
-        @include padding(0 20px 0 0);
+        @include padding(0 10px 0 0);
         display: flex;
         justify-content: space-between;
 
+        @include respond-to(m) {
+          @include padding(0 20px 0 0);
+        }
+
         .product-subtotal {
-          @include font-size(24px);
-          @include line-height(36px);
+          @include font-size(14px, 16px);
+          display: flex;
+          align-items: flex-end;
           font-weight: weight('semibold');
+
+          @include respond-to(m) {
+            @include font-size(24px, 36px);
+            display: block;
+          }
         }
       }
     }
@@ -134,13 +201,72 @@
   .cart-collaterals {
     flex-basis: 31.4%;
 
-    .cart_totals  {
+    .order-total-top {
       @include padding(25px);
+    }
+
+    .cart_totals  {
       float: none;
       width: 100%;
       background: $color-main-bg;
       box-shadow: 0 2px 4px rgba(0, 0, 0, .1);
       border-radius: 5px;
+
+      h2 {
+        @include font-size(24px, 36px);
+      }
+    }
+
+    .shop_table {
+      .cart-subtotal {
+        display: flex;
+        justify-content: space-between;
+
+        .subtotal-title {
+          @include font-size(18px, 25px);
+        }
+
+        .subtotal-value {
+          @include font-size(18px, 27px);
+          font-weight: weight('semibold');
+        }
+      }
+    }
+
+    .order-total-bottom {
+      @include padding(15px 25px 22px);
+      background: $color-white-smoke;
+
+      .order-total {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .order-total-label {
+          @include font-size(16px, 24px);
+          color: $color-silver;
+          font-weight: weight('bold');
+        }
+
+        .order-total-value {
+          @include font-size(24px, 36px);
+        }
+      }
+
+      .wc-proceed-to-checkout {
+        @include padding(15px 0 0);
+
+        .checkout-button {
+          @include padding(12px 20px);
+          margin: 0;
+          border-radius: rem(40);
+          background: $color-link;
+
+          &:hover {
+            background: $color-link-active;
+          }
+        }
+      }
     }
   }
 }
