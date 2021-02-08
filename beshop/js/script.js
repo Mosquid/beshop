@@ -118,6 +118,14 @@
       });
     });
 
+    // Filter button
+    if ($('.product-filter').length) {
+      $('.filter-switcher').click(function() {
+        $(this).toggleClass('active');
+        $(this).next('.filter-wrapper').toggleClass('active');
+      });
+    }
+
     // Cart logic
     if ($('.woocommerce-cart-form').length) {
       $(window).on('load', function() {

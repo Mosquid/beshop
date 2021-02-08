@@ -176,6 +176,14 @@ function beshop_widgets_init() {
         'before_widget' => '<div id="%1$s" class="widget %2$s">',
         'after_widget' => '</div>'
     ));
+
+    register_sidebar(array(
+        'name' => __('Filters', 'beshop'),
+        'id' => 'sidebar-7',
+        'description' => __('Product Filters', 'beshop'),
+        'before_widget' => '<div id="%1$s" class="widget %2$s">',
+        'after_widget' => '</div>'
+    ));
 }
 
 add_action('widgets_init', 'beshop_widgets_init');
@@ -402,3 +410,13 @@ function redirect_admin($redirect_to, $request, $user) {
 }
 
 add_filter('login_redirect', 'redirect_admin', 10, 3);
+
+add_action('woocommerce_before_shop_loop', function() {
+    echo '<div class="product-filter"><button class="filter-switcher" arial-label="Show Product Filter">
+            <svg width="22" height="14" viewBox="0 0 22 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M0.5 0V2.33333H21.5V0H0.5ZM8.66667 14H13.3333V11.6667H8.66667V14ZM18 8.16667H4V5.83333H18V8.16667Z" fill="#E31E24"/>
+            </svg>
+        </button><div class="filter-wrapper">';
+    echo do_shortcode('[br_filters_group group_id=65695]');
+    echo '</div></div>';
+});
