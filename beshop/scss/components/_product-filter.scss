@@ -1,0 +1,76 @@
+.product-filter {
+  .filter-switcher {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: rem(42);
+    height: rem(42);
+    padding: 0;
+    background: $color-white;
+    border: 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .1);
+    border-radius: rem(5);
+    cursor: pointer;
+
+    &.active {
+      background: $filter-active-button;
+
+      svg path {
+        fill: $color-white;
+      }
+    }
+  }
+
+  .filter-wrapper {
+    @include padding(20px);
+    display: none;
+    position: absolute;
+    width: rem(255);
+    margin-top: rem(18);
+    background: $color-white;
+    border-radius: rem(5);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .1);
+    z-index: 10;
+
+    &.active {
+      display: block;
+    }
+  }
+
+  .berocket_single_filter_widget {
+    .bapf_head {
+      h3 {
+        @include font-size(18px, 27px);
+        font-weight: weight('semibold');
+        margin-bottom: rem(6);
+      }
+    }
+
+    .bapf_body {
+      max-height: rem(207);
+      overflow: scroll;
+
+      li {
+        line-height: rem(25);
+      }
+
+      label {
+        @include font-size(16px, 22px);
+      }
+    }
+
+    .bapf_button_berocket {
+      margin-bottom: rem(10);
+
+      .bapf_button {
+        @include font-size(18px, 27px);
+        width: 100%;
+        font-weight: weight('semibold');
+        background: $color-apply-filter;
+        color: $color-white;
+        border-radius: rem(40);
+        text-transform: none;
+      }
+    }
+  }
+}

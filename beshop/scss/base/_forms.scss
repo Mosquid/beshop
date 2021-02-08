@@ -68,20 +68,22 @@ input[type='checkbox'] {
   display: none;
 
   & + label::before {
-    @include spacing(width, 18px);
-    @include spacing(height, 18px);
     @include margin(-1px 10px 0 0);
+    width: rem(16);
+    height: rem(16);
     content: '';
     cursor: pointer;
-    background-image: image-url('checkbox.png');
-    background-position: 0 bottom;
-    background-repeat: no-repeat;
+    background-color: $color-checkbox;
+    border-radius: rem(2);
     display: inline-block;
     vertical-align: middle;
   }
 
   &:checked + label::before {
-    background-position: 0 0;
+    background-color: $color-checkbox-acrive;
+    background-image: url('../../img/ico/checkbox.svg');
+    background-position: 3px 5px;
+    background-repeat: no-repeat;
   }
 }
 
