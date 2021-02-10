@@ -2405,6 +2405,10 @@ table {
   overflow: hidden;
 }
 
+.product-filter {
+  position: relative;
+}
+
 .product-filter .filter-switcher {
   display: flex;
   align-items: center;
@@ -2431,6 +2435,7 @@ table {
   padding: 1.25rem;
   display: none;
   position: absolute;
+  right: 0;
   width: 15.9375rem;
   margin-top: 1.125rem;
   background: #fff;
@@ -2474,6 +2479,25 @@ table {
   color: #fff;
   border-radius: 2.5rem;
   text-transform: none;
+}
+
+.product-category-header {
+  margin: -1.5625rem 0 1.125rem;
+  display: flex;
+  flex-direction: row-reverse;
+  float: right;
+}
+
+.product-category-header .woocommerce-result-count {
+  display: none;
+}
+
+.product-category-header .woocommerce-ordering {
+  margin: 0;
+}
+
+.product-category-header .product-filter {
+  margin: 0 0 0 1.5625rem;
 }
 
 @font-face {

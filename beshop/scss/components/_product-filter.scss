@@ -1,4 +1,6 @@
 .product-filter {
+  position: relative;
+
   .filter-switcher {
     display: flex;
     align-items: center;
@@ -25,6 +27,7 @@
     @include padding(20px);
     display: none;
     position: absolute;
+    right: 0;
     width: rem(255);
     margin-top: rem(18);
     background: $color-white;
