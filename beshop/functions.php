@@ -412,11 +412,15 @@ function redirect_admin($redirect_to, $request, $user) {
 add_filter('login_redirect', 'redirect_admin', 10, 3);
 
 add_action('woocommerce_before_shop_loop', function() {
-    echo '<div class="product-filter"><button class="filter-switcher" arial-label="Show Product Filter">
+    echo '<div class="product-category-header"><div class="product-filter"><button class="filter-switcher" arial-label="Show Product Filter">
             <svg width="22" height="14" viewBox="0 0 22 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M0.5 0V2.33333H21.5V0H0.5ZM8.66667 14H13.3333V11.6667H8.66667V14ZM18 8.16667H4V5.83333H18V8.16667Z" fill="#E31E24"/>
             </svg>
         </button><div class="filter-wrapper">';
-    echo do_shortcode('[br_filters_group group_id=65695]');
+    echo do_shortcode('[br_filters_group group_id=65692]');
     echo '</div></div>';
-});
+}, 3, 0);
+
+add_action('woocommerce_before_shop_loop', function() {
+    echo '</div>';
+}, 99, 999);
