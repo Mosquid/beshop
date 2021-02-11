@@ -1666,6 +1666,7 @@ table {
   height: 2.375rem;
   border-radius: 50%;
   background: url("../../img/ico/slider-arrow.svg") no-repeat;
+  outline: none;
 }
 
 .swiper-container .swiper-navigation .swiper-button-next {
@@ -1702,10 +1703,13 @@ table {
 .category_list .categories-switcher {
   width: 1.25rem;
   height: 1.25rem;
+  padding: 0;
   border: 0;
   background-repeat: no-repeat;
   background-position: center;
   background-size: 90%;
+  outline: none;
+  cursor: pointer;
 }
 
 @media (min-width: 768px) {
@@ -2421,6 +2425,7 @@ table {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 0.3125rem;
   cursor: pointer;
+  outline: none;
 }
 
 .product-filter .filter-switcher.active {
