@@ -79,6 +79,7 @@
       @include spacing(height, 38px);
       border-radius: 50%;
       background: url('../../img/ico/slider-arrow.svg') no-repeat;
+      outline: none;
     }
 
     .swiper-button-next {

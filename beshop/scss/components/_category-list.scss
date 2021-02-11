@@ -25,10 +25,13 @@
   .categories-switcher {
     @include spacing(width, 20px);
     @include spacing(height, 20px);
+    padding: 0;
     border: 0;
     background-repeat: no-repeat;
     background-position: center;
     background-size: 90%;
+    outline: none;
+    cursor: pointer;
 
     @include respond-to(m) {
       @include spacing(width, 22px);
